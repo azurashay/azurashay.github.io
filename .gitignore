@@ -1,0 +1,24 @@
+# System
+.DS_Store
+**/.DS_Store
+
+# Local editor / preview temp
+.claude/
+
+# Unused local backups & source logos — kept on disk, not part of the live site
+ads.png
+ads-full.jpg
+edit_ads_popup.png
+folloze_account_dashboard.png
+style_morph_video.mp4
+logos/413237.png
+logos/Dome9_Security.png
+logos/Dell-Logo.svg
+logos/logo copy.svg
+logos/logo1.png
+logos/w=1200.png
+logos/zooz.png
+logos/zooz-clean.png
+logos/ownbackup.png
+logos/ownbackup-t.png
+logos/616762d058759d1f6b9931d0_logo-ownbackup-transparent.png

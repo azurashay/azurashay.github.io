@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Loader Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --class-color: #4fc3f7;
+            --variable-color: #e5e5e5;
+            --keyword-color: #c792ea;
+            --type-color: #ffcb6b;
+            --bracket-color: #89ddff;
+            --constant-color: #f78c6c;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .stage-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            zoom: 0.5;
+        }
+
+        /* ========== STAGE 1: LOGO ========== */
+        .logo-stage {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0);
+            animation: logoStage 24s ease-in-out infinite;
+        }
+
+        @keyframes logoStage {
+            0% { opacity: 1; transform: scale(1); }
+            23% { opacity: 1; transform: scale(1); }
+            25% { opacity: 0; transform: scale(1); }
+            98% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .ring-group {
+            position: absolute;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .ring-group:nth-child(1) { animation-delay: 0s; }
+        .ring-group:nth-child(2) { animation-delay: 0.2s; }
+        .ring-group:nth-child(3) { animation-delay: 0.4s; }
+        .ring-group:nth-child(4) { animation-delay: 0.6s; }
+        .ring-group:nth-child(5) { animation-delay: 0.8s; }
+
+        .ring {
+            fill: none;
+            stroke: #3b82f6;
+            stroke-width: 0.4;
+        }
+
+        .dot {
+            fill: #3b82f6;
+            stroke: #3b82f6;
+            stroke-width: 0.4;
+            animation: spin linear infinite;
+            transform-origin: 50px 50px;
+        }
+
+        .ring-group:nth-child(1) .dot { animation-duration: 10s; }
+        .ring-group:nth-child(2) .dot { animation-duration: 9s; }
+        .ring-group:nth-child(3) .dot { animation-duration: 8s; }
+        .ring-group:nth-child(4) .dot { animation-duration: 6s; }
+        .ring-group:nth-child(5) .dot { animation-duration: 4s; }
+
+        .logo {
+            position: absolute;
+            width: 25px;
+            height: 37px;
+            color: #3b82f6;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: var(--base-opacity, 1); }
+            50% { opacity: calc(var(--base-opacity, 1) * 0.7); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========== STAGE 2: SCANNER ========== */
+        .scanner-stage {
+            position: absolute;
+            opacity: 0;
+            animation: scannerStage 24s ease-in-out infinite;
+        }
+
+        @keyframes scannerStage {
+            0%, 23% { opacity: 0; }
+            25%, 48% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .scanner-content {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            animation: scanMove 1.5s ease-in-out infinite;
+        }
+
+        @keyframes scanMove {
+            0%, 100% { transform: translateY(-100px); opacity: 0.3; }
+            50% { transform: translateY(100px); opacity: 1; }
+        }
+
+        .scan-rings {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .scan-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            opacity: 0;
+            animation: scanRing 1.5s ease-out infinite;
+        }
+
+        .scan-ring:nth-child(1) { width: 100px; height: 100px; animation-delay: 0s; }
+        .scan-ring:nth-child(2) { width: 200px; height: 200px; animation-delay: 0.3s; }
+        .scan-ring:nth-child(3) { width: 300px; height: 300px; animation-delay: 0.6s; }
+
+        @keyframes scanRing {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            50% { opacity: 0.6; }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* ========== STAGES 3 & 4: SHARED STYLES ========== */
+        .code-stage,
+        .ultra-stage {
+            position: absolute;
+            opacity: 0;
+            animation: codeUltraStage 24s ease-in-out infinite;
+        }
+
+        @keyframes codeUltraStage {
+            0%, 48% { opacity: 0; }
+            50%, 98% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .code-stage .window {
+            animation: codeWindowAnim 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes codeWindowAnim {
+            0%, 72% { opacity: 1; transform: scale(1); }
+            74% { opacity: 1; transform: scale(0); }
+            75%, 100% { opacity: 0; transform: scale(0); }
+        }
+
+        .ultra-stage .window {
+            animation: ultraWindowAnim 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes ultraWindowAnim {
+            0%, 74% { opacity: 0; transform: scale(0); }
+            75% { opacity: 1; transform: scale(0); }
+            77%, 98% { opacity: 1; transform: scale(1); }
+            100% { opacity: 1; transform: scale(0); }
+        }
+
+        /* Shared aura for both stages */
+        .ultra-stage-container,
+        .code-stage-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ultra-aura {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ultra-aura-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid #3b82f6;
+            opacity: 0.15;
+        }
+
+        .ultra-aura-ring:nth-child(1) { width: 280px; height: 280px; animation: rotateRing 12s linear infinite; }
+        .ultra-aura-ring:nth-child(2) { width: 320px; height: 320px; animation: rotateRing 15s linear infinite reverse; }
+        .ultra-aura-ring:nth-child(3) { width: 360px; height: 360px; animation: rotateRing 10s linear infinite; }
+
+        .ultra-aura-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .ultra-aura-ring:nth-child(1) .ultra-aura-dot { 
+            top: -4px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+        }
+        .ultra-aura-ring:nth-child(2) .ultra-aura-dot { 
+            bottom: -4px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+        }
+        .ultra-aura-ring:nth-child(3) .ultra-aura-dot { 
+            top: 50%; 
+            right: -4px; 
+            transform: translateY(-50%); 
+        }
+
+        @keyframes rotateRing {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* ========== WINDOW STYLES ========== */
+        .window {
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            width: 320px;
+            height: 320px;
+            position: absolute;
+            z-index: 1;
+            clip-path: circle(140px at center);
+        }
+
+        /* ========== CODE STAGE ========== */
+        .code-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-inner {
+            font-family: monospace;
+            font-size: 14px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-grid {
+            width: 100%;
+            position: relative;
+            display: grid;
+            overflow: visible;
+            place-items: center start;
+            place-content: center start;
+            height: auto;
+        }
+
+        .code-scroll {
+            transform: translateY(0);
+        }
+
+        .code-line {
+            display: flex;
+            align-items: center;
+            height: 18px;
+        }
+
+        .token {
+            height: 12px;
+            border-radius: 6px;
+            margin-right: 6px;
+            transform-origin: left center;
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 0.5;
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes scrollUp {
+            to { transform: translateY(-682px); }
+        }
+
+        /* ========== ULTRA STAGE ========== */
+        .build-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .boxes-grid {
+            display: grid;
+            gap: 6px;
+            width: 280px;
+            height: 280px;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+        }
+
+        .box {
+            border-radius: 4px;
+            border: 2px solid;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .box:nth-child(1) { 
+            grid-area: span 1 / span 6;
+            background: var(--class-color);
+            border-color: var(--class-color);
+        }
+        .box:nth-child(2) { 
+            grid-area: span 5 / span 6;
+            background: var(--keyword-color);
+            border-color: var(--keyword-color);
+        }
+        .box:nth-child(3) { 
+            grid-area: span 1 / span 3;
+            background: var(--type-color);
+            border-color: var(--type-color);
+        }
+        .box:nth-child(4) { 
+            grid-area: span 3 / span 6;
+            background: var(--constant-color);
+            border-color: var(--constant-color);
+        }
+        
+        @keyframes buildBox {
+            0% { transform: scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        /* ========== STAGE TEXT ========== */
+        .stage-text {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            font-weight: 500;
+            color: #3b82f6;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .text-logo {
+            animation: textLogo 24s ease-in-out infinite;
+        }
+
+        .text-scanner {
+            animation: textScanner 24s ease-in-out infinite;
+        }
+
+        .text-code {
+            animation: textCode 24s ease-in-out infinite;
+        }
+
+        .text-ultra {
+            animation: textUltra 24s ease-in-out infinite;
+        }
+
+        @keyframes textLogo {
+            0%, 23% { opacity: 1; }
+            25%, 100% { opacity: 0; }
+        }
+
+        @keyframes textScanner {
+            0%, 23% { opacity: 0; }
+            25%, 48% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        @keyframes textCode {
+            0%, 48% { opacity: 0; }
+            50%, 72% { opacity: 1; }
+            74%, 100% { opacity: 0; }
+        }
+
+        @keyframes textUltra {
+            0%, 74% { opacity: 0; }
+            77%, 98% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stage-container">
+        <!-- STAGE 1: LOGO -->
+        <div class="logo-stage">
+            <svg width="380" height="380" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g class="ring-group" style="--base-opacity: 1;">
+                    <circle cx="50" cy="50" r="12" class="ring"></circle>
+                    <circle cx="62" cy="50" r="1" class="dot"></circle>
+                </g>
+                <g class="ring-group" style="--base-opacity: 0.8;">
+                    <circle cx="50" cy="50" r="20" class="ring"></circle>
+                    <circle cx="50" cy="70" r="1" class="dot"></circle>
+                </g>
+                <g class="ring-group" style="--base-opacity: 0.6;">
+                    <circle cx="50" cy="50" r="28" class="ring"></circle>
+                    <circle cx="22" cy="50" r="1" class="dot"></circle>
+                </g>
+                <g class="ring-group" style="--base-opacity: 0.4;">
+                    <circle cx="50" cy="50" r="36" class="ring"></circle>
+                    <circle cx="75.456" cy="75.456" r="1" class="dot"></circle>
+                </g>
+                <g class="ring-group" style="--base-opacity: 0.2;">
+                    <circle cx="50" cy="50" r="44" class="ring"></circle>
+                    <circle cx="50" cy="6" r="1" class="dot"></circle>
+                </g>
+            </svg>
+            
+            <div class="logo">
+                <svg width="25" height="37" viewBox="0 0 117 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.289062 109.164C0.289062 109.164 2.74402 13.0058 116.032 0V52.663C116.032 52.663 38.7017 46.1245 0.289062 109.164Z" fill="#3b82f6"/>
+                    <path d="M0.288817 172.914C0.288817 172.914 1.22747 96.7986 65.4171 82.9394V114.992C65.4171 114.992 23.5386 121.318 0 174.62" fill="#3b82f6"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- STAGE 2: SCANNER -->
+        <div class="scanner-stage">
+            <div class="scanner-content">
+                <div class="scan-line"></div>
+                <div class="scan-rings">
+                    <div class="scan-ring"></div>
+                    <div class="scan-ring"></div>
+                    <div class="scan-ring"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 3: CODE -->
+        <div class="code-stage">
+            <div class="code-stage-container">
+                <div class="ultra-aura">
+                    <div class="ultra-aura-ring">
+                        <div class="ultra-aura-dot"></div>
+                    </div>
+                    <div class="ultra-aura-ring">
+                        <div class="ultra-aura-dot"></div>
+                    </div>
+                    <div class="ultra-aura-ring">
+                        <div class="ultra-aura-dot"></div>
+                    </div>
+                </div>
+
+                <div class="window">
+                    <div class="code-container">
+                        <div class="code-inner">
+                            <div class="code-grid">
+                                <div class="code-scroll" id="code"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE 4: ULTRA -->
+        <div class="ultra-stage">
+            <div class="ultra-stage-container">
+                <div class="ultra-aura">
+                    <div class="ultra-aura-ring">
+                        <div class="ultra-aura-dot"></div>
+                    </div>
+                    <div class="ultra-aura-ring">
+                        <div class="ultra-aura-dot"></div>
+                    </div>
+                    <div class="ultra-aura-ring">
+                        <div class="ultra-aura-dot"></div>
+                    </div>
+                </div>
+                
+                <div class="window">
+                    <div class="build-container">
+                        <div class="boxes-grid">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAGE TEXT LABELS -->
+        <div class="stage-text text-logo">Thinking now</div>
+        <div class="stage-text text-scanner">Running diagnostics</div>
+        <div class="stage-text text-code">Generating structure</div>
+        <div class="stage-text text-ultra">Designing your page</div>
+    </div>
+
+    <script>
+        const codeLines = [
+            { indent: 0, tokens: [{w: 70.4, c: 'class'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 1, tokens: [{w: 80, c: 'variable'}, {w: 25.6, c: 'variable'}, {w: 44.8, c: 'keyword'}, {w: 38.4, c: 'type'}, {w: 70.4, c: 'class'}, {w: 25.6, c: 'variable'}, {w: 25.6, c: 'variable'}] },
+            { indent: 0, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [] },
+            { indent: 0, tokens: [{w: 76.8, c: 'class'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 1, tokens: [{w: 38.4, c: 'type'}] },
+            { indent: 1, tokens: [{w: 44.8, c: 'variable'}] },
+            { indent: 1, tokens: [{w: 64, c: 'variable'}, {w: 38.4, c: 'type'}, {w: 73.6, c: 'variable'}] },
+            { indent: 0, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [] },
+            { indent: 0, tokens: [{w: 51.2, c: 'class'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 1, tokens: [{w: 44.8, c: 'keyword'}, {w: 32, c: 'variable'}, {w: 19.2, c: 'keyword'}, {w: 57.6, c: 'class'}, {w: 105.6, c: 'variable'}, {w: 38.4, c: 'type'}] },
+            { indent: 1, tokens: [{w: 44.8, c: 'variable'}, {w: 128, c: 'class'}] },
+            { indent: 0, tokens: [] },
+            { indent: 1, tokens: [{w: 115.2, c: 'variable'}, {w: 76.8, c: 'class'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 2, tokens: [{w: 44.8, c: 'variable'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 3, tokens: [{w: 83.2, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 134.4, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 150.4, c: 'variable'}] },
+            { indent: 2, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 1, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [] },
+            { indent: 1, tokens: [{w: 38.4, c: 'variable'}, {w: 38.4, c: 'type'}, {w: 73.6, c: 'variable'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 2, tokens: [{w: 41.6, c: 'keyword'}, {w: 57.6, c: 'variable'}, {w: 25.6, c: 'keyword'}, {w: 89.6, c: 'variable'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 3, tokens: [{w: 32, c: 'keyword'}, {w: 51.2, c: 'variable'}, {w: 25.6, c: 'keyword'}, {w: 115.2, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 32, c: 'keyword'}, {w: 44.8, c: 'variable'}, {w: 102.4, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 44.8, c: 'variable'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 4, tokens: [{w: 25.6, c: 'keyword'}, {w: 185.6, c: 'variable'}, {w: 32, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 3, tokens: [{w: 121.6, c: 'variable'}] },
+            { indent: 2, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [] },
+            { indent: 2, tokens: [{w: 70.4, c: 'variable'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 3, tokens: [{w: 32, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 57.6, c: 'variable'}] },
+            { indent: 1, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [] },
+            { indent: 1, tokens: [{w: 38.4, c: 'type'}, {w: 73.6, c: 'constant'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 2, tokens: [{w: 32, c: 'keyword'}, {w: 25.6, c: 'keyword'}, {w: 70.4, c: 'variable'}] },
+            { indent: 2, tokens: [{w: 57.6, c: 'variable'}] },
+            { indent: 0, tokens: [] },
+            { indent: 2, tokens: [{w: 16, c: 'keyword'}, {w: 25.6, c: 'class'}, {w: 102.4, c: 'variable'}, {w: 25.6, c: 'keyword'}, {w: 64, c: 'variable'}, {w: 12.8, c: 'bracket'}] },
+            { indent: 3, tokens: [{w: 89.6, c: 'variable'}] },
+            { indent: 3, tokens: [{w: 57.6, c: 'variable'}] },
+            { indent: 2, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [] },
+            { indent: 2, tokens: [{w: 57.6, c: 'variable'}] },
+            { indent: 1, tokens: [{w: 12.8, c: 'bracket'}] },
+            { indent: 0, tokens: [{w: 12.8, c: 'bracket'}] }
+        ];
+
+        const codeContainer = document.getElementById('code');
+
+        codeLines.forEach((line) => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'code-line';
+            lineDiv.style.paddingLeft = (line.indent * 16) + 'px';
+
+            line.tokens.forEach((token) => {
+                const tokenDiv = document.createElement('div');
+                tokenDiv.className = 'token';
+                tokenDiv.style.width = token.w + 'px';
+                tokenDiv.style.backgroundColor = 
+                    token.c === 'class' ? 'var(--class-color)' :
+                    token.c === 'variable' ? 'var(--variable-color)' :
+                    token.c === 'keyword' ? 'var(--keyword-color)' :
+                    token.c === 'type' ? 'var(--type-color)' :
+                    token.c === 'bracket' ? 'var(--bracket-color)' :
+                    token.c === 'constant' ? 'var(--constant-color)' : '#fff';
+                lineDiv.appendChild(tokenDiv);
+            });
+
+            codeContainer.appendChild(lineDiv);
+        });
+        
+        // Track all timeouts to clean them up
+        let codeTimeouts = [];
+        let boxTimeouts = [];
+        let cycleNumber = 0;
+        
+        // Clear all timeouts for a specific array
+        function clearTimeouts(timeoutArray) {
+            timeoutArray.forEach(id => clearTimeout(id));
+            timeoutArray.length = 0;
+        }
+        
+        // Reset and trigger code animations
+        function triggerCodeAnimations() {
+            cycleNumber++;
+            console.log(`🔵 Code cycle ${cycleNumber}`);
+            
+            // Clear any existing timeouts first
+            clearTimeouts(codeTimeouts);
+            
+            // Reset at 10.5s
+            const resetTimeout = setTimeout(() => {
+                const codeScroll = document.querySelector('.code-stage .code-scroll');
+                const tokens = document.querySelectorAll('.code-stage .token');
+                
+                if (!codeScroll || !tokens.length) return;
+                
+                // Clear animations
+                tokens.forEach(token => token.style.animation = '');
+                codeScroll.style.animation = '';
+                void codeScroll.offsetHeight;
+                
+                // Reset to initial state
+                tokens.forEach(token => {
+                    token.style.transform = 'scaleX(0)';
+                    token.style.opacity = '0';
+                });
+                codeScroll.style.transform = 'translateY(0)';
+                void codeScroll.offsetHeight;
+                
+                console.log(`🔵 Cycle ${cycleNumber} - Reset done`);
+            }, 10500);
+            codeTimeouts.push(resetTimeout);
+            
+            // Start animations at 11.2s (earlier)
+            const startTimeout = setTimeout(() => {
+                const codeScroll = document.querySelector('.code-stage .code-scroll');
+                const tokens = document.querySelectorAll('.code-stage .token');
+                
+                if (!codeScroll || !tokens.length) return;
+                
+                let tokenDelay = 0;
+                tokens.forEach(token => {
+                    token.style.animation = `scaleIn 60ms ease ${tokenDelay}ms both`;
+                    tokenDelay += 15;
+                });
+                
+                codeScroll.style.animation = 'scrollUp 5000ms linear 400ms forwards';
+                
+                console.log(`🔵 Cycle ${cycleNumber} - Animation started`);
+            }, 11200);
+            codeTimeouts.push(startTimeout);
+        }
+        
+        // Trigger box animations
+        function triggerBoxAnimations() {
+            console.log(`🟣 Box cycle ${cycleNumber}`);
+            
+            // Clear any existing timeouts first
+            clearTimeouts(boxTimeouts);
+            
+            // Reset at 16s
+            const resetTimeout = setTimeout(() => {
+                const boxes = document.querySelectorAll('.ultra-stage .box');
+                
+                if (!boxes.length) return;
+                
+                // Clear animations
+                boxes.forEach(box => box.style.animation = '');
+                boxes.forEach(box => void box.offsetHeight);
+                
+                // Reset to initial state
+                boxes.forEach(box => {
+                    box.style.transform = 'scale(0)';
+                    box.style.opacity = '0';
+                });
+                boxes.forEach(box => void box.offsetHeight);
+                
+                console.log(`🟣 Cycle ${cycleNumber} - Reset done`);
+            }, 16000);
+            boxTimeouts.push(resetTimeout);
+            
+            // Start animations at 17.4s
+            const startTimeout = setTimeout(() => {
+                const boxes = document.querySelectorAll('.ultra-stage .box');
+                
+                if (!boxes.length) return;
+                
+                boxes[0].style.animation = 'buildBox 0.5s ease-out 0.1s both';
+                boxes[1].style.animation = 'buildBox 0.5s ease-out 0.6s both';
+                boxes[2].style.animation = 'buildBox 0.5s ease-out 1.1s both';
+                boxes[3].style.animation = 'buildBox 0.5s ease-out 1.6s both';
+                
+                console.log(`🟣 Cycle ${cycleNumber} - Animation started`);
+            }, 17400);
+            boxTimeouts.push(startTimeout);
+        }
+        
+        // Start animation loop
+        console.log('🚀 Animation system starting');
+        
+        // Run first cycle immediately
+        triggerCodeAnimations();
+        triggerBoxAnimations();
+        
+        // Then repeat every 24 seconds
+        setInterval(() => {
+            triggerCodeAnimations();
+            triggerBoxAnimations();
+        }, 24000);
+    </script>
+</body>
+</html>
