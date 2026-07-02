@@ -71,7 +71,12 @@
   .phone-nudge:hover .ma-eye{height:4px;border-radius:50%;top:8px}
   @keyframes nod{0%,100%{transform:translateY(0) rotate(0deg)}30%{transform:translateY(2.5px) rotate(7deg)}65%{transform:translateY(-1px) rotate(-4deg)}}
   @media(prefers-reduced-motion:reduce){.phone-nudge:hover .ma-blob{animation:none}}
-  @media(max-width:720px){.phone-nudge{display:none}}
+  @media(max-width:720px){
+    .brand-wrap{flex-direction:column;align-items:flex-start;gap:1px}
+    .phone-nudge{display:flex;padding-left:0;border-left:0}
+    .brand-phone{font-size:12px}
+    .mini-ava{display:none}
+  }
   .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-soft);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 #2030ff66}70%{box-shadow:0 0 0 7px #2030ff00}100%{box-shadow:0 0 0 0 #2030ff00}}
   .nav-links{display:flex;gap:30px;align-items:center}
