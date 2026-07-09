@@ -5,11 +5,22 @@
 # Local editor / preview temp
 .claude/
 
+# Experimental & work-in-progress (not for the live site)
+v2/
+cv.html
+Shay Azura - CV.pdf
+overflow-test.html
+_dstmp.html
+
+# Abandoned hover-image experiments (kept on disk, no longer used)
+campaign_chat_screen.png
+ds_showcase.png
+lead_sidebar.png
+
 # Unused local backups & source logos — kept on disk, not part of the live site
 ads.png
 ads-full.jpg
 edit_ads_popup.png
-folloze_account_dashboard.png
 style_morph_video.mp4
 logos/413237.png
 logos/Dome9_Security.png
@@ -22,3 +33,4 @@ logos/zooz-clean.png
 logos/ownbackup.png
 logos/ownbackup-t.png
 logos/616762d058759d1f6b9931d0_logo-ownbackup-transparent.png
+logos/hf_20260705_101319_bfa4e0ee-0d65-4746-8657-cee2e6cc37f9.png
