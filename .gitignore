@@ -34,3 +34,10 @@ logos/ownbackup.png
 logos/ownbackup-t.png
 logos/616762d058759d1f6b9931d0_logo-ownbackup-transparent.png
 logos/hf_20260705_101319_bfa4e0ee-0d65-4746-8657-cee2e6cc37f9.png
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
