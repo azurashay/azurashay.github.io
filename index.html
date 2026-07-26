@@ -120,7 +120,44 @@
   .av-eye{position:absolute;width:38px;height:75px;border-radius:40px;background:#16130e;box-shadow:0 2px 8px rgba(0,0,0,.2);top:calc(50% - 37.5px)}
   .av-eye.l{left:calc(50% - 35px)}
   .av-eye.r{left:calc(50% - 3px)}
-  @media(max-width:860px){.avatar-wrap{display:none}}
+  .avatar-hint{margin-top:14px;text-align:center;font-size:11px;letter-spacing:.04em;color:var(--ink-faint);cursor:pointer;opacity:0;animation:hintIn .6s var(--ease) 1.2s forwards}
+  @keyframes hintIn{to{opacity:1}}
+
+  /* Chat mode: the chat takes over the avatar's column. The headline on the
+     left stays put; the avatar shrinks in place and heads the chat.
+     The shrink is a transform on .avatar-stage, not a width change — the eyes
+     and gradients are positioned in fixed px, so scaling keeps them correct.
+     .avatar itself can't carry it: the mouse-follow writes an inline transform. */
+  .avatar-stage{width:280px;height:280px;transition:height .45s var(--ease),transform .45s var(--ease);transform-origin:top center}
+  .avatar{margin:0 auto}
+  .avatar-wrap{transition:width .45s var(--ease)}
+  /* The column keeps its closed height and the chat is taken out of flow, so
+     opening the chat never pushes the headline or the paragraph below it.
+     Safe to overflow: .hero-sub is capped at 620px on the left, so the chat
+     extends down over empty canvas, not over text. */
+  body.chat-mode .avatar-wrap{width:min(430px,42vw);padding:0;height:312px;position:relative}
+  body.chat-mode .chat-shell{position:absolute;top:113px;left:0;right:0}
+  /* full-width stage so `transform-origin:center` lands on the column's centre,
+     not on the 280px box's — otherwise the shrunk avatar sits left of centre */
+  body.chat-mode .avatar-stage{width:100%;transform:scale(.34);height:95px}
+  body.chat-mode .av-shadow{opacity:0}
+  body.chat-mode .avatar-hint{display:none}
+  body.chat-mode .hero-row{align-items:flex-start;gap:40px}
+  body.chat-mode .hero-copy{padding-top:6px}
+  /* The column is hidden on small screens, but the chat now lives inside it —
+     bring the column back in chat mode so mobile still gets the assistant,
+     full-width and stacked under the headline. */
+  @media(max-width:860px){
+    .avatar-wrap{display:none}
+    body.chat-mode .hero-row{display:block}
+    body.chat-mode .avatar-wrap{display:block;width:100%;margin-top:30px}
+    body.chat-mode .avatar-stage{height:80px;transform:scale(.29)}
+    /* In flow and full width here, so it can grow with the page instead of
+       scrolling inside a fixed box. */
+    body.chat-mode .avatar-wrap{height:auto;position:static}
+    body.chat-mode .chat-shell{position:static}
+    body.chat-mode .chat{max-height:none}
+  }
   @keyframes morphGradient1{0%,100%{transform:translate(0,0) scale(1) rotate(0deg);border-radius:60% 40% 30% 70%/60% 30% 70% 40%}25%{transform:translate(30%,-20%) scale(1.3) rotate(90deg);border-radius:30% 60% 70% 40%/50% 60% 30% 60%}50%{transform:translate(-25%,35%) scale(.8) rotate(180deg);border-radius:50% 60% 30% 60%/30% 60% 70% 40%}75%{transform:translate(20%,25%) scale(1.1) rotate(270deg);border-radius:60% 40% 60% 40%/70% 30% 50% 60%}}
   @keyframes morphGradient2{0%,100%{transform:translate(0,0) scale(1) rotate(0deg);border-radius:40% 60% 60% 40%/40% 60% 40% 60%}25%{transform:translate(-30%,25%) scale(1.2) rotate(-90deg);border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{transform:translate(35%,-30%) scale(.9) rotate(-180deg);border-radius:30% 70% 70% 30%/30% 70% 30% 70%}75%{transform:translate(-20%,-20%) scale(1.15) rotate(-270deg);border-radius:70% 30% 40% 60%/40% 60% 60% 40%}}
   @keyframes morphGradient3{0%,100%{transform:translate(0,0) scale(1) rotate(0deg);border-radius:50%/50%}25%{transform:translate(15%,30%) scale(1.4) rotate(120deg);border-radius:30% 70% 40% 60%/60% 40% 70% 30%}50%{transform:translate(-35%,-15%) scale(.7) rotate(240deg);border-radius:70% 30% 60% 40%/30% 70% 40% 60%}75%{transform:translate(25%,-25%) scale(1.05) rotate(360deg);border-radius:40% 60% 30% 70%/70% 30% 60% 40%}}
@@ -151,49 +188,58 @@
   .string{flex:1;display:flex;align-items:center;justify-content:center;height:100%}
   .string i{display:block;width:1px;height:30px;background:var(--ink);opacity:.22;transform-origin:center;transition:transform .42s cubic-bezier(.2,.7,.2,1),opacity .42s;will-change:transform}
 
-  /* CHAT */
-  .chat-shell{margin-top:64px;position:relative}
-  .chat-label{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--ink-faint)}
-  .chat{
-    background:var(--dark);color:var(--paper);border-radius:22px;
-    box-shadow:0 40px 80px -40px #15120d66, 0 1px 0 #ffffff10 inset;
-    overflow:hidden;border:1px solid #ffffff12;
+  /* CHAT — clean & minimal, lives in the paper canvas, no dark card chrome */
+  /* width:0 while collapsed — height:0 alone still lets the chat's content
+     widen the flex column and re-wrap the headline next to it. */
+  .chat-shell{position:relative;opacity:0;transform:translateY(10px);pointer-events:none;width:0;height:0;overflow:hidden;transition:opacity .4s var(--ease) .15s,transform .4s var(--ease) .15s}
+  body.chat-mode .chat-shell{opacity:1;transform:none;pointer-events:auto;width:auto;height:auto;overflow:visible}
+  .chat-close{position:absolute;top:-34px;right:-4px;width:26px;height:26px;border-radius:50%;background:none;border:1px solid var(--line);font-size:14px;line-height:1;color:var(--ink-faint);cursor:pointer;padding:0;display:grid;place-items:center;transition:.2s}
+  .chat-close:hover{color:var(--ink);border-color:var(--ink-faint)}
+  /* Fixed envelope: the messages scroll, the chips and input stay put. Without
+     the cap a long conversation grows past the hero and into the logos band. */
+  .chat{display:flex;flex-direction:column;max-height:min(360px,46vh);background:transparent}
+  .chat-body{
+    flex:1 1 auto;min-height:0;                 /* min-height:0 lets a flex child actually scroll */
+    /* no scroll-behavior:smooth — the stream pins to the bottom on every token,
+       and animating each of those never settles */
+    overflow-y:auto;overscroll-behavior:contain;
+    display:flex;flex-direction:column;gap:16px;padding:0 2px
   }
-  .chat-top{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid #ffffff10}
-  .chat-ava{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#7d5bff);display:grid;place-items:center;font-weight:600;font-size:14px;flex-shrink:0}
-  .chat-top .t1{font-size:14px;font-weight:500}
-  .chat-top .t2{font-size:12px;color:#ffffff66;display:flex;align-items:center;gap:6px}
-  .live{width:6px;height:6px;border-radius:50%;background:#46e08a;box-shadow:0 0 8px #46e08a}
-  .chat-body{padding:24px 22px;min-height:150px;max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
-  .chat-body::-webkit-scrollbar{width:6px}
-  .chat-body::-webkit-scrollbar-thumb{background:#ffffff22;border-radius:10px}
-  .msg{max-width:80%;padding:13px 17px;border-radius:16px;font-size:15.5px;line-height:1.5;animation:rise .4s var(--ease) both}
-  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  .msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:5px}
-  .msg.bot{align-self:flex-start;background:#ffffff0e;border:1px solid #ffffff10;border-bottom-left-radius:5px}
-  .msg.bot .cursor{display:inline-block;width:7px;height:16px;background:var(--accent-soft);vertical-align:-2px;margin-left:2px;animation:blink .9s steps(2) infinite}
+  .chat-body::-webkit-scrollbar{width:5px}
+  .chat-body::-webkit-scrollbar-track{background:transparent}
+  .chat-body::-webkit-scrollbar-thumb{background:#00000014;border-radius:10px}
+  .chat-body:hover::-webkit-scrollbar-thumb{background:#00000026}
+  .chat-body{scrollbar-width:thin;scrollbar-color:#00000020 transparent}
+  .chips,.chat-input{flex:0 0 auto}
+  .msg{max-width:92%;font-size:14.5px;line-height:1.55;animation:rise .4s var(--ease) both}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .msg.user{align-self:flex-end;color:var(--ink);font-weight:500;text-align:right}
+  .msg.bot{align-self:flex-start;color:var(--ink-soft)}
+  .msg.bot .cursor{display:inline-block;width:6px;height:15px;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:blink .9s steps(2) infinite}
   @keyframes blink{50%{opacity:0}}
-  .typing{align-self:flex-start;display:flex;gap:5px;padding:15px 18px;background:#ffffff0e;border-radius:16px;border-bottom-left-radius:5px}
-  .typing span{width:7px;height:7px;border-radius:50%;background:#ffffff66;animation:tb 1.2s infinite}
+  .case-link{align-self:flex-start;margin-top:-8px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.02em;color:var(--accent);background:none;border:none;padding:0;cursor:pointer;text-decoration:none}
+  .case-link:hover{text-decoration:underline}
+  .typing{align-self:flex-start;display:flex;gap:5px;padding:4px 0}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);animation:tb 1.2s infinite}
   .typing span:nth-child(2){animation-delay:.18s}
   .typing span:nth-child(3){animation-delay:.36s}
   @keyframes tb{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
-  .chips{display:flex;flex-wrap:wrap;gap:9px;padding:16px 22px 8px;border-top:1px solid #ffffff10}
+  /* Narrow column: four pills on a single row, never wrapping */
+  .chips{display:flex;flex-wrap:nowrap;gap:6px;padding:16px 0 4px;border-top:1px solid var(--line);margin-top:16px}
   .chip{
-    font-size:13px;padding:9px 15px;border-radius:100px;border:1px solid #ffffff22;
-    color:#fff;background:#ffffff08;cursor:pointer;transition:.2s;font-family:inherit
+    font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:100px;white-space:nowrap;
+    color:var(--ink-soft);background:none;cursor:pointer;transition:.2s;font-family:inherit;line-height:1.3
   }
-  .chip:hover{background:#fff;color:var(--dark);border-color:#fff}
+  .chip:hover{color:var(--accent);border-color:var(--accent)}
   .chip:disabled{opacity:.35;cursor:default}
-  .chat-input{display:flex;gap:10px;padding:8px 14px 16px}
+  .chat-input{display:flex;align-items:center;gap:10px;padding:12px 0 4px;border-top:1px solid var(--line);margin-top:6px}
   .chat-input input{
-    flex:1;background:#ffffff0c;border:1px solid #ffffff18;border-radius:100px;
-    padding:13px 18px;color:#fff;font-family:inherit;font-size:15px;outline:none;transition:.2s
+    flex:1;min-width:0;background:none;border:none;
+    padding:8px 0;color:var(--ink);font-family:inherit;font-size:14.5px;outline:none
   }
-  .chat-input input::placeholder{color:#ffffff55}
-  .chat-input input:focus{border-color:var(--accent-soft);background:#ffffff14}
-  .send{width:46px;height:46px;flex-shrink:0;border-radius:50%;border:none;background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.2s}
-  .send:hover{transform:scale(1.06)}
+  .chat-input input::placeholder{color:var(--ink-faint)}
+  .send{width:32px;height:32px;flex-shrink:0;border-radius:50%;border:none;background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .send:hover{transform:scale(1.08)}
 
   /* SECTION GENERIC */
   section{padding:100px 0;position:relative}
@@ -797,7 +843,7 @@
     </div>
     <div class="nav-links">
       <a href="#work">Work</a>
-      <a href="#ask" style="display:none">Ask AI</a>
+      <a href="#ask" id="navAsk">Ask AI</a>
       <a href="#about">About</a>
       <a href="mailto:shay.azura@gmail.com" class="nav-cta">Get in touch</a>
     </div>
@@ -820,51 +866,47 @@
 <header>
   <div class="wrap">
     <div class="hero-row reveal">
-      <div>
+      <div class="hero-copy">
         <div class="eyebrow mono">Senior Product Designer · AI &amp; B2B SaaS</div>
         <h1 class="hero">Turning business goals <br>into <em>clear,</em> effective <br>digital experiences.</h1>
       </div>
       <div class="avatar-wrap">
-        <div class="avatar" id="avatar">
-          <div class="av-shadow"></div>
-          <div class="av-blob" id="avBlob">
-            <div class="av-g g1"></div>
-            <div class="av-g g2"></div>
-            <div class="av-g g3"></div>
-            <div class="av-shine"></div>
+        <div class="avatar-stage">
+          <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Ask my portfolio anything">
+            <div class="av-shadow"></div>
+            <div class="av-blob" id="avBlob">
+              <div class="av-g g1"></div>
+              <div class="av-g g2"></div>
+              <div class="av-g g3"></div>
+              <div class="av-shine"></div>
+            </div>
+            <div class="av-eyes">
+              <div class="av-eye l" id="avEyeL"></div>
+              <div class="av-eye r" id="avEyeR"></div>
+            </div>
           </div>
-          <div class="av-eyes">
-            <div class="av-eye l" id="avEyeL"></div>
-            <div class="av-eye r" id="avEyeR"></div>
+        </div>
+        <div class="avatar-hint mono" id="avatarHint">✦ Click to ask me anything</div>
+
+        <!-- AI CHAT — lives in the avatar's column and takes its place -->
+        <div class="chat-shell" id="ask">
+          <button class="chat-close mono" id="chatClose" type="button" aria-label="Close chat">×</button>
+          <div class="chat">
+            <div class="chat-body" id="chatBody">
+              <div class="msg bot">Hi 👋 I'm Shay's assistant - ask me anything.</div>
+            </div>
+            <div class="chips" id="chips"></div>
+            <form class="chat-input" id="chatForm" autocomplete="off">
+              <input id="chatInput" placeholder="Ask anything…" />
+              <button class="send" type="submit" aria-label="Send">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
     <p class="hero-sub reveal">Hey - I'm Shay. Good design starts with the product, the users and the business - <strong>not the interface.</strong> I use AI to sharpen research, speed up iteration and build faster, while judgment and product thinking stay at the center.</p>
-
-    <!-- AI CHAT -->
-    <div class="chat-shell reveal" id="ask" style="display:none">
-      <div class="chat-label mono">✦ Ask my portfolio anything</div>
-      <div class="chat">
-        <div class="chat-top">
-          <div class="chat-ava">SA</div>
-          <div>
-            <div class="t1">Shay's AI assistant</div>
-            <div class="t2"><span class="live"></span> online · trained on Shay's work</div>
-          </div>
-        </div>
-        <div class="chat-body" id="chatBody">
-          <div class="msg bot">Hi 👋 I'm Shay's assistant. Ask me about his approach, how he works with AI, or his projects - tap a question below to start.</div>
-        </div>
-        <div class="chips" id="chips"></div>
-        <form class="chat-input" id="chatForm" autocomplete="off">
-          <input id="chatInput" placeholder="Ask anything about Shay…" />
-          <button class="send" type="submit" aria-label="Send">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
-        </form>
-      </div>
-    </div>
   </div>
 </header>
 
@@ -1625,19 +1667,56 @@
   })();
 
   // ---- AI chat ----
+  const CASE_NAMES={
+    'account-dashboard':'Account Dashboard 2.0','impact-dashboard':'Impact Dashboard',
+    'campaign-agent':'Campaign Agent','design-system':'Design System','xtremio':'XtremIO Dashboard'
+  };
   const QA=[
     {q:"What's your approach to design?",
      a:"I start with the product, the users, and the business context - not the interface. The screen is the last thing I design, not the first. Good UX is making the right thing obvious and keeping everything else quiet."},
     {q:"How do you use AI in your work?",
      a:"As a structured design tool - for research synthesis, ideation, personalization, and faster iteration. It compresses the busywork so I can spend judgment where it actually matters. Human product thinking stays at the centre; AI is the multiplier, not the decision-maker."},
     {q:"Tell me about the XtremIO redesign.",
-     a:"It's an enterprise storage dashboard that showed every metric to everyone with equal weight - heavy cognitive load. Through user shadowing I found three distinct audiences, each with one metric that mattered most. I split it into three focused tabs, each owning a group's priority, while keeping a glanceable summary up top to kill the FOMO. Users reported a better experience and settled into their relevant tab."},
+     a:"It's an enterprise storage dashboard that showed every metric to everyone with equal weight - heavy cognitive load. Through user shadowing I found three distinct audiences, each with one metric that mattered most. I split it into three focused tabs, each owning a group's priority, while keeping a glanceable summary up top to kill the FOMO. Users reported a better experience and settled into their relevant tab.",
+     slug:'xtremio'},
     {q:"How do you balance user needs and business goals?",
      a:"They're usually the same goal wearing different clothes. I translate business outcomes into user behaviours I can design for, then measure whether the behaviour actually moved. If a design serves the user but not the business - or the reverse - it isn't finished yet."},
     {q:"How can I reach Shay?",
-     a:"Easiest is email - shay.azura@gmail.com - or +972 52-849-0453. He's also on LinkedIn at in/shay-azura. Always up for a conversation about product, design, or where AI fits."}
+     a:"Easiest is email - shay.azura@gmail.com - or +972 52-849-0453. He's also on LinkedIn at in/shay-azura. Always up for a conversation about product, design, or where AI fits."},
+    {q:"What's your background?",
+     a:"I'm a Senior Product Designer working mostly in AI and B2B SaaS. Most of the case studies here are from my time at Folloze; I've also worked on enterprise dashboards at Dell EMC / XtremIO, and earlier at Dome9 Security, OwnBackup, and Zooz."},
+    {q:"Do you know how to code?",
+     a:"I'm comfortable with HTML and CSS, and I'm not afraid of code generally - mostly because I work with Claude Code. It lets me build real features, not just mockups: I open a branch, build with Claude, open a PR for review linked to a ClickUp ticket. I don't write everything myself, but I understand the code, steer it, and can adjust it when needed."},
+    {q:"How do you work with engineers?",
+     a:"Instead of only handing off static specs, I often build small interactions and animations in code myself with Claude Code, and give developers a working reference to implement from - not just a description of intent, but something they can see and pull logic from directly. It shortens the gap between what I imagined and what ships."},
+    {q:"How did you build this chat?",
+     a:"With Claude Code. The content from these case studies lives in a database, each question gets turned into a semantic fingerprint to find the most relevant piece, and Claude writes a short answer from that information alone. It's the same workflow I use day to day - AI accelerates, I steer."},
+    {q:"Tell me something about you outside of work.",
+     a:"I'm a serious amateur chess player and a drummer. I also run an AI music side project called The Search - writing and releasing electronic tracks with Suno under one artist identity, with the whole journey documented in a blog."},
+    {q:"Tell me about the Account Dashboard project.",
+     a:"An ABM account view for sales reps - one glanceable timeline showing what the rep did, how the lead responded, and where the account is warming up. Red dots for rep activity, blue for lead engagement, sized by strength of the touch. Sales logins rose roughly 15% after it shipped.",
+     slug:'account-dashboard'},
+    {q:"Tell me about the Impact Dashboard.",
+     a:"Board-level campaign analytics: five headline KPIs up top, and every number drills down into the accounts and engagement behind it - so marketers can prove campaign impact without exporting anything.",
+     slug:'impact-dashboard'},
+    {q:"Tell me about the Campaign Agent.",
+     a:"A conversational AI that turns a few plain sentences about a product into a ready-to-launch ABM campaign - one guided question at a time instead of a blank canvas. It lifted campaign-page creation by roughly 28% and cut prep time from hours to minutes.",
+     slug:'campaign-agent'},
+    {q:"Tell me about the Design System.",
+     a:"A ground-up design system for Folloze - color, type, spacing and radius tokens feeding a library of production components. Designed in Figma, then shipped as live coded components with AI.",
+     slug:'design-system'}
   ];
   const fallback="That's a great one to ask Shay directly - drop him a line at shay.azura@gmail.com. In the meantime, try one of the suggested questions 👆";
+  // Starters live in a narrow column, so the labels are short. The full question
+  // is what actually gets asked — `label` is only what the pill shows.
+  // Four, short enough to hold one line in the narrow column.
+  // Contact is dropped — it's already in the nav and the hero.
+  const STARTER_QS=[
+    {i:0,label:"Approach"},     // What's your approach to design?
+    {i:1,label:"Using AI"},     // How do you use AI in your work?
+    {i:5,label:"Experience"},   // What's your background?
+    {i:6,label:"Codes?"}        // Do you know how to code?
+  ];
 
   const body=document.getElementById('chatBody');
   const chips=document.getElementById('chips');
@@ -1645,32 +1724,49 @@
   const input=document.getElementById('chatInput');
   let busy=false;
 
-  QA.forEach(item=>{
+  STARTER_QS.forEach(s=>{
+    const item=QA[s.i];
     const b=document.createElement('button');
-    b.className='chip';b.type='button';b.textContent=item.q;
-    b.onclick=()=>ask(item.q,item.a,b);
+    b.className='chip';b.type='button';b.textContent=s.label;
+    b.title=item.q;
+    b.onclick=()=>ask(item.q,null,b,item.slug);   // send the full question, not the label
     chips.appendChild(b);
   });
 
   function addMsg(text,who){
     const m=document.createElement('div');
     m.className='msg '+who;m.textContent=text;
+    m.dir='auto';                     // Hebrew answers must render right-to-left
     body.appendChild(m);body.scrollTop=body.scrollHeight;
     return m;
   }
-  function findA(text){
+  function addCaseLink(slug){
+    const a=document.createElement('button');
+    a.type='button';a.className='case-link';
+    a.textContent='→ See the '+(CASE_NAMES[slug]||'project')+' case study';
+    a.onclick=()=>window.__openProject&&window.__openProject(slug);
+    body.appendChild(a);body.scrollTop=body.scrollHeight;
+  }
+  function findItem(text){
     const t=text.toLowerCase();
     let best=null,score=0;
     QA.forEach(item=>{
       const words=item.q.toLowerCase().replace(/[^a-z ]/g,'').split(' ').filter(w=>w.length>3);
       let s=0;words.forEach(w=>{if(t.includes(w))s++});
       if(/ai|artificial/.test(t)&&/ai/.test(item.q.toLowerCase()))s+=2;
-      if(/xtremio|dashboard|project|case|work/.test(t)&&/xtremio/.test(item.q.toLowerCase()))s+=2;
+      if(/xtremio/.test(t)&&/xtremio/.test(item.q.toLowerCase()))s+=2;
+      if(/account dashboard|abm|lead/.test(t)&&/account dashboard/.test(item.q.toLowerCase()))s+=2;
+      if(/impact/.test(t)&&/impact/.test(item.q.toLowerCase()))s+=2;
+      if(/campaign agent|conversational/.test(t)&&/campaign agent/.test(item.q.toLowerCase()))s+=2;
+      if(/design system|tokens|components/.test(t)&&/design system/.test(item.q.toLowerCase()))s+=2;
       if(/reach|contact|email|hire|touch/.test(t)&&/reach/.test(item.q.toLowerCase()))s+=2;
       if(/business|goal|balance/.test(t)&&/business/.test(item.q.toLowerCase()))s+=2;
+      if(/code|coding|develop|technical/.test(t)&&/code/.test(item.q.toLowerCase()))s+=2;
+      if(/background|experience|history|companies|worked/.test(t)&&/background/.test(item.q.toLowerCase()))s+=2;
+      if(/built this|build this|this chat|this bot/.test(t)&&/build this chat/.test(item.q.toLowerCase()))s+=3;
       if(s>score){score=s;best=item}
     });
-    return score>=1?best.a:fallback;
+    return score>=1?best:null;
   }
   function typeOut(text){
     return new Promise(res=>{
@@ -1686,16 +1782,66 @@
       };tick();
     });
   }
-  async function ask(q,a,chip){
+  // Live assistant. If it can't be reached we fall back to the built-in
+  // answers below, so the chat still works offline or if the API is down.
+  const ASK_API=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'http://localhost:3000/api/ask':'https://ask-shay.vercel.app/api/ask';
+
+  async function askLive(q,typing){
+    const res=await fetch(ASK_API,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({question:q})
+    });
+    if(!res.ok||!res.body)throw new Error('HTTP '+res.status);
+
+    const reader=res.body.getReader(),dec=new TextDecoder();
+    let buf='',slug=null,m=null,cur=null;
+
+    for(;;){
+      const{done,value}=await reader.read();
+      if(done)break;
+      buf+=dec.decode(value,{stream:true});
+      const parts=buf.split('\n\n');buf=parts.pop()||'';
+      for(const p of parts){
+        if(!p.startsWith('data: '))continue;
+        let evt;try{evt=JSON.parse(p.slice(6))}catch{continue}
+        if(evt.type==='token'){
+          if(!m){                       // first token — swap the dots for the answer
+            typing.remove();
+            m=addMsg('','bot');
+            cur=document.createElement('span');cur.className='cursor';m.appendChild(cur);
+          }
+          cur.insertAdjacentText('beforebegin',evt.token);
+          body.scrollTop=body.scrollHeight;
+        }else if(evt.type==='case'){slug=evt.slug}
+        else if(evt.type==='error'){throw new Error(evt.message||'stream error')}
+      }
+    }
+    if(!m)throw new Error('empty response');
+    cur.remove();
+    if(slug)addCaseLink(slug);
+  }
+
+  async function ask(q,a,chip,slug){
     if(busy)return;busy=true;
     if(chip)chip.disabled=true;
     addMsg(q,'user');
     const typing=document.createElement('div');
     typing.className='typing';typing.innerHTML='<span></span><span></span><span></span>';
     body.appendChild(typing);body.scrollTop=body.scrollHeight;
-    await new Promise(r=>setTimeout(r,650+Math.random()*450));
-    typing.remove();
-    await typeOut(a||findA(q));
+
+    try{
+      await askLive(q,typing);
+    }catch(err){
+      if(typing.parentNode)typing.remove();
+      let text=a,foundSlug=slug;
+      if(text==null){
+        const item=findItem(q);
+        text=item?item.a:fallback;
+        foundSlug=item?item.slug:null;
+      }
+      await typeOut(text);
+      if(foundSlug)addCaseLink(foundSlug);
+    }
     busy=false;
   }
   form.addEventListener('submit',e=>{
@@ -1704,6 +1850,25 @@
     input.value='';
     ask(v,null,null);
   });
+
+  // ---- chat-mode toggle (avatar / nav "Ask AI" open it; × or Esc closes it) ----
+  (function(){
+    function openChat(){
+      document.body.classList.add('chat-mode');
+      window.scrollTo({top:0,behavior:'smooth'});
+      setTimeout(()=>input&&input.focus(),350);
+    }
+    function closeChat(){ document.body.classList.remove('chat-mode'); }
+    function toggleChat(e){ if(e)e.preventDefault(); document.body.classList.contains('chat-mode')?closeChat():openChat(); }
+    const av=document.getElementById('avatar'); if(av){
+      av.addEventListener('click',toggleChat);
+      av.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')toggleChat(e); });
+    }
+    const hint=document.getElementById('avatarHint'); if(hint)hint.addEventListener('click',toggleChat);
+    const navAsk=document.getElementById('navAsk'); if(navAsk)navAsk.addEventListener('click',openChat);
+    const closeBtn=document.getElementById('chatClose'); if(closeBtn)closeBtn.addEventListener('click',closeChat);
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&document.body.classList.contains('chat-mode'))closeChat(); });
+  })();
 
   // ---- interactive avatar ----
   (function(){
@@ -2179,6 +2344,7 @@
       if(push!==false) history.pushState({},'','#work');
       setTimeout(function(){ window.scrollTo(0,work.getBoundingClientRect().top+window.scrollY-40); },20);
     }
+    window.__openProject=function(id){ document.body.classList.remove('chat-mode'); openProject(id,true); };
 
     wks.forEach(function(w){
       w.querySelector('.wk-head').addEventListener('click',function(){
