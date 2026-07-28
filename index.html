@@ -1789,7 +1789,7 @@
   async function askLive(q,typing){
     const res=await fetch(ASK_API,{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({question:q})
+      body:JSON.stringify({question:q,context:'design'})
     });
     if(!res.ok||!res.body)throw new Error('HTTP '+res.status);
 

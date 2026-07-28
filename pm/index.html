@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shay Azura - Product Lead</title>
+<meta name="description" content="Product lead in AI-native B2B SaaS. Owned a product area end to end: requirements from Customer Success, prioritised backlog, specs, delivery, QA and adoption.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="mask-icon" href="../favicon.svg" color="#151210" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#FAF9F6;
+    --paper-2:#F0EEE9;
+    --ink:#15120D;
+    --ink-soft:#4A4438;
+    --ink-faint:#8C8676;
+    --accent:#2030FF;
+    --accent-soft:#5E6BFF;
+    --line:#15120D1a;
+    --dark:#15120D;
+    --maxw:1180px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .mono{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:20px 0;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  nav.scrolled{background:#FAF9F6e6;backdrop-filter:blur(10px);border-bottom-color:var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .nav-left{display:flex;align-items:center;gap:16px;min-width:0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;flex-shrink:0}
+  .brand i{width:9px;height:9px;border-radius:50%;background:var(--accent);display:block}
+  .nav-sep{width:1px;height:17px;background:var(--line);flex-shrink:0}
+  .nav-contact{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--ink-soft);text-decoration:none;white-space:nowrap;transition:color .2s}
+  .nav-contact:hover{color:var(--accent)}
+  .nav-ic{width:16px;height:16px;color:var(--ink-soft);flex-shrink:0;transition:color .2s;display:block}
+  .nav-ic:hover{color:var(--accent)}
+  .nav-ic svg{width:16px;height:16px;display:block}
+  /* Contact details are the first thing to go when the bar gets tight -
+     the brand and the CTA have to survive at every width. */
+  @media(max-width:900px){.nav-contact,.nav-sep{display:none}}
+  @media(max-width:520px){.nav-ic{display:none}}
+  .nav-cta{border:1px solid var(--ink);border-radius:100px;padding:9px 18px;font-size:14px;transition:.25s;text-decoration:none}
+  .nav-cta:hover{background:var(--ink);color:var(--paper)}
+
+  header{padding:150px 0 60px}
+  .eyebrow{color:var(--accent);margin-bottom:18px}
+  h1{font-weight:700;font-size:clamp(34px,5.2vw,60px);letter-spacing:-.035em;line-height:1.05;max-width:16ch}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{margin-top:26px;max-width:60ch;font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft)}
+  .lede b{color:var(--ink);font-weight:500}
+
+  .metrics{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);margin-top:56px}
+  .metric{flex:1 1 200px;padding:24px 28px;border-left:1px solid var(--line)}
+  .metric:first-child{padding-left:0;border-left:none}
+  /* Once they stack, a left border points at nothing - separate by row instead. */
+  @media(max-width:680px){
+    .metric{flex-basis:100%;padding:20px 0;border-left:none;border-top:1px solid var(--line)}
+    .metric:first-child{border-top:none;padding-top:24px}
+  }
+  .metric b{display:block;font-size:clamp(28px,3.6vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--accent)}
+  .metric span{display:block;margin-top:8px;font-size:14.5px;color:var(--ink-soft);max-width:26ch}
+
+  section{padding:76px 0}
+  .sec-label{color:var(--ink-faint);margin-bottom:34px}
+  h2{font-weight:600;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+
+  .story{border-top:1px solid var(--line);padding:38px 0}
+  .story:first-of-type{border-top:none;padding-top:0}
+  .story-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+  .story h3{font-weight:600;font-size:clamp(21px,2.6vw,27px);letter-spacing:-.02em}
+  .story .role{font-size:13px;color:var(--ink-faint);white-space:nowrap}
+  .story .lead{color:var(--ink-soft);max-width:68ch;margin-bottom:26px;font-size:16.5px}
+  /* Separators sit on the left edge so each column can hold its own padding.
+     The first cell of every row drops both, and which cell that is changes
+     with the breakpoint - hence the nth-child rules. */
+  .beats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+  .beat{padding:22px 26px 4px 26px;border-left:1px solid var(--line)}
+  .beat:nth-child(4n+1){padding-left:0;border-left:none}
+  @media(max-width:900px){
+    .beats{grid-template-columns:1fr 1fr}
+    .beat{padding-left:26px;border-left:1px solid var(--line)}
+    .beat:nth-child(2n+1){padding-left:0;border-left:none}
+  }
+  @media(max-width:560px){
+    .beats{grid-template-columns:1fr}
+    .beat{padding:20px 0 4px 0;border-left:none;border-top:1px solid var(--line)}
+    .beat:first-child{border-top:none}
+  }
+  .beat .n{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:11px}
+  .beat p{font-size:15px;color:var(--ink-soft);line-height:1.55}
+  .beat p b{color:var(--ink);font-weight:500}
+
+  .howgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  @media(max-width:860px){.howgrid{grid-template-columns:1fr}}
+  .how{background:var(--paper);padding:28px 30px}
+  .how h4{font-size:16.5px;font-weight:600;margin-bottom:9px;letter-spacing:-.01em}
+  .how p{font-size:15px;color:var(--ink-soft);line-height:1.55}
+  .how .tools{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+  .how .tools span{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:100px;padding:4px 9px}
+
+  /* Deliberately quiet: the design portfolio is supporting evidence here,
+     not a second identity competing with the product framing above. */
+  .quiet-link{font-size:15px;color:var(--ink-faint);padding-top:8px;border-top:1px solid var(--line)}
+  .quiet-link a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);transition:.2s}
+  .quiet-link a:hover{color:var(--accent);border-color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);padding:38px 0 60px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--ink-faint);font-size:14px}
+  footer a{color:var(--ink-soft);text-decoration:none}
+  footer a:hover{color:var(--accent)}
+
+  .hero-row{display:flex;justify-content:space-between;align-items:flex-start;gap:56px}
+  .hero-copy{flex:1;min-width:0}
+  .chat-col{flex-shrink:0;width:min(400px,38vw)}
+  @media(max-width:980px){.hero-row{display:block}.chat-col{width:100%;margin-top:48px}}
+
+  /* Interactive avatar - the chat trigger, same face as the main portfolio.
+     The column is a fixed width open or closed, so the shrink is only a
+     transform on .avatar-stage; no width animation needed here. */
+  .avatar-stage{width:100%;height:280px;transition:height .45s var(--ease),transform .45s var(--ease);transform-origin:top center}
+  .avatar{position:relative;width:280px;height:280px;margin:0 auto;cursor:pointer;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+  .av-shadow{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:220px;height:25px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.25),transparent);filter:blur(12px);transition:opacity .3s}
+  .av-blob{position:absolute;inset:0;overflow:hidden;border-radius:50%;background:linear-gradient(135deg,#ffffff 0%,#f0eadd 100%);box-shadow:inset -5px -5px 20px rgba(120,108,86,.12),inset 5px 5px 20px rgba(255,255,255,.9),0 30px 60px rgba(80,70,50,.18);transition:border-radius .3s cubic-bezier(.4,0,.2,1)}
+  .av-g{position:absolute}
+  .av-g.g1{top:-10%;left:-10%;width:70%;height:70%;background:radial-gradient(circle,rgba(255,253,248,.95) 0%,rgba(255,253,248,.5) 50%,transparent 80%);filter:blur(15px);animation:morphGradient1 4s ease-in-out infinite}
+  .av-g.g2{bottom:-10%;right:-10%;width:75%;height:75%;background:radial-gradient(circle,rgba(228,219,202,.75) 0%,rgba(228,219,202,.38) 50%,transparent 80%);filter:blur(15px);animation:morphGradient2 5s ease-in-out infinite}
+  .av-g.g3{top:15%;right:-5%;width:65%;height:65%;background:radial-gradient(circle,rgba(247,242,232,.85) 0%,rgba(247,242,232,.4) 50%,transparent 80%);filter:blur(12px);animation:morphGradient3 6s ease-in-out infinite}
+  .av-shine{position:absolute;top:12%;left:15%;width:40%;height:40%;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.3),transparent 50%);filter:blur(10px)}
+  .av-eyes{position:absolute;inset:0}
+  .av-eye{position:absolute;width:38px;height:75px;border-radius:40px;background:#16130e;box-shadow:0 2px 8px rgba(0,0,0,.2);top:calc(50% - 37.5px)}
+  .av-eye.l{left:calc(50% - 35px)}
+  .av-eye.r{left:calc(50% - 3px)}
+  @keyframes morphGradient1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18%,12%) scale(1.1)}66%{transform:translate(-12%,18%) scale(.95)}}
+  @keyframes morphGradient2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-18%,-12%) scale(1.08)}66%{transform:translate(12%,-16%) scale(.94)}}
+  @keyframes morphGradient3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-14%,14%) scale(1.06)}}
+  .avatar-hint{margin-top:16px;text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);cursor:pointer}
+  body.chat-on .avatar-stage{transform:scale(.34);height:95px}
+  body.chat-on .av-shadow{opacity:0}
+  body.chat-on .avatar-hint{display:none}
+  /* the shrunk avatar ends flush against the shell, and .chat-close sits at
+     top:-6px - without this the × would clip the avatar's chin */
+  body.chat-on .chat-shell{margin-top:18px}
+  @media(prefers-reduced-motion:reduce){
+    .av-g{animation:none}
+    .avatar-stage,.avatar,.av-blob{transition:none}
+  }
+
+  .chat-shell{display:none}
+  body.chat-on .chat-shell{display:block;position:relative}
+  .chat-close{position:absolute;top:-6px;right:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink-faint);font-size:14px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .chat-close:hover{color:var(--ink);border-color:var(--ink-faint)}
+  .chat-title{color:var(--ink-faint);margin-bottom:18px}
+  .chat{display:flex;flex-direction:column;max-height:min(380px,52vh)}
+  .chat-body{flex:1 1 auto;min-height:90px;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:15px;padding-right:2px}
+  .chat-body::-webkit-scrollbar{width:5px}
+  .chat-body::-webkit-scrollbar-thumb{background:#00000014;border-radius:10px}
+  .msg{max-width:92%;font-size:14.5px;line-height:1.55;animation:rise .35s var(--ease) both}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .msg.user{align-self:flex-end;color:var(--ink);font-weight:500;text-align:right}
+  .msg.bot{align-self:flex-start;color:var(--ink-soft)}
+  .msg.bot .cur{display:inline-block;width:6px;height:15px;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:bl .9s steps(2) infinite}
+  @keyframes bl{50%{opacity:0}}
+  .typing{align-self:flex-start;display:flex;gap:5px;padding:4px 0}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);animation:tb 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.18s}.typing span:nth-child(3){animation-delay:.36s}
+  @keyframes tb{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+  .chips{display:flex;flex-wrap:nowrap;gap:6px;padding:15px 0 4px;border-top:1px solid var(--line);margin-top:15px;flex:0 0 auto}
+  .chip{font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:100px;white-space:nowrap;color:var(--ink-soft);background:none;cursor:pointer;font-family:inherit;line-height:1.3;transition:.2s}
+  .chip:hover{color:var(--accent);border-color:var(--accent)}
+  .chip:disabled{opacity:.35;cursor:default}
+  .chat-input{display:flex;align-items:center;gap:10px;padding:12px 0 2px;border-top:1px solid var(--line);margin-top:6px;flex:0 0 auto}
+  .chat-input input{flex:1;min-width:0;background:none;border:none;padding:8px 0;color:var(--ink);font-family:inherit;font-size:14.5px;outline:none}
+  .chat-input input::placeholder{color:var(--ink-faint)}
+  .send{width:32px;height:32px;flex-shrink:0;border-radius:50%;border:none;background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .send:hover{transform:scale(1.08)}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap nav-in">
+  <div class="nav-left">
+    <a class="brand" href="#top"><i></i>Shay Azura</a>
+    <span class="nav-sep"></span>
+    <a class="nav-contact" href="tel:+972528490453">052-849-0453</a>
+    <a class="nav-contact" href="mailto:shay.azura@gmail.com">shay.azura@gmail.com</a>
+    <a class="nav-ic" href="https://www.linkedin.com/in/shay-azura" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg>
+    </a>
+  </div>
+  <a class="nav-cta" href="mailto:shay.azura@gmail.com">Get in touch</a>
+</div></nav>
+
+<div id="top"></div>
+
+<header><div class="wrap">
+  <div class="hero-row reveal">
+    <div class="hero-copy">
+      <div class="eyebrow mono">Product lead · AI-native B2B SaaS</div>
+      <h1>I own <em>what gets built,</em> in what order, and whether it worked.</h1>
+      <p class="lede">Ten years in B2B SaaS, the last seven at Folloze owning a product area end to end. Requirements from Customer Success, a prioritised backlog, specs, delivery with engineering, QA, and the adoption work after launch - <b>then the numbers that say whether it landed.</b></p>
+    </div>
+
+    <div class="chat-col">
+      <div class="avatar-stage">
+        <div class="avatar" id="avatar" role="button" tabindex="0" aria-label="Ask my assistant about how the work ran">
+          <div class="av-shadow"></div>
+          <div class="av-blob" id="avBlob">
+            <div class="av-g g1"></div>
+            <div class="av-g g2"></div>
+            <div class="av-g g3"></div>
+            <div class="av-shine"></div>
+          </div>
+          <div class="av-eyes">
+            <div class="av-eye l" id="avEyeL"></div>
+            <div class="av-eye r" id="avEyeR"></div>
+          </div>
+        </div>
+      </div>
+      <div class="avatar-hint mono" id="avatarHint">✦ Ask how the work actually ran</div>
+
+      <div class="chat-shell" id="ask">
+        <button class="chat-close" id="chatClose" type="button" aria-label="Close">×</button>
+        <div class="chat-title mono">✦ Ask about Shay's work</div>
+        <div class="chat">
+          <div class="chat-body" id="chatBody">
+            <div class="msg bot" dir="auto">I'm Shay's assistant, trained on his work. Ask how it actually ran - prioritisation, data, shipping. English or Hebrew.</div>
+          </div>
+          <div class="chips" id="chips"></div>
+          <form class="chat-input" id="chatForm" autocomplete="off">
+            <input id="chatInput" placeholder="Ask anything…" />
+            <button class="send" type="submit" aria-label="Send">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics reveal">
+    <div class="metric"><b>7 yrs</b><span>owning the Designer, the page builder behind every ABM campaign</span></div>
+    <div class="metric"><b>~28%</b><span>lift in campaign-page creation after the Campaign Agent shipped</span></div>
+    <div class="metric"><b>~15%</b><span>lift in sales logins after the account dashboards shipped</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="sec-label mono reveal">Three things I ran</div>
+
+  <div class="story reveal">
+    <div class="story-head">
+      <h3>The Designer - Folloze's page builder</h3>
+      <span class="role">Product owner · 2019 to present</span>
+    </div>
+    <p class="lead">Every ABM campaign at Folloze is built here. Marketers assemble product pages and resource centres by adding sections and setting toggles that control what each section shows. I owned the area, not only its design.</p>
+    <div class="beats">
+      <div class="beat"><div class="n">Where work came from</div><p>Customer Success brought what customers were missing - sections and controls that didn't exist yet.</p></div>
+      <div class="beat"><div class="n">How it was decided</div><p><b>Gainsight PX</b> settled it: session recordings, heatmaps and flow drop-off showed which parts were actually failing.</p></div>
+      <div class="beat"><div class="n">How it shipped</div><p>Prioritised backlog in <b>ClickUp</b>, specs written, a dedicated developer on a bi-weekly cadence, and I QA'd every release.</p></div>
+      <div class="beat"><div class="n">After launch</div><p>A help article for every feature, plus in-app announcements so users found what was new.</p></div>
+    </div>
+  </div>
+
+  <div class="story reveal">
+    <div class="story-head">
+      <h3>Campaign Agent - conversational campaign builder</h3>
+      <span class="role">Product + design</span>
+    </div>
+    <p class="lead">Starting a campaign meant a dozen decisions at once - product, audience, message, goal. Heavy up front, easy to abandon. We replaced the blank canvas with a conversation that asks one question at a time and assembles the campaign as it goes.</p>
+    <div class="beats">
+      <div class="beat"><div class="n">The bet</div><p>People describe what they sell far more easily than they fill in forms. Let the conversation do the structuring.</p></div>
+      <div class="beat"><div class="n">The hard part</div><p>Two layers of <b>prompt architecture</b>: every section carries its own purpose, and a builder agent composes them into a page.</p></div>
+      <div class="beat"><div class="n">Designing the wait</div><p>Generation takes real seconds, so the waiting state was a designed surface rather than a spinner.</p></div>
+      <div class="beat"><div class="n">Outcome</div><p>Page creation up <b>~28%</b>, and prep time down from hours to minutes.</p></div>
+    </div>
+  </div>
+
+  <div class="story reveal">
+    <div class="story-head">
+      <h3>LinkedIn ad generator</h3>
+      <span class="role">Acting PM</span>
+    </div>
+    <p class="lead">Auto-generating LinkedIn ads from a live campaign. This one sat outside my area, and I ran it as PM rather than as its designer.</p>
+    <div class="beats">
+      <div class="beat"><div class="n">Discovery</div><p>Researched the format with our <b>marketing team</b> - how LinkedIn ads work, what people want from them, what they search for.</p></div>
+      <div class="beat"><div class="n">Scoping</div><p>Worked through effort and timelines with engineering before committing to anything.</p></div>
+      <div class="beat"><div class="n">Prioritisation</div><p>Sequenced the roadmap from that research and those estimates, not from opinion.</p></div>
+      <div class="beat"><div class="n">Why it mattered</div><p>It closed the loop: a campaign could now generate the ads that drive traffic to it.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="sec-label mono reveal">How I work</div>
+  <div class="howgrid reveal">
+    <div class="how">
+      <h4>Decide from evidence</h4>
+      <p>Recordings and heatmaps beat opinions in a roadmap argument. I go looking for where users actually fall over, then build the case from that.</p>
+      <div class="tools"><span>Gainsight PX</span><span>Heatmaps</span><span>Session recordings</span></div>
+    </div>
+    <div class="how">
+      <h4>Own the whole line</h4>
+      <p>Intake from Customer Success, a prioritised backlog, the spec, the design, the cadence with engineering, and QA before it goes out. No handoff gaps.</p>
+      <div class="tools"><span>ClickUp</span><span>Specs &amp; PRDs</span><span>Release QA</span></div>
+    </div>
+    <div class="how">
+      <h4>Ship it, then land it</h4>
+      <p>A feature nobody finds didn't ship. In-app announcements and a help article for every release are part of the job, not an afterthought.</p>
+      <div class="tools"><span>In-app adoption</span><span>Documentation</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <p class="quiet-link reveal">I design what I ship. <a href="../">See the craft behind these products →</a></p>
+</div></section>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;width:100%">
+  <span>© 2026 Shay Azura</span>
+  <span><a href="mailto:shay.azura@gmail.com">shay.azura@gmail.com</a> · <a href="tel:+972528490453">052-849-0453</a> · <a href="https://www.linkedin.com/in/shay-azura" target="_blank" rel="noopener">LinkedIn</a></span>
+</div></footer>
+
+<script>
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>20)});
+
+  // Reveal on scroll, with two backstops. Content staying invisible is a far
+  // worse failure than losing the animation, so never rely on the observer alone.
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  reveals.forEach(function(el,i){el.style.transitionDelay=(Math.min(i,5)*70)+'ms'});
+  function show(el){el.classList.add('in')}
+  function sweep(){
+    var vh=innerHeight;
+    reveals.forEach(function(el){
+      if(el.classList.contains('in'))return;
+      var t=el.getBoundingClientRect().top;
+      if(t<vh*0.92)show(el);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target)}});
+    },{threshold:.08});
+    reveals.forEach(function(el){io.observe(el)});
+  }
+  addEventListener('scroll',sweep,{passive:true});
+  addEventListener('resize',sweep);
+  sweep();
+  setTimeout(function(){reveals.forEach(show)},4000);
+
+  var ASK_API=(location.hostname==='localhost'||location.hostname==='127.0.0.1')?'http://localhost:3000/api/ask':'https://ask-shay.vercel.app/api/ask';
+
+  // Fallbacks only - the live API answers from the real content.
+  var QA=[
+    {q:"What product area did he own?",label:"What he owned",
+     a:"At Folloze I owned the Designer, the page builder behind every ABM campaign - where marketers assemble product pages and resource centres from configurable sections. I was responsible for that whole area, not only its design."},
+    {q:"How does he decide what to build?",label:"How he decides",
+     a:"From data. I used Gainsight PX to watch session recordings, read heatmaps and follow user flows to find where people were dropping off, and built the backlog from what that showed."},
+    {q:"How does he work with engineers?",label:"With engineering",
+     a:"A prioritised backlog in ClickUp, specs I wrote, a dedicated developer on a bi-weekly cadence for scoping and status, and QA on everything before release."},
+    {q:"What happens after a feature ships?",label:"After launch",
+     a:"A help article for every feature, and in-app announcements through Gainsight PX so users actually find what's new."}
+  ];
+  var fallback="Best asked directly - drop me a line at shay.azura@gmail.com.";
+
+  var body=document.getElementById('chatBody'),chips=document.getElementById('chips'),
+      form=document.getElementById('chatForm'),input=document.getElementById('chatInput'),busy=false;
+
+  QA.forEach(function(item){
+    var b=document.createElement('button');
+    b.className='chip';b.type='button';b.textContent=item.label;b.title=item.q;
+    b.onclick=function(){ask(item.q,item.a,b)};
+    chips.appendChild(b);
+  });
+
+  function addMsg(text,who){
+    var m=document.createElement('div');
+    m.className='msg '+who;m.textContent=text;m.dir='auto';
+    body.appendChild(m);body.scrollTop=body.scrollHeight;
+    return m;
+  }
+  function findA(q){
+    var t=q.toLowerCase(),best=null,score=0;
+    QA.forEach(function(item){
+      var s=0;
+      item.q.toLowerCase().replace(/[^a-z ]/g,'').split(' ').filter(function(w){return w.length>3})
+        .forEach(function(w){if(t.indexOf(w)>-1)s++});
+      if(s>score){score=s;best=item}
+    });
+    return score>=1?best.a:fallback;
+  }
+  function typeOut(text){
+    return new Promise(function(res){
+      var m=addMsg('','bot'),cur=document.createElement('span');
+      cur.className='cur';m.appendChild(cur);
+      var words=text.split(' '),i=0;
+      (function tick(){
+        if(i<words.length){cur.insertAdjacentText('beforebegin',(i?' ':'')+words[i]);i++;body.scrollTop=body.scrollHeight;setTimeout(tick,26+Math.random()*28)}
+        else{cur.remove();res()}
+      })();
+    });
+  }
+  async function askLive(q,typing){
+    var res=await fetch(ASK_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,context:'pm'})});
+    if(!res.ok||!res.body)throw new Error('HTTP '+res.status);
+    var reader=res.body.getReader(),dec=new TextDecoder(),buf='',m=null,cur=null;
+    for(;;){
+      var r=await reader.read();
+      if(r.done)break;
+      buf+=dec.decode(r.value,{stream:true});
+      var parts=buf.split('\n\n');buf=parts.pop()||'';
+      for(var i=0;i<parts.length;i++){
+        if(parts[i].indexOf('data: ')!==0)continue;
+        var evt;try{evt=JSON.parse(parts[i].slice(6))}catch(e){continue}
+        if(evt.type==='token'){
+          if(!m){typing.remove();m=addMsg('','bot');cur=document.createElement('span');cur.className='cur';m.appendChild(cur)}
+          cur.insertAdjacentText('beforebegin',evt.token);body.scrollTop=body.scrollHeight;
+        }else if(evt.type==='error'){throw new Error(evt.message||'stream error')}
+      }
+    }
+    if(!m)throw new Error('empty');
+    cur.remove();
+  }
+  async function ask(q,a,chip){
+    if(busy)return;busy=true;
+    if(chip)chip.disabled=true;
+    addMsg(q,'user');
+    var typing=document.createElement('div');
+    typing.className='typing';typing.innerHTML='<span></span><span></span><span></span>';
+    body.appendChild(typing);body.scrollTop=body.scrollHeight;
+    try{await askLive(q,typing)}
+    catch(e){if(typing.parentNode)typing.remove();await typeOut(a||findA(q))}
+    busy=false;
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=input.value.trim();if(!v||busy)return;
+    input.value='';ask(v,null,null);
+  });
+
+  function openChat(){document.body.classList.add('chat-on');setTimeout(function(){input.focus()},380)}
+  function closeChat(){document.body.classList.remove('chat-on')}
+  function toggleChat(e){if(e)e.preventDefault();document.body.classList.contains('chat-on')?closeChat():openChat()}
+  var av=document.getElementById('avatar');
+  if(av){
+    av.addEventListener('click',toggleChat);
+    av.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')toggleChat(e)});
+  }
+  var hint=document.getElementById('avatarHint');
+  if(hint)hint.addEventListener('click',toggleChat);
+  document.getElementById('chatClose').addEventListener('click',closeChat);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeChat()});
+
+  // ---- interactive avatar: eyes follow the cursor, blinks on click and idle ----
+  (function(){
+    var avatar=document.getElementById('avatar');if(!avatar)return;
+    var blob=document.getElementById('avBlob'),eyeL=document.getElementById('avEyeL'),eyeR=document.getElementById('avEyeR');
+    var mx=0,my=0,clicked=false;
+    function eyePos(off){
+      var dist=Math.sqrt(mx*mx+my*my),ang=Math.atan2(my,mx),amt=Math.min(dist/6,55);
+      var extraY=(mx<0&&my>0)?15:0;
+      return {x:Math.cos(ang)*amt+off,y:Math.sin(ang)*amt+extraY};
+    }
+    function render(){
+      var l=eyePos(-20),r=eyePos(20);
+      var rot=Math.max(-20,Math.min(70,15+(my/10)+(mx/20)));
+      var tl=(mx<0&&my<0)?5:50,tr=(mx>0&&my<0)?5:50,br=(mx>0&&my>0)?5:50,bl=(mx<0&&my>0)?5:50;
+      blob.style.borderRadius=tl+'% '+tr+'% '+br+'% '+bl+'%';
+      avatar.style.transform='translate('+(mx*0.03)+'px,'+(my*0.03)+'px)';
+      [[eyeL,l],[eyeR,r]].forEach(function(p){
+        var el=p[0],pos=p[1];
+        if(clicked){el.style.height='38px';el.style.borderRadius='50%';el.style.transition='all .1s ease-out';el.style.transform='translate('+pos.x+'px,'+(pos.y+18.5)+'px) rotate(0deg)';}
+        else{el.style.height='75px';el.style.borderRadius='40px';el.style.transition='all .15s cubic-bezier(.4,0,.2,1)';el.style.transform='translate('+pos.x+'px,'+pos.y+'px) rotate('+rot+'deg)';}
+      });
+    }
+    window.addEventListener('mousemove',function(e){
+      var rc=avatar.getBoundingClientRect();
+      mx=e.clientX-(rc.left+rc.width/2);my=e.clientY-(rc.top+rc.height/2);render();
+    });
+    function blink(){clicked=true;render();setTimeout(function(){clicked=false;render()},200)}
+    avatar.addEventListener('click',blink);
+    (function schedule(){
+      setTimeout(function(){blink();if(Math.random()>0.5)setTimeout(blink,300);schedule()},Math.random()*3000+7000);
+    })();
+    render();
+  })();
+</script>
+</body>
+</html>
