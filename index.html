@@ -426,6 +426,13 @@ footer .mono{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
 .cursor{display:inline-block;width:7px;height:15px;background:var(--ink);vertical-align:-2px;
   animation:blink .9s steps(1) infinite;margin-left:1px}
 @keyframes blink{50%{opacity:0}}
+.typing{align-self:flex-start;display:flex;gap:4px;background:var(--paper2);
+  border-radius:15px;border-bottom-left-radius:5px;padding:13px 14px}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--ink3);
+  animation:tdot 1.1s infinite ease-in-out}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
 .chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 12px}
 .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font:inherit;
   font-size:12.5px;font-weight:500;cursor:pointer;transition:border-color .2s,background .2s}
@@ -1894,16 +1901,65 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
       })();
     });
   }
+  /* The live assistant. Shay's own RAG service, streamed token by token.
+     If it cannot be reached the built-in answers below take over, so the
+     chat still works offline or while the API is down. */
+  var ASK_API=(location.hostname==='localhost'||location.hostname==='127.0.0.1')
+    ? 'http://localhost:3000/api/ask'
+    : 'https://ask-shay.vercel.app/api/ask';
+  var SLUG2ID={'account-dashboard':'c1','xtremio':'c2','campaign-agent':'c3','impact-dashboard':'c4'};
+  var NAMES={c1:'Account Dashboard 2.0',c2:'XtremIO Dashboard',c3:'Campaign Agent',c4:'Impact Dashboard'};
+
+  function askLive(text,typing){
+    return fetch(ASK_API,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({question:text,context:'design'})
+    }).then(function(res){
+      if(!res.ok||!res.body) throw new Error('HTTP '+res.status);
+      var reader=res.body.getReader(),dec=new TextDecoder();
+      var buf='',slug=null,m=null,cur=null;
+      return (function pump(){
+        return reader.read().then(function(r){
+          if(r.done) return;
+          buf+=dec.decode(r.value,{stream:true});
+          var parts=buf.split('\n\n');buf=parts.pop()||'';
+          parts.forEach(function(p){
+            if(p.indexOf('data: ')!==0) return;
+            var evt;try{evt=JSON.parse(p.slice(6))}catch(_){return}
+            if(evt.type==='token'){
+              if(!m){ if(typing.parentNode)typing.remove();
+                m=addMsg('','bot');
+                cur=document.createElement('span');cur.className='cursor';m.appendChild(cur); }
+              cur.insertAdjacentText('beforebegin',evt.token);
+              body.scrollTop=body.scrollHeight;
+            } else if(evt.type==='case'){ slug=evt.slug; }
+            else if(evt.type==='error'){ throw new Error(evt.message||'stream error'); }
+          });
+          return pump();
+        });
+      })().then(function(){
+        if(!m) throw new Error('empty response');
+        cur.remove();
+        var id=slug&&SLUG2ID[slug];
+        if(id&&NAMES[id]) addCaseLink(id,NAMES[id]);
+      });
+    });
+  }
+
   function ask(text){
     if(busy||!text.trim())return;
     busy=true;addMsg(text,'me');
-    var item=find(text);
-    setTimeout(function(){
-      typeOut(item?item.a:FALLBACK).then(function(){
+    var typing=document.createElement('div');
+    typing.className='typing';typing.innerHTML='<span></span><span></span><span></span>';
+    body.appendChild(typing);body.scrollTop=body.scrollHeight;
+
+    askLive(text,typing).catch(function(){
+      if(typing.parentNode)typing.remove();
+      var item=find(text);
+      return typeOut(item?item.a:FALLBACK).then(function(){
         if(item&&item.id)addCaseLink(item.id,item.name);
-        busy=false;
       });
-    },340);
+    }).then(function(){ busy=false; },function(){ busy=false; });
   }
   form.onsubmit=function(e){e.preventDefault();var v=input.value;input.value='';ask(v)};
 })();
