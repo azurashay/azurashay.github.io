@@ -374,227 +374,360 @@
   .proto-chrome .blive::before{content:"";width:6px;height:6px;border-radius:50%;background:#46e08a;box-shadow:0 0 8px #46e08a;animation:pulse 2.4s infinite}
   .proto-scroll{overflow:hidden;background:#eef1f6}
   .proto-hint{font-size:12.5px;color:var(--ink-faint);margin-top:12px;display:flex;align-items:center;gap:8px}
-  .proto-hint b{color:var(--ink-soft);font-weight:500}
+  .proto-hint b{color:var(--ink-soft);font-weight:500;flex-shrink:0;white-space:nowrap}
   .proto-leg{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:18px;font-size:13.5px;color:var(--ink-soft)}
   .proto-leg>span{display:flex;align-items:center;gap:9px}
   .proto-leg i{border-radius:50%;display:inline-block;flex-shrink:0}
   .proto-leg .szleg{gap:5px}
   .proto-leg .szleg b{margin-left:4px;font-weight:400}
 
-  .fz{width:100%;min-width:880px;position:relative;font-family:"Inter",sans-serif;color:#2d3a4e;background:#eef1f6;font-size:13px;line-height:1.4;text-align:left}
-  .fz *{box-sizing:border-box}
-  .fz-nav{background:#16213e;display:flex;align-items:center;padding:0 22px;height:54px}
-  .fz-logo{font-weight:800;color:#fff;margin-right:34px;display:flex;align-items:center;gap:7px;font-size:16px;letter-spacing:-.01em}
-  .fz-flame{width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#ff5b3a,#ff2f6e);display:inline-block;transform:rotate(45deg)}
-  .fz-tabs{display:flex;gap:28px;height:100%}
-  .fz-tab{display:flex;align-items:center;height:100%;font-size:14px;color:#aeb8cc;cursor:default;border-bottom:3px solid transparent}
-  .fz-tab.active{color:#fff;border-color:#2f7ef5}
-  .fz-nav-right{margin-left:auto;display:flex;gap:18px;align-items:center;color:#aeb8cc}
-  .fz-nav-right svg{cursor:pointer}
-  .fz-ava2{width:28px;height:28px;border-radius:50%;background:#2f7ef5 url('https://i.pravatar.cc/56?img=12') center/cover}
-
-  .fz-sub{background:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #e8ecf1}
-  .fz-back{color:#aab3c2;font-size:18px;cursor:pointer}
-  .fz-acct{display:flex;flex-direction:column}
-  .fz-acct .nm{font-size:19px;font-weight:600;color:#1f2a3d;display:flex;align-items:center;gap:8px}
-  .fz-acct .nm svg{color:#2b7de9}
-  .fz-acct .pp{font-size:12px;color:#8a94a6;margin-top:2px}
-  .fz-create{margin-left:auto;background:#2b7de9;color:#fff;padding:10px 18px;border-radius:6px;font-weight:500;font-size:13px;border:none;cursor:pointer;transition:.15s}
-  .fz-create:hover{background:#1f6fd6}
-
-  .fz-summary{display:flex;gap:10px;padding:16px 24px;background:#fff;border-bottom:1px solid #eef1f5;align-items:stretch}
-  .fz-card{border:1px solid #e8ecf1;border-radius:8px;padding:12px 13px;background:#fff;display:flex;flex-direction:column;justify-content:center}
-  .fz-card .lab{font-size:10.5px;color:#9aa4b4;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
-  .fz-c-acct{width:224px}
-  .fz-c-acct .ind{font-size:12px;color:#8a94a6;margin-top:3px}
-  .fz-c-acct .loc{font-size:11.5px;color:#aab3c2;margin-top:6px;line-height:1.5}
-  .fz-c-acct .nm2{font-weight:600;color:#28435f;display:flex;align-items:center;gap:6px}
-  .fz-c-acct .nm2 .ico{display:flex;gap:4px;color:#9aa4b4}
-  .fz-c-num{width:124px;align-items:center;text-align:center}
-  .fz-c-num .big{font-size:21px;font-weight:600;color:#28435f;white-space:nowrap}
-  .fz-c-num .sub{font-size:11px;color:#9aa4b4;margin-top:3px}
-  .fz-c-num .eye{color:#9aa4b4;margin-bottom:2px}
-  .fz-c-ins{width:124px;align-items:center;text-align:center;background:#2bb3f0;border-color:#2bb3f0;color:#fff;cursor:pointer;transition:background .18s,box-shadow .18s,transform .18s}
-  .fz-c-ins:hover{background:#1aa3ea;box-shadow:0 12px 24px -10px rgba(43,179,240,.75);transform:translateY(-2px)}
-  .fz-c-ins .big{font-size:22px;font-weight:700;color:#fff}
-  .fz-c-ins .sub{font-size:10px;color:#fff;opacity:.9;margin-top:3px}
-  .fz-c-ins .see{font-size:10px;text-decoration:underline;margin-top:6px;opacity:.95}
-  .fz-c-utm{flex:1;min-width:200px}
-  .fz-utmbar{display:flex;height:13px;border-radius:4px;overflow:hidden;margin-top:9px;gap:2px}
-  .fz-utmbar span{display:block;height:100%;cursor:pointer;transition:opacity .12s,transform .12s;border-radius:2px}
-  .fz-utmbar span:hover{opacity:.82;transform:scaleY(1.25)}
-  .fz-utmleg{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:9px}
-  .fz-utmleg span{display:flex;align-items:center;gap:5px;font-size:10.5px;color:#7a8699}
-  .fz-utmleg span i{width:7px;height:7px;border-radius:2px;display:inline-block}
-  .fz-c-top{width:172px}
-  .fz-c-top .trow{display:flex;gap:14px}
-  .fz-c-top .tcol .h{font-size:10px;color:#9aa4b4;margin-bottom:6px}
-  .fz-pill{display:inline-block;padding:4px 9px;border-radius:12px;font-size:11px;font-weight:500}
-  .fz-pill.a{background:#ffe2ea;color:#e0356b}
-  .fz-pill.b{background:#dcefff;color:#1f86d6}
-  .fz-c-eng{flex:1;min-width:150px}
-  .fz-spark{width:100%;height:42px;margin-top:6px}
-  .fz-c-sum{width:30px;background:#f3f6fa;display:flex;align-items:center;justify-content:center;cursor:pointer}
-  .fz-c-sum span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;letter-spacing:.12em;color:#9aa4b4;text-transform:uppercase}
-
-  .fz-filters{display:flex;align-items:center;gap:22px;padding:11px 24px;background:#eef3f9;border-bottom:1px solid #e3e9f1}
-  .fz-check{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;user-select:none;color:#46566e}
-  .fz-check .box{width:16px;height:16px;border-radius:4px;border:1.5px solid #b9c4d4;display:grid;place-items:center;transition:.15s}
-  .fz-check.on .box{background:#2b7de9;border-color:#2b7de9}
-  .fz-check .box svg{opacity:0;color:#fff;transition:.15s}
-  .fz-check.on .box svg{opacity:1}
-  .fz-check .ct{background:#dce6f3;color:#5a6b85;border-radius:10px;padding:0 7px;font-size:11px;margin-left:2px}
-  .fz-filters .fz-search{margin-left:auto;color:#9aa4b4;cursor:pointer}
-
-  .fz-controls{display:flex;align-items:center;gap:18px;padding:12px 24px;background:#fff;border-bottom:1px solid #eef1f5;font-size:13px;color:#5a6b85}
-  .fz-info{display:flex;align-items:center;gap:9px;cursor:pointer;color:#9aa4b4}
-  .fz-bubbles{position:relative;width:25px;height:15px;flex-shrink:0}
-  .fz-bubbles i{position:absolute;width:14px;height:14px;border-radius:50%;top:0;border:1.5px solid #fff}
-  .fz-bubbles i.b{left:0;background:#7aa8ff}
-  .fz-bubbles i.r{left:10px;background:#f97089}
-  .fz-infotip{position:absolute;z-index:45;width:368px;background:#fff;border-radius:12px;box-shadow:0 20px 54px -14px #16213e77;padding:17px 19px;opacity:0;pointer-events:none;transform:translateY(-100%);transition:opacity .14s;font-family:"Inter",sans-serif}
-  .fz-infotip .row1{display:flex;gap:26px;margin-bottom:11px}
-  .fz-infotip .row1 span{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:#2b3a52}
-  .fz-infotip .row1 i{width:15px;height:15px;border-radius:50%;display:inline-block}
-  .fz-infotip p{font-size:13.5px;color:#7a8699;line-height:1.5;margin-bottom:9px}
-  .fz-infotip p:last-child{margin-bottom:0}
-  .fz-infotip .newb{display:inline-block;background:#2bb3f0;color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:11px;margin-right:5px}
-  .fz-infotip::after{content:"";position:absolute;left:20px;bottom:-7px;border:7px solid transparent;border-top-color:#fff}
-  .fz-drop{display:flex;align-items:center;gap:5px;cursor:pointer}
-  .fz-date{margin-left:auto;font-size:12px;color:#8a94a6}
-  .fz-range{display:flex;border:1px solid #d6deea;border-radius:6px;overflow:hidden}
-  .fz-range button{padding:6px 13px;background:#fff;border:none;border-left:1px solid #d6deea;font-size:12px;cursor:pointer;color:#5a6b85;font-family:inherit;transition:.12s}
-  .fz-range button:first-child{border-left:none}
-  .fz-range button.active{background:#1f2a3d;color:#fff}
-  .fz-range button:not(.active):hover{background:#eef3f9;color:#2b3a52}
-  .fz-drop{transition:color .15s}
-  .fz-drop:hover{color:#2b3a52}
-  .fz-filters .fz-search,.fz-info{transition:color .15s}
-  .fz-filters .fz-search:hover{color:#2b7de9}
-  .fz-info:hover{color:#5a6b85}
-  .fz-check{transition:color .15s}
-  .fz-check:hover{color:#2b3a52}
-  .fz-check:hover .box{border-color:#8fa0b8}
-  .fz-create{transition:background .15s,transform .15s,box-shadow .15s}
-  .fz-create:hover{transform:translateY(-1px);box-shadow:0 10px 22px -10px rgba(43,125,233,.6)}
-
-  .fz-table{background:#fff;padding:0 24px 40px}
-  .fz-thead{display:flex;align-items:flex-end;padding:12px 0 8px;border-bottom:1px solid #eef1f5;color:#9aa4b4;font-size:10.5px}
-  .fz-thead .axis{flex:1;display:flex;position:relative;margin-left:230px}
-  .fz-thead .axis span{flex:1}
-  .fz-thead .axis .today{color:#e0356b;font-weight:600;text-align:right}
-  .fz-mh{display:flex;flex-shrink:0}
-  .fz-mh span{width:72px;text-align:center;text-transform:uppercase;letter-spacing:.04em}
-  .fz-row{display:flex;align-items:center;padding:15px 0;border-bottom:1px solid #f2f5f9;transition:background .15s}
-  .fz-row:hover{background:#f6faff}
-  .fz-person{width:230px;flex-shrink:0;display:flex;gap:10px;align-items:flex-start}
-  .fz-person .cb{width:15px;height:15px;border:1.5px solid #cdd6e2;border-radius:3px;margin-top:2px;flex-shrink:0}
-  .fz-person .nm{font-size:13.5px;font-weight:600;color:#2b3a52;display:flex;align-items:center;gap:7px}
-  .fz-person .ti{font-size:12px;color:#7a8699;margin-top:1px}
-  .fz-person .em{font-size:11px;color:#aab3c2;margin-top:2px}
-  .fz-newbadge{background:#19c1c8;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px;text-transform:uppercase;letter-spacing:.03em}
-  .fz-inferred{font-size:11px;color:#b3bccb;margin-top:1px}
-  .fz-track{flex:1;position:relative;height:26px}
-  .fz-track .base{position:absolute;left:0;right:0;top:13px;height:1px;background:#eef1f5}
-  .fz-dot{position:absolute;border-radius:50%;transform:translateX(-50%);cursor:pointer;border:2px solid #fff;transition:transform .12s}
-  .fz-dot:hover{transform:translateX(-50%) scale(1.3);z-index:5}
-  .fz-dot.s{width:10px;height:10px;top:8px}
-  .fz-dot.m{width:15px;height:15px;top:5.5px}
-  .fz-dot.l{width:21px;height:21px;top:2.5px}
-  .fz-dot.r{background:#f97089}
-  .fz-dot.b{background:#7aa8ff}
-  .fz-metric{width:72px;text-align:center;flex-shrink:0;font-size:13px;color:#46566e;font-weight:500}
-
-  .fz-tip{position:absolute;z-index:30;background:#1f2a3d;color:#fff;font-size:11px;padding:6px 10px;border-radius:6px;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;white-space:nowrap}
-  .fz-tip::after{content:"";position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1f2a3d}
-  .fz-acttip{position:absolute;z-index:40;width:284px;background:#fff;border-radius:11px;box-shadow:0 20px 54px -14px #16213e77;overflow:hidden;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;font-family:"Inter",sans-serif}
-  .fz-acttip .hd{background:#16213e;color:#fff;font-size:12.5px;font-weight:600;padding:10px 15px}
-  .fz-acttip .bd{display:flex;gap:11px;padding:14px 15px 7px;align-items:flex-start}
-  .fz-acttip .av{width:36px;height:36px;border-radius:50%;flex-shrink:0;border:2px solid #f48fb1;object-fit:cover;background:#f0f3f8}
-  .fz-acttip .tx{font-size:13.5px;color:#22324a;line-height:1.45}
-  .fz-acttip .tx b{font-weight:600}
-  .fz-acttip .ft{padding:3px 15px 14px;font-size:13.5px;font-weight:700;color:#22324a}
-  .fz-acttip .ft i{font-weight:400;color:#8a94a6;font-style:italic}
-  .fz-acttip::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff}
-  .fz-sesstip{position:absolute;z-index:40;width:326px;background:#fff;border-radius:11px;box-shadow:0 20px 54px -14px #16213e77;overflow:hidden;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;font-family:"Inter",sans-serif}
-  .fz-sesstip .hd{background:#16213e;color:#fff;font-size:12.5px;font-weight:600;padding:10px 15px}
-  .fz-sesstip .bd{padding:11px 16px 15px}
-  .fz-sesstip .vall{display:block;text-align:right;font-size:11.5px;color:#3b6fd6;text-decoration:underline;margin-bottom:9px}
-  .fz-sesstip .tot{font-size:11.5px;color:#8a94a6;text-decoration:underline;margin-bottom:4px}
-  .fz-sesstip .ttl{font-size:14px;font-weight:700;color:#22324a;margin-bottom:13px}
-  .fz-sesstip .evs{position:relative}
-  .fz-sesstip .evs::before{content:"";position:absolute;left:9px;top:9px;bottom:9px;width:2px;background:#e3e9f1}
-  .fz-ev{position:relative;padding-left:30px;margin-bottom:13px}
-  .fz-ev:last-child{margin-bottom:0}
-  .fz-ev .ico{position:absolute;left:0;top:-1px;width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #dfe5ee;display:grid;place-items:center;color:#9aa4b4}
-  .fz-ev .rowt{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:#8a94a6;margin-bottom:2px}
-  .fz-ev .rowt .time{color:#7a8699;flex-shrink:0}
-  .fz-ev .item{font-size:13px;color:#22324a;line-height:1.35}
-  .fz-sesstip::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff}
-
-  .fz-dyk{position:absolute;left:20px;bottom:20px;display:flex;background:#fff;border-radius:8px;box-shadow:0 14px 40px -10px #16213e55;overflow:hidden;width:340px;z-index:20}
-  .fz-dyk.hide{display:none}
-  .fz-dyk .ic{width:54px;background:#1aa3f0;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:600;gap:3px}
-  .fz-dyk .bd{padding:13px 14px;flex:1;position:relative}
-  .fz-dyk .x{position:absolute;top:8px;right:10px;color:#b3bccb;cursor:pointer;font-size:14px}
-  .fz-dyk .ti{font-size:11px;font-weight:700;color:#1aa3f0;letter-spacing:.04em;margin-bottom:5px}
-  .fz-dyk .tx{font-size:12px;color:#5a6b85;line-height:1.5;transition:opacity .22s ease;min-height:48px}
-  .fz-dyk .tx b{color:#2b3a52;font-weight:600}
-  .fz-dyk .see2{display:inline-block;margin-top:7px;font-size:11px;font-weight:700;letter-spacing:.03em;color:#1aa3f0;text-decoration:underline;cursor:default}
-  .fz-dyk .dots{display:flex;gap:5px;margin-top:9px}
-  .fz-dyk .dots i{width:6px;height:6px;border-radius:50%;background:#d3dbe6;cursor:pointer;transition:.15s}
-  .fz-dyk .dots i.on{background:#1aa3f0}
-  @media(max-width:760px){.fz-dyk{left:12px;right:auto;width:300px}}
-
-  /* ---- lead sidebar drawer ---- */
-  .fz-row{cursor:pointer}
-  .fz-overlay{position:absolute;inset:0;background:#16213e3d;opacity:0;pointer-events:none;transition:opacity .25s;z-index:58}
-  .fz-overlay.on{opacity:1;pointer-events:auto}
-  .fz-drawer{position:absolute;top:0;right:0;bottom:0;width:450px;max-width:92%;background:#eef1f6;z-index:60;transform:translateX(104%);transition:transform .35s cubic-bezier(.2,.7,.2,1);box-shadow:-24px 0 60px -18px #16213e66;display:flex;flex-direction:column;font-family:"Inter",sans-serif;text-align:left}
-  .fz-drawer.on{transform:none}
-  .fz-dw-head{background:#fff;padding:18px 22px 16px;position:relative;flex-shrink:0;border-bottom:1px solid #e3e9f1}
-  .fz-dw-x{position:absolute;top:12px;right:14px;color:#8a94a6;cursor:pointer;font-size:16px;line-height:1;padding:5px}
-  .fz-dw-x:hover{color:#16213e}
-  .fz-dw-name{font-size:19px;font-weight:800;color:#16213e;letter-spacing:-.01em;padding-right:86px}
-  .fz-dw-time{position:absolute;top:40px;right:22px;font-size:12px;color:#5a6a83;display:flex;align-items:center;gap:5px}
-  .fz-dw-title{font-size:13px;color:#5a6a83;margin-top:3px}
-  .fz-dw-co{font-size:13px;color:#5a6a83;font-style:italic;margin-top:1px}
-  .fz-dw-links{display:flex;gap:18px;margin-top:12px;font-size:12.5px;flex-wrap:wrap}
-  .fz-dw-links a{color:#2b7de9;display:flex;align-items:center;gap:6px;text-decoration:none}
-  .fz-dw-body{flex:1;overflow-y:auto;padding:14px 14px 18px;display:flex;flex-direction:column;gap:14px}
-  .fz-dw-body::-webkit-scrollbar{width:8px}
-  .fz-dw-body::-webkit-scrollbar-thumb{background:#c6cfdc;border-radius:8px}
-  .fz-cardx{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px -8px #16213e33;flex-shrink:0}
-  .fz-cd-hd{background:#16213e;color:#fff;padding:10px 14px}
-  .fz-cd-hd .r1{display:flex;align-items:center;gap:9px;font-size:12.5px}
-  .fz-cd-hd .r1 .ct{background:#fff;color:#16213e;font-weight:700;font-size:11.5px;width:20px;height:20px;border-radius:4px;display:grid;place-items:center;flex-shrink:0}
-  .fz-cd-hd .r1 .dur{margin-left:auto;color:#ffffffd9;font-size:12px}
-  .fz-cd-hd .r2{font-size:12.5px;font-weight:700;margin-top:6px}
-  .fz-cd-loc{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #edf1f7;font-size:12px;color:#5a6a83}
-  .fz-cd-loc .scr{color:#9aa4b4;display:flex}
-  .fz-cd-loc .inv{margin-left:auto;display:flex;align-items:center;gap:6px;color:#8a94a6}
-  .fz-cd-loc .inv b{color:#16213e;font-weight:600}
-  .fz-cd-loc .inv img{width:20px;height:20px;border-radius:50%}
-  .fz-cd-evs{padding:13px 16px}
-  .fz-cd-evs .evs{position:relative}
-  .fz-cd-evs .evs::before{content:"";position:absolute;left:9px;top:9px;bottom:9px;width:2px;background:#e3e9f1}
-  .fz-trg{border-top:1px solid #edf1f7}
-  .fz-trg-tgl{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:12.5px;color:#2b7de9;cursor:pointer;user-select:none}
-  .fz-trg-tgl svg{transition:transform .25s;flex-shrink:0}
-  .fz-trg.closed .fz-trg-tgl svg{transform:rotate(180deg)}
-  .fz-trg-bd{padding:2px 14px 13px;display:flex;gap:9px;font-size:12px;color:#5a6a83;line-height:1.45}
-  .fz-trg.closed .fz-trg-bd{display:none}
-  .fz-trg-bd .ico{color:#9aa4b4;flex-shrink:0;margin-top:1px;display:flex}
-  .fz-trg-bd .itm{color:#22324a;margin-top:3px;font-size:12.5px}
-  .fz-mailrow{display:flex;gap:10px;padding:12px 14px;font-size:12px;color:#8a94a6;align-items:flex-start}
-  .fz-mailrow .ico{color:#9aa4b4;margin-top:2px;display:flex;flex-shrink:0}
-  .fz-mailrow .itm{color:#22324a;font-size:12.5px;margin-top:2px}
-  .fz-mailrow .snt{margin-left:auto;text-align:right;flex-shrink:0}
-  .fz-mailrow .snt .by{display:flex;align-items:center;gap:6px;justify-content:flex-end}
-  .fz-mailrow .snt b{color:#16213e;font-weight:600}
-  .fz-mailrow .snt img{width:20px;height:20px;border-radius:50%}
-  .fz-mailrow .snt .tm{margin-top:3px;color:#7a8699}
-  @media(max-width:760px){.fz-drawer{width:94%}}
+  /* Account Dashboard case: the demo is 980px wide and taller than the frame, so the
+     frame becomes its own scrollport. The transform makes .proto-stage the containing
+     block for the demo's fixed drawer / modal / toast so they stay inside the frame. */
+  .proto-stage{position:relative;overflow:hidden;transform:translateZ(0);height:clamp(520px,74vh,760px)}
+  .proto-stage .proto-scroll{height:100%;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .proto-stage .proto-scroll::-webkit-scrollbar{width:9px;height:9px}
+  .proto-stage .proto-scroll::-webkit-scrollbar-thumb{background:#c6cfdc;border-radius:9px}
+  /* Phones and touch pointers: the frame owns horizontal scroll only. The stage takes the
+     demo's natural height and vertical scrolling stays with the page, so a thumb that lands
+     inside the prototype never stops the page from moving. Trade-off: the demo's sticky nav
+     and sticky table head stop pinning here. */
+  @media(max-width:860px),(pointer:coarse){
+    .proto-stage{height:auto}
+    .proto-stage .proto-scroll{height:auto;overflow-y:hidden;overscroll-behavior-y:auto}
+  }
+  /* ===== Account Dashboard 2.0 — inlined live demo (source: account-engagement/index.html) =====
+     All selectors scoped to #fzApp so nothing leaks into the portfolio. */
+  #fzApp{width:100%;min-width:980px;position:relative;font-family:"Inter",sans-serif;color:#2d3a4e;background:#fff;font-size:13px;line-height:1.4;text-align:left}
+  #fzApp *{box-sizing:border-box}
+  #fzApp .fz-nav{background:#16213e;display:flex;align-items:center;padding:0 22px;height:54px;position:sticky;top:0;z-index:50}
+  #fzApp .fz-logo{font-weight:800;color:#fff;margin-right:34px;display:flex;align-items:center;gap:7px;font-size:16px;letter-spacing:-.01em}
+  #fzApp .fz-tabs{display:flex;gap:28px;height:100%}
+  #fzApp .fz-tab{display:flex;align-items:center;height:100%;font-size:14px;color:#aeb8cc;cursor:pointer;border-bottom:3px solid transparent;transition:color .15s}
+  #fzApp .fz-tab:hover{color:#dbe3f2}
+  #fzApp .fz-tab.active{color:#fff;border-color:#2f7ef5}
+  #fzApp .fz-nav-right{margin-left:auto;display:flex;gap:18px;align-items:center;color:#fff}
+  #fzApp .fz-nav-right svg{cursor:pointer;transition:opacity .15s}
+  #fzApp .fz-nav-right svg:hover{opacity:.75}
+  #fzApp .fz-ava2{width:28px;height:28px;border-radius:50%;background:#2f7ef5 url('https://i.pravatar.cc/56?img=12') center/cover;cursor:pointer}
+  #fzApp .view{display:none}
+  #fzApp .view.on{display:block;animation:fzxViewIn .28s ease}
+  @keyframes fzxViewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  #fzApp .sticky-top{position:sticky;top:54px;z-index:40;background:#fff;transition:box-shadow .25s}
+  #fzApp .sticky-top.scrolled{box-shadow:0 8px 18px -12px rgba(22,33,62,.16)}
+  #fzApp .fz-thead-wrap{background:#fff;padding:0 24px}
+  /* ===== accounts list header ===== */
+  #fzApp .al-head{background:#fff;padding:20px 24px 16px;border-bottom:1px solid #eef1f5}
+  #fzApp .al-head h1{margin:0;font-size:22px;font-weight:600;color:#1f2a3d;letter-spacing:-.01em}
+  #fzApp .al-head .sub{font-size:12.5px;color:#8a94a6;margin-top:4px}
+  #fzApp .al-filters{display:flex;align-items:center;gap:22px;padding:11px 24px;background:#eef3f9;border-bottom:1px solid #e3e9f1}
+  #fzApp .fz-check{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;user-select:none;color:#46566e;transition:color .15s}
+  #fzApp .fz-check:hover{color:#2b3a52}
+  #fzApp .fz-check .box{width:16px;height:16px;border-radius:4px;border:1.5px solid #b9c4d4;display:grid;place-items:center;transition:.15s;flex-shrink:0}
+  #fzApp .fz-check:hover .box{border-color:#8fa0b8}
+  #fzApp .fz-check.on .box{background:#2b7de9;border-color:#2b7de9}
+  #fzApp .fz-check .box svg{opacity:0;color:#fff;transition:.15s}
+  #fzApp .fz-check.on .box svg{opacity:1}
+  #fzApp .fz-check .bkm{color:#2b7de9;display:flex}
+  #fzApp .al-filters .icons{margin-left:auto;display:flex;gap:16px;align-items:center;color:#9aa4b4}
+  #fzApp .al-filters .icons svg{cursor:pointer;transition:color .15s}
+  #fzApp .al-filters .icons svg:hover{color:#2b7de9}
+  #fzApp .al-search{width:0;padding:0;border:none;outline:none;font:inherit;font-size:13px;color:#2b3a52;background:transparent;transition:width .25s ease;border-bottom:1.5px solid transparent}
+  #fzApp .al-search.open{width:170px;border-bottom-color:#2b7de9;padding:2px 4px}
+  @keyframes fzxSpin{to{transform:rotate(360deg)}}
+  #fzApp .spinning{animation:fzxSpin .6s ease}
+  #fzApp .fz-controls{display:flex;align-items:center;gap:18px;padding:12px 24px;background:#fff;border-bottom:1px solid #eef1f5;font-size:13px;color:#5a6b85}
+  #fzApp .fz-info{display:flex;align-items:center;gap:9px;cursor:pointer;color:#9aa4b4;transition:color .15s}
+  #fzApp .fz-info:hover{color:#5a6b85}
+  #fzApp .fz-bubbles{position:relative;width:25px;height:15px;flex-shrink:0}
+  #fzApp .fz-bubbles i{position:absolute;width:14px;height:14px;border-radius:50%;top:0;border:1.5px solid #fff}
+  #fzApp .fz-bubbles i.b{left:0;background:#7aa8ff}
+  #fzApp .fz-bubbles i.r{left:10px;background:#f97089}
+  #fzApp .fz-drop{display:flex;align-items:center;gap:5px;cursor:pointer;transition:color .15s}
+  #fzApp .fz-drop:hover{color:#2b3a52}
+  #fzApp .fz-drop .sort{display:flex;flex-direction:column;gap:1px;color:#b0bac9}
+  #fzApp .fz-drop .sort svg{transition:color .15s,opacity .15s}
+  #fzApp .fz-drop.on{color:#1f2a3d;font-weight:600}
+  #fzApp .fz-drop.on .sort svg{opacity:.35}
+  #fzApp .fz-drop.on.asc .sort svg:first-child{opacity:1;color:#2b7de9}
+  #fzApp .fz-drop.on.desc .sort svg:last-child{opacity:1;color:#2b7de9}
+  #fzApp .fz-date{margin-left:auto;font-size:12px;color:#8a94a6}
+  #fzApp .fz-range{display:flex;border:1px solid #d6deea;border-radius:4px;overflow:hidden}
+  #fzApp .fz-range button{padding:6px 13px;background:#fff;border:none;border-left:1px solid #d6deea;font-size:12px;cursor:pointer;color:#5a6b85;font-family:inherit;transition:.12s}
+  #fzApp .fz-range button:first-child{border-left:none}
+  #fzApp .fz-range button.active{background:#1f2a3d;color:#fff}
+  #fzApp .fz-range button.active+button{border-left-color:transparent}
+  #fzApp .fz-range button:not(.active):hover{background:#eef3f9;color:#2b3a52}
+  /* ===== table (shared) ===== */
+  #fzApp .fz-table{background:#fff;padding:0 24px 40px;min-height:60vh}
+  #fzApp .fz-thead{display:flex;align-items:flex-end;padding:12px 0 8px;border-bottom:1px solid #eef1f5;color:#9aa4b4;font-size:10.5px}
+  #fzApp .fz-thead .axis{flex:1;display:flex;justify-content:space-between;position:relative;margin-left:200px;padding-right:18px}
+  #fzApp .fz-thead .axis span{flex:none}
+  #fzApp .fz-thead .axis .today{color:#e0356b;font-weight:600}
+  #fzApp .fz-mh{display:flex;flex-shrink:0;align-items:flex-end;align-self:stretch}
+  #fzApp .fz-mh span{width:72px;text-align:center;text-transform:uppercase;letter-spacing:.04em}
+  #fzApp .fz-mh .mini{width:18px;height:18px;border:1px solid #d6deea;border-radius:4px;display:grid;place-items:center;color:#9aa4b4;font-size:11px;margin-left:6px;cursor:pointer;transition:background .15s}
+  #fzApp .fz-mh .mini:hover{background:#eef3f9}
+  #fzApp .fz-row{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid #f2f5f9;transition:background .15s;cursor:pointer;position:relative}
+  #fzApp .fz-row:hover{background:#f6faff}
+  #fzApp .fz-row::before{content:"";position:absolute;left:200px;top:0;bottom:0;width:1px;background:#f2f5f9}
+  #fzApp .fz-person{width:200px;flex-shrink:0;display:flex;gap:10px;align-items:flex-start;position:relative}
+  #fzApp .fz-person .nm{font-size:13.5px;font-weight:600;color:#2b3a52;display:flex;align-items:center;gap:7px}
+  #fzApp .fz-person .ti{font-size:12px;color:#7a8699;margin-top:1px}
+  #fzApp .fz-person .em{font-size:11px;color:#8a94a6;margin-top:2px}
+  #fzApp .fz-person .ti,#fzApp .fz-person .em{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #fzApp .fz-person .who{min-width:0;flex:1}
+  /* multi-select on leads */
+  #fzApp .cbx{width:16px;height:16px;border-radius:4px;border:1.5px solid #b9c4d4;background:#fff;display:grid;place-items:center;flex-shrink:0;cursor:pointer;transition:.15s;align-self:center}
+  #fzApp .cbx:hover{border-color:#8fa0b8}
+  #fzApp .cbx svg{opacity:0;color:#fff;transition:.15s}
+  #fzApp .cbx.on{background:#2b7de9;border-color:#2b7de9}
+  #fzApp .cbx.on svg{opacity:1}
+  #fzApp .cbx.part{background:#2b7de9;border-color:#2b7de9}
+  #fzApp .cbx.part::after{content:"";width:8px;height:2px;background:#fff;border-radius:1px;position:absolute}
+  #fzApp .cbx.part svg{opacity:0}
+  #fzApp .fz-row.sel{background:#f2f8ff}
+  #fzApp .fz-row.sel:hover{background:#eaf4ff}
+  #fzApp #viewDetail .fz-thead .axis{margin-left:0}
+  #fzApp .fz-selall{width:200px;flex-shrink:0;display:flex;align-items:center;gap:10px;font-size:10.5px;color:#9aa4b4;text-transform:uppercase;letter-spacing:.04em}
+  #fzApp .fz-newbadge{background:#1992d4;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px;text-transform:uppercase;letter-spacing:.03em}
+  #fzApp .fz-inferred{font-size:11px;color:#b3bccb;margin-top:1px}
+  #fzApp .fz-track{flex:1;position:relative;height:26px}
+  #fzApp .fz-track .base{position:absolute;left:0;right:0;top:13px;height:1px;background:#eef1f5}
+  #fzApp .fz-dot{position:absolute;border-radius:50%;transform:translateX(-50%);cursor:pointer;border:1px solid #fff;transition:transform .12s}
+  #fzApp .fz-dot:hover{transform:translateX(-50%) scale(1.3);z-index:5}
+  #fzApp .fz-dot.s{width:11px;height:11px;top:7.5px}
+  #fzApp .fz-dot.m{width:17px;height:17px;top:4.5px}
+  #fzApp .fz-dot.l{width:24px;height:24px;top:1px}
+  #fzApp .fz-dot.s::after{content:"";position:absolute;inset:-5px;border-radius:50%}
+  #fzApp .fz-dot.r{background:#f97089}
+  #fzApp .fz-dot.b{background:#7aa8ff}
+  #fzApp .fz-metrics{display:flex;flex-shrink:0;align-items:center;border-left:1px solid #f2f5f9;align-self:stretch;margin:-9px 0}
+  #fzApp .fz-metric{width:72px;text-align:center;font-size:13px;color:#46566e;font-weight:500;align-self:center}
+  /* accounts list rows */
+  #fzApp .al-row .fz-person{padding-left:2px}
+  #fzApp .al-bkm{position:absolute;top:-13px;right:16px;color:#d9e2ec;cursor:pointer;transition:color .15s;padding:4px}
+  #fzApp .al-bkm:hover{color:#8fa0b8}
+  #fzApp .al-bkm.on{color:#2b7de9}
+  #fzApp .al-eng{font-size:12.5px;color:#5a6b85;margin-top:2px;display:flex;align-items:center;gap:7px}
+  #fzApp .al-ago{font-size:11px;color:#aab3c2;margin-top:3px}
+  #fzApp .al-go{position:absolute;right:0;top:50%;transform:translateY(-50%);width:32px;height:34px;border-radius:4px;background:#e6ebf2;display:grid;place-items:center;color:#5a6b85;opacity:0;transition:opacity .15s,background .15s}
+  #fzApp #viewList.al-collapsed .fz-mh span:not(.mini){display:none}
+  #fzApp #viewList.al-collapsed .fz-metrics{display:none}
+  #fzApp #viewDetail.dt-collapsed .fz-mh span:not(.mini){display:none}
+  #fzApp #viewDetail.dt-collapsed .fz-metrics{display:none}
+  #fzApp .fz-row:hover .al-go{opacity:1}
+  #fzApp .al-go:hover{background:#d8e0eb}
+  #fzApp .fz-row .fz-metrics{padding-right:32px}
+  /* ===== account detail ===== */
+  #fzApp .fz-sub{background:#fff;padding:14px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #e8ecf1}
+  #fzApp .fz-back{color:#aab3c2;font-size:22px;cursor:pointer;line-height:1;transition:color .15s;padding:0 4px}
+  #fzApp .fz-back:hover{color:#2b7de9}
+  #fzApp .fz-acct{display:flex;flex-direction:column}
+  #fzApp .fz-acct .nm{font-size:19px;font-weight:600;color:#1f2a3d;display:flex;align-items:center;gap:8px}
+  #fzApp .fz-acct .nm svg{color:#2b7de9;cursor:pointer;transition:color .15s,transform .15s}
+  #fzApp .fz-acct .nm svg:hover{transform:translateY(-1px)}
+  #fzApp .fz-acct .pp{font-size:12px;color:#8a94a6;margin-top:2px}
+  #fzApp .fz-sub-actions{margin-left:auto;display:flex;align-items:center;gap:16px}
+  #fzApp .sel-link{display:none;font-size:12.5px;color:#2b7de9;cursor:pointer;user-select:none;white-space:nowrap}
+  #fzApp .sel-link.on{display:inline}
+  #fzApp .sel-link:hover{text-decoration:underline}
+  #fzApp .fz-create{background:#00a0ff;color:#fff;padding:10px 18px;border-radius:4px;font-weight:500;font-size:13px;border:none;cursor:pointer;transition:background .15s;font-family:inherit}
+  #fzApp .fz-create:hover{background:#0080cc}
+  #fzApp .fz-summary{display:flex;gap:10px;padding:16px 24px;background:#fff;border-bottom:1px solid #eef1f5;align-items:stretch}
+  #fzApp .fz-card{border:1px solid #e8ecf1;border-radius:8px;padding:12px 13px;background:#fff;display:flex;flex-direction:column;justify-content:center}
+  #fzApp .fz-card .lab{font-size:10.5px;color:#9aa4b4;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+  #fzApp .fz-c-acct{width:224px}
+  #fzApp .fz-c-acct .ind{font-size:12px;color:#8a94a6;margin-top:3px}
+  #fzApp .fz-c-acct .loc{font-size:11.5px;color:#aab3c2;margin-top:6px;line-height:1.5}
+  #fzApp .fz-c-acct .nm2{font-weight:600;color:#28435f;display:flex;align-items:center;gap:6px}
+  #fzApp .fz-c-acct .nm2 .ico{display:flex;gap:4px;color:#9aa4b4}
+  #fzApp .fz-c-num{width:124px;align-items:center;text-align:center}
+  #fzApp .fz-c-num .big{font-size:21px;font-weight:600;color:#28435f;white-space:nowrap}
+  #fzApp .fz-c-num .sub{font-size:11px;color:#9aa4b4;margin-top:3px}
+  #fzApp .fz-c-num .eye{color:#9aa4b4;margin-bottom:2px}
+  #fzApp .fz-c-ins{width:124px;align-items:center;text-align:center;background:#2bb3f0;border-color:#2bb3f0;color:#fff;cursor:pointer;transition:background .18s,box-shadow .18s,transform .18s}
+  #fzApp .fz-c-ins:hover{background:#1aa3ea;box-shadow:0 12px 24px -10px rgba(43,179,240,.75);transform:translateY(-2px)}
+  #fzApp .fz-c-ins .big{font-size:22px;font-weight:700;color:#fff}
+  #fzApp .fz-c-ins .sub{font-size:10px;color:#fff;opacity:.9;margin-top:3px}
+  #fzApp .fz-c-ins .see{font-size:10px;text-decoration:underline;margin-top:6px;opacity:.95}
+  #fzApp .fz-c-utm{flex:1;min-width:200px}
+  #fzApp .fz-utmbar{display:flex;height:13px;border-radius:4px;overflow:hidden;margin-top:9px;gap:2px}
+  #fzApp .fz-utmbar span{display:block;height:100%;cursor:pointer;transition:opacity .12s,transform .12s;border-radius:2px}
+  #fzApp .fz-utmbar span:hover{opacity:.82;transform:scaleY(1.25)}
+  #fzApp .fz-utmleg{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:9px}
+  #fzApp .fz-utmleg span{display:flex;align-items:center;gap:5px;font-size:10.5px;color:#7a8699}
+  #fzApp .fz-utmleg span i{width:7px;height:7px;border-radius:2px;display:inline-block}
+  #fzApp .fz-filters{display:flex;align-items:center;gap:22px;padding:11px 24px;background:#eef3f9;border-bottom:1px solid #e3e9f1}
+  #fzApp .fz-check .ct{background:#dce6f3;color:#5a6b85;border-radius:10px;padding:0 7px;font-size:11px;margin-left:2px}
+  #fzApp .fz-filters .fz-search{margin-left:auto;color:#9aa4b4;cursor:pointer;transition:color .15s}
+  #fzApp .fz-filters .fz-search:hover{color:#2b7de9}
+  #fzApp .fz-infotip{position:absolute;z-index:65;width:368px;background:#fff;border-radius:12px;box-shadow:0 20px 54px -14px #16213e77;padding:17px 19px;opacity:0;pointer-events:none;transform:translateY(-100%);transition:opacity .14s;font-family:"Inter",sans-serif}
+  #fzApp .fz-infotip .row1{display:flex;gap:26px;margin-bottom:11px}
+  #fzApp .fz-infotip .row1 span{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:#2b3a52}
+  #fzApp .fz-infotip .row1 i{width:15px;height:15px;border-radius:50%;display:inline-block}
+  #fzApp .fz-infotip p{font-size:13.5px;color:#7a8699;line-height:1.5;margin-bottom:9px}
+  #fzApp .fz-infotip p:last-child{margin-bottom:0}
+  #fzApp .fz-infotip .newb{display:inline-block;background:#2bb3f0;color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:11px;margin-right:5px}
+  #fzApp .fz-infotip::after{content:"";position:absolute;left:20px;bottom:-7px;border:7px solid transparent;border-top-color:#fff}
+  #fzApp .fz-tip{position:absolute;z-index:70;background:#1f2a3d;color:#fff;font-size:11px;padding:6px 10px;border-radius:6px;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;white-space:nowrap}
+  #fzApp .fz-tip::after{content:"";position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1f2a3d}
+  #fzApp .al-tt{position:absolute;z-index:70;width:286px;background:#fff;border-radius:11px;box-shadow:0 20px 54px -14px #16213e77;overflow:hidden;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;font-family:"Inter",sans-serif}
+  #fzApp .al-tt .hd{background:#16213e;color:#fff;font-size:12.5px;font-weight:600;padding:10px 15px}
+  #fzApp .al-tt .bd{padding:14px 15px;display:flex;flex-direction:column;gap:14px}
+  #fzApp .al-tt .rowi{display:flex;gap:11px;font-size:13px;color:#22324a;line-height:1.5;align-items:flex-start}
+  #fzApp .al-tt .rowi>div{flex:1;min-width:0}
+  #fzApp .al-tt .rowi b{font-weight:700}
+  #fzApp .al-tt .rowi i{color:#22324a}
+  #fzApp .al-tt .cic{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;border:1.5px solid;margin-top:1px}
+  #fzApp .al-tt .cic.r{color:#e0566f;border-color:#f4b9c4}
+  #fzApp .al-tt .cic.b{color:#4f86e8;border-color:#bcd2f5}
+  #fzApp .al-tt .kv{display:flex;justify-content:space-between;margin-top:7px}
+  #fzApp .al-tt .kv b{font-weight:700}
+  #fzApp .al-tt .kv span{color:#22324a}
+  #fzApp .al-tt::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff}
+  #fzApp .fz-acttip{position:absolute;z-index:70;width:284px;background:#fff;border-radius:11px;box-shadow:0 20px 54px -14px #16213e77;overflow:hidden;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;font-family:"Inter",sans-serif}
+  #fzApp .fz-acttip .hd{background:#16213e;color:#fff;font-size:12.5px;font-weight:600;padding:10px 15px}
+  #fzApp .fz-acttip .bd{display:flex;gap:11px;padding:14px 15px 7px;align-items:flex-start}
+  #fzApp .fz-acttip .av{width:36px;height:36px;border-radius:50%;flex-shrink:0;border:2px solid #f48fb1;object-fit:cover;background:#f0f3f8}
+  #fzApp .fz-acttip .tx{font-size:13.5px;color:#22324a;line-height:1.45}
+  #fzApp .fz-acttip .tx b{font-weight:600}
+  #fzApp .fz-acttip .ft{padding:3px 15px 14px;font-size:13.5px;font-weight:700;color:#22324a}
+  #fzApp .fz-acttip .ft i{font-weight:400;color:#8a94a6;font-style:italic}
+  #fzApp .fz-acttip::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff}
+  #fzApp .fz-sesstip{position:absolute;z-index:70;width:326px;background:#fff;border-radius:11px;box-shadow:0 20px 54px -14px #16213e77;overflow:hidden;pointer-events:none;opacity:0;transform:translate(-50%,-100%);transition:opacity .12s;font-family:"Inter",sans-serif}
+  #fzApp .fz-sesstip .hd{background:#16213e;color:#fff;font-size:12.5px;font-weight:600;padding:10px 15px}
+  #fzApp .fz-sesstip .bd{padding:11px 16px 15px}
+  #fzApp .fz-sesstip .vall{display:block;text-align:right;font-size:11.5px;color:#3b6fd6;text-decoration:underline;margin-bottom:9px}
+  #fzApp .fz-sesstip .tot{font-size:11.5px;color:#8a94a6;text-decoration:underline;margin-bottom:4px}
+  #fzApp .fz-sesstip .ttl{font-size:14px;font-weight:700;color:#22324a;margin-bottom:13px}
+  #fzApp .fz-sesstip .evs{position:relative}
+  #fzApp .fz-sesstip .evs::before{content:"";position:absolute;left:9px;top:9px;bottom:9px;width:2px;background:#e3e9f1}
+  #fzApp .fz-ev{position:relative;padding-left:30px;margin-bottom:13px}
+  #fzApp .fz-ev:last-child{margin-bottom:0}
+  #fzApp .fz-ev .ico{position:absolute;left:0;top:-1px;width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #dfe5ee;display:grid;place-items:center;color:#9aa4b4}
+  #fzApp .fz-ev .rowt{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:#8a94a6;margin-bottom:2px}
+  #fzApp .fz-ev .rowt .time{color:#7a8699;flex-shrink:0}
+  #fzApp .fz-ev .item{font-size:13px;color:#22324a;line-height:1.35}
+  #fzApp .fz-sesstip::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff}
+  #fzApp .fz-dyk{position:fixed;left:20px;bottom:20px;display:flex;background:#fff;border-radius:8px;box-shadow:0 14px 40px -10px #16213e55;overflow:hidden;width:340px;z-index:75;
+    transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.25,1)}
+  #fzApp .fz-dyk.hide{opacity:0;transform:translateY(14px) scale(.97);pointer-events:none}
+  #fzApp .fz-dyk .ic{width:54px;background:#1aa3f0;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:600;gap:3px}
+  #fzApp .fz-dyk .bd{padding:13px 14px;flex:1;position:relative}
+  #fzApp .fz-dyk .x{position:absolute;top:8px;right:10px;color:#b3bccb;cursor:pointer;font-size:14px}
+  #fzApp .fz-dyk .ti{font-size:11px;font-weight:700;color:#1aa3f0;letter-spacing:.04em;margin-bottom:5px}
+  #fzApp .fz-dyk .tx{font-size:12px;color:#5a6b85;line-height:1.5;transition:opacity .22s ease;min-height:48px}
+  #fzApp .fz-dyk .tx b{color:#2b3a52;font-weight:600}
+  #fzApp .fz-dyk .see2{display:inline-block;margin-top:7px;font-size:11px;font-weight:700;letter-spacing:.03em;color:#1aa3f0;text-decoration:underline;cursor:pointer;transition:color .15s}
+  #fzApp .fz-dyk .see2:hover{color:#0b7fc4}
+  #fzApp .fz-dyk .dots{display:flex;gap:5px;margin-top:9px}
+  #fzApp .fz-dyk .dots i{width:6px;height:6px;border-radius:50%;background:#d3dbe6;cursor:pointer;transition:.15s}
+  #fzApp .fz-dyk .dots i.on{background:#1aa3f0}
+  /* select board modal */
+  #fzApp .bm-overlay{position:fixed;inset:0;background:#16213e4d;backdrop-filter:blur(3px);z-index:88;opacity:0;pointer-events:none;transition:opacity .25s}
+  #fzApp .bm-overlay.on{opacity:1;pointer-events:auto}
+  #fzApp .bm-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;width:1120px;max-width:94%;max-height:90%;background:#fff;border-radius:16px;box-shadow:0 40px 90px -18px #16213e99;z-index:89;display:flex;flex-direction:column;overflow:hidden;transition:opacity .28s,transform .28s cubic-bezier(.2,.7,.2,1);font-family:"Inter",sans-serif}
+  #fzApp .bm-modal.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+  #fzApp .bm-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 14px}
+  #fzApp .bm-head{align-items:flex-start}
+  #fzApp .bm-head h3{margin:0;font-size:17px;font-weight:700;color:#16213e;letter-spacing:-.01em}
+  #fzApp .bm-recip{font-size:12.5px;color:#8a94a6;margin-top:4px}
+  #fzApp .bm-recip b{color:#2b3a52;font-weight:600}
+  #fzApp .bm-recip .more{color:#2b7de9;border-bottom:1px dotted #9cc3f0;cursor:help}
+  #fzApp .bm-x{color:#8a94a6;cursor:pointer;font-size:15px;line-height:1;padding:6px;border-radius:6px;transition:.15s}
+  #fzApp .bm-x:hover{color:#16213e;background:#eef3f9}
+  #fzApp .bm-bar{display:flex;align-items:center;gap:14px;padding:0 24px 16px}
+  #fzApp .bm-dd{display:flex;align-items:center;gap:8px;border:1px solid #d6deea;border-radius:8px;padding:8px 13px;font-size:13px;color:#2b3a52;cursor:pointer;transition:.15s;user-select:none}
+  #fzApp .bm-dd:hover{border-color:#8fa0b8}
+  #fzApp .bm-dd svg{color:#9aa4b4}
+  #fzApp .bm-search{margin-left:auto;position:relative}
+  #fzApp .bm-search input{width:230px;border:1px solid #d6deea;border-radius:8px;padding:8px 34px 8px 12px;font:inherit;font-size:13px;color:#2b3a52;outline:none;transition:.15s;background:#fff}
+  #fzApp .bm-search input::placeholder{color:#aab3c2}
+  #fzApp .bm-search input:focus{border-color:#2b7de9;box-shadow:0 0 0 3px #2b7de926}
+  #fzApp .bm-search svg{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:#9aa4b4;pointer-events:none}
+  #fzApp .bm-thead{display:flex;align-items:center;padding:9px 24px;background:#f6f8fb;border-top:1px solid #eef1f5;border-bottom:1px solid #eef1f5;font-size:10.5px;color:#9aa4b4;text-transform:uppercase;letter-spacing:.05em}
+  #fzApp .bm-th{display:flex;align-items:center;gap:5px;cursor:pointer;user-select:none;transition:color .15s}
+  #fzApp .bm-th:hover{color:#2b3a52}
+  #fzApp .bm-th .sort{display:flex;flex-direction:column;gap:1px;color:#c2cbd8}
+  #fzApp .bm-th.on{color:#1f2a3d;font-weight:700}
+  #fzApp .bm-th.on .sort svg{opacity:.35}
+  #fzApp .bm-th.on.asc .sort svg:first-child{opacity:1;color:#2b7de9}
+  #fzApp .bm-th.on.desc .sort svg:last-child{opacity:1;color:#2b7de9}
+  #fzApp .bm-th.c-name{flex:1;padding-left:72px}
+  #fzApp .bm-th.c-num{width:110px;flex-shrink:0}
+  #fzApp .bm-rows{overflow-y:auto;flex:1}
+  #fzApp .bm-rows::-webkit-scrollbar{width:8px}
+  #fzApp .bm-rows::-webkit-scrollbar-thumb{background:#c6cfdc;border-radius:8px}
+  #fzApp .bm-row{display:flex;align-items:center;padding:11px 24px;border-bottom:1px solid #f2f5f9;transition:background .15s;position:relative}
+  #fzApp .bm-row:hover{background:#f6faff}
+  #fzApp .bm-acts{display:flex;gap:10px;align-items:center;justify-content:flex-end;width:248px;flex-shrink:0;opacity:0;pointer-events:none;transition:opacity .15s}
+  #fzApp .bm-th.c-acts{width:248px;flex-shrink:0;cursor:default}
+  #fzApp .bm-row:hover .bm-acts{opacity:1;pointer-events:auto}
+  #fzApp .bm-btn{border:none;border-radius:4px;padding:9px 15px;font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;transition:background .15s}
+  #fzApp .bm-btn.ghost{background:#e6ebf2;color:#2b3a52}
+  #fzApp .bm-btn.ghost:hover{background:#d8e0eb}
+  #fzApp .bm-btn.primary{background:#00a0ff;color:#fff}
+  #fzApp .bm-btn.primary:hover{background:#0080cc}
+  #fzApp .bm-row:last-child{border-bottom:none}
+  #fzApp .bm-name{flex:1;display:flex;align-items:center;gap:14px;min-width:0}
+  #fzApp .bm-thumb{width:58px;height:40px;border-radius:6px;flex-shrink:0;overflow:hidden;border:1px solid #e8ecf1;background:#eef1f6}
+  #fzApp .bm-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+  #fzApp .bm-nm{font-size:13.5px;font-weight:600;color:#2b3a52;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #fzApp .bm-sub{font-size:11.5px;color:#9aa4b4;margin-top:2px}
+  #fzApp .bm-cell{width:110px;flex-shrink:0;display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:#46566e}
+  #fzApp .bm-cell svg{color:#9aa4b4;flex-shrink:0}
+  #fzApp .bm-empty{padding:40px 0;text-align:center;font-size:13px;color:#9aa4b4}
+  #fzApp .bm-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,16px);background:#16213e;color:#fff;font-family:"Inter",sans-serif;font-size:13px;padding:11px 18px;border-radius:10px;box-shadow:0 18px 44px -12px #16213ea6;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:95;white-space:nowrap}
+  #fzApp .bm-toast.on{opacity:1;transform:translate(-50%,0)}
+  #fzApp .bm-toast b{font-weight:600}
+  /* lead sidebar drawer */
+  #fzApp .fz-overlay{position:fixed;inset:0;background:#16213e3d;opacity:0;pointer-events:none;transition:opacity .25s;z-index:80}
+  #fzApp .fz-overlay.on{opacity:1;pointer-events:auto}
+  #fzApp .fz-drawer{position:fixed;top:0;right:0;bottom:0;width:450px;max-width:92%;background:#eef1f6;z-index:85;transform:translateX(104%);transition:transform .35s cubic-bezier(.2,.7,.2,1);box-shadow:-24px 0 60px -18px #16213e66;display:flex;flex-direction:column;font-family:"Inter",sans-serif;text-align:left}
+  #fzApp .fz-drawer.on{transform:none}
+  #fzApp .fz-dw-head{background:#fff;padding:18px 22px 16px;position:relative;flex-shrink:0;border-bottom:1px solid #e3e9f1}
+  #fzApp .fz-dw-x{position:absolute;top:12px;right:14px;color:#8a94a6;cursor:pointer;font-size:16px;line-height:1;padding:5px}
+  #fzApp .fz-dw-x:hover{color:#16213e}
+  #fzApp .fz-dw-name{font-size:19px;font-weight:800;color:#16213e;letter-spacing:-.01em;padding-right:86px}
+  #fzApp .fz-dw-time{position:absolute;top:40px;right:22px;font-size:12px;color:#5a6a83;display:flex;align-items:center;gap:5px}
+  #fzApp .fz-dw-title{font-size:13px;color:#5a6a83;margin-top:3px}
+  #fzApp .fz-dw-co{font-size:13px;color:#5a6a83;font-style:italic;margin-top:1px}
+  #fzApp .fz-dw-links{display:flex;gap:18px;margin-top:12px;font-size:12.5px;flex-wrap:wrap}
+  #fzApp .fz-dw-links a{color:#2b7de9;display:flex;align-items:center;gap:6px;text-decoration:none}
+  #fzApp .fz-dw-body{flex:1;overflow-y:auto;padding:14px 14px 18px;display:flex;flex-direction:column;gap:14px}
+  #fzApp .fz-dw-body::-webkit-scrollbar{width:8px}
+  #fzApp .fz-dw-body::-webkit-scrollbar-thumb{background:#c6cfdc;border-radius:8px}
+  #fzApp .fz-cardx{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px -8px #16213e33;flex-shrink:0}
+  #fzApp .fz-cd-hd{background:#16213e;color:#fff;padding:10px 14px}
+  #fzApp .fz-cd-hd .r1{display:flex;align-items:center;gap:9px;font-size:12.5px}
+  #fzApp .fz-cd-hd .r1 .ct{background:#fff;color:#16213e;font-weight:700;font-size:11.5px;width:20px;height:20px;border-radius:4px;display:grid;place-items:center;flex-shrink:0}
+  #fzApp .fz-cd-hd .r1 .dur{margin-left:auto;color:#ffffffd9;font-size:12px}
+  #fzApp .fz-cd-hd .r2{font-size:12.5px;font-weight:700;margin-top:6px}
+  #fzApp .fz-cd-loc{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid #edf1f7;font-size:12px;color:#5a6a83}
+  #fzApp .fz-cd-loc .scr{color:#9aa4b4;display:flex}
+  #fzApp .fz-cd-loc .inv{margin-left:auto;display:flex;align-items:center;gap:6px;color:#8a94a6}
+  #fzApp .fz-cd-loc .inv b{color:#16213e;font-weight:600}
+  #fzApp .fz-cd-loc .inv img{width:20px;height:20px;border-radius:50%}
+  #fzApp .fz-cd-evs{padding:13px 16px}
+  #fzApp .fz-cd-evs .evs{position:relative}
+  #fzApp .fz-cd-evs .evs::before{content:"";position:absolute;left:9px;top:9px;bottom:9px;width:2px;background:#e3e9f1}
+  #fzApp .fz-trg{border-top:1px solid #edf1f7}
+  #fzApp .fz-trg-tgl{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:12.5px;color:#2b7de9;cursor:pointer;user-select:none}
+  #fzApp .fz-trg-tgl svg{transition:transform .25s;flex-shrink:0}
+  #fzApp .fz-trg.closed .fz-trg-tgl svg{transform:rotate(180deg)}
+  #fzApp .fz-trg-bd{padding:2px 14px 13px;display:flex;gap:9px;font-size:12px;color:#5a6a83;line-height:1.45}
+  #fzApp .fz-trg.closed .fz-trg-bd{display:none}
+  #fzApp .fz-trg-bd .ico{color:#9aa4b4;flex-shrink:0;margin-top:1px;display:flex}
+  #fzApp .fz-trg-bd .itm{color:#22324a;margin-top:3px;font-size:12.5px}
+  #fzApp .fz-mailrow{display:flex;gap:10px;padding:12px 14px;font-size:12px;color:#8a94a6;align-items:flex-start}
+  #fzApp .fz-mailrow .ico{color:#9aa4b4;margin-top:2px;display:flex;flex-shrink:0}
+  #fzApp .fz-mailrow .itm{color:#22324a;font-size:12.5px;margin-top:2px}
+  #fzApp .fz-mailrow .snt{margin-left:auto;text-align:right;flex-shrink:0}
+  #fzApp .fz-mailrow .snt .by{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+  #fzApp .fz-mailrow .snt b{color:#16213e;font-weight:600}
+  #fzApp .fz-mailrow .snt img{width:20px;height:20px;border-radius:50%}
+  #fzApp .fz-mailrow .snt .tm{margin-top:3px;color:#7a8699}
 
   /* progress confetti + toast */
   #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9998;display:none}
@@ -942,7 +1075,7 @@
           <span class="wk-sub">Data viz · Interactive prototype</span>
         </span>
       </button>
-      <div class="wk-preview" style="background-image:url('folloze_account_dashboard.png')"></div>
+      <div class="wk-preview" style="background-image:url('folloze_account_dashboard.png?v=2')"></div>
       <div class="wk-body">
       <div class="case-meta">
         <span class="tag">01 / Folloze</span>
@@ -950,126 +1083,181 @@
         <span class="tag">Interactive prototype</span>
       </div>
       <h3>Folloze - Account Dashboard 2.0</h3>
-      <p class="case-lead">An ABM account view built for sales, one glanceable timeline that tells you what the rep did, how the lead responded, and where the account is warming up. What you see below is a live recreation - toggle the filters, switch the range, hover the dots, or click a lead to open their full timeline.</p>
+      <p class="case-lead">An ABM account view built for sales, one glanceable timeline that tells you what the rep did, how the lead responded, and where the account is warming up. What you see below is a live recreation - twenty accounts you can filter, sort and re-range, each one opening into the people inside it, and every name opening into the full timeline behind it.</p>
 
       <div class="proto-wrap">
         <div class="proto-frame">
           <div class="proto-chrome">
             <i></i><i></i><i></i>
-            <span class="u">app.folloze.com / accounts / cisco</span>
+            <span class="u">app.folloze.com / accounts</span>
             <span class="blive">Live prototype</span>
           </div>
+          <div class="proto-stage">
           <div class="proto-scroll">
             <div class="fz" id="fzApp">
-              <!-- top nav -->
+              <!-- top nav (shared) -->
               <div class="fz-nav">
                 <div class="fz-logo"><svg height="19" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24C2.3318e-05 23.8787 0.0143226 23.7389 0.0439453 23.584C0.0136549 23.8442 0.00058704 23.9927 0 24ZM8.82324 15.6543C4.07478 15.6545 0.481121 21.2971 0.0439453 23.584C0.301622 21.3704 1.87214 11.0832 8.82324 11.083V15.6543ZM35.8506 6.07129C40.0639 6.07148 43.4109 9.064 43.4111 13.2705C43.4111 17.5105 40.064 20.4705 35.8506 20.4707C31.6703 20.4707 28.3057 17.5107 28.3057 13.2705C28.3226 9.08049 31.6704 6.07129 35.8506 6.07129ZM65.7793 6.07129C69.9927 6.07132 73.3406 9.06388 73.3408 13.2705C73.3408 17.5106 69.9929 20.4707 65.7793 20.4707C61.599 20.4707 58.2344 17.5107 58.2344 13.2705C58.2346 9.08049 61.5825 6.07129 65.7793 6.07129ZM93.7217 6.07129C97.6539 6.07152 99.8105 8.96144 99.8105 12.5986C99.8105 12.994 99.7289 13.8457 99.7275 13.8604H90.2529C90.5184 16.2852 92.2941 17.5478 94.3682 17.5479C96.575 17.5479 98.2178 16.0195 98.2178 16.0195L99.6445 18.3945C99.6312 18.4076 97.5265 20.4707 94.1191 20.4707C89.5728 20.4706 86.752 17.1823 86.752 13.2793C86.752 9.04404 89.6066 6.07129 93.7217 6.07129ZM27.3525 0.917969C28.0515 0.917971 28.5176 1.00098 28.5176 1.00098V3.91309C28.5176 3.91309 28.2178 3.86328 27.8184 3.86328C26.8531 3.8633 25.1729 4.11354 25.1729 6.09375V6.42676H28.1182V9.15527H25.1729V20.1885H21.7441V9.15527H20.0469V6.42676H21.7441V6.02734C21.7441 1.5176 25.4388 0.917969 27.3525 0.917969ZM85.8672 8.28809L79.5371 16.0439C78.9224 16.8096 78.374 17.3096 78.374 17.3096V17.3594C78.374 17.3594 78.773 17.2754 79.6699 17.2754H82.6943C83.0763 17.2753 83.292 17.0927 83.292 16.6768V15.9277H86.3994V18.3574C86.3994 19.6557 85.8672 20.1885 84.5879 20.1885H73.9219V18.3574H73.9053L80.2354 10.6016C80.85 9.81936 81.3984 9.33691 81.3984 9.33691V9.28711C81.3984 9.28711 80.9995 9.33691 80.1357 9.33691H77.6602C77.2781 9.33691 77.0616 9.55294 77.0615 9.93555V10.7178H73.9551V8.25488C73.9551 6.99005 74.4865 6.42392 75.7822 6.42383H85.8672V8.28809ZM47.0098 0.988281C48.268 0.988345 48.8311 1.5535 48.8311 2.81543V16.6309C48.8311 17.0127 49.0461 17.2284 49.4268 17.2285H50.4697V20.1182H47.2412C45.9498 20.1181 45.4199 19.5696 45.4199 18.291V4.49219H45.4365C45.4364 4.09391 45.2214 3.89464 44.8408 3.89453H43.7646V0.988281H47.0098ZM54.0684 0.988281C55.3267 0.988312 55.8896 1.55347 55.8896 2.81543V16.6309C55.8897 17.0127 56.1047 17.2284 56.4854 17.2285H57.5283V20.1182H54.2998C53.0085 20.1181 52.4785 19.5695 52.4785 18.291V4.49219H52.4951C52.495 4.09388 52.28 3.8946 51.8994 3.89453H50.8232V0.988281H54.0684ZM35.8506 8.98047C33.6357 8.98047 31.7698 10.7433 31.7695 13.2705C31.7695 15.8478 33.6355 17.5605 35.8506 17.5605C38.0988 17.5603 39.9639 15.8311 39.9639 13.2705C39.9636 10.7268 38.0986 8.98068 35.8506 8.98047ZM65.7793 8.98047C63.5644 8.98047 61.6994 10.7433 61.6992 13.2705C61.6992 15.8478 63.5642 17.5605 65.7793 17.5605C68.0276 17.5605 69.8926 15.8312 69.8926 13.2705C69.8924 10.7267 68.0275 8.9805 65.7793 8.98047ZM0.09375 15.6904C0.0244075 16.1275 0 16.377 0 16.377C0 16.1717 0.0324732 15.9413 0.09375 15.6904ZM15.8115 7.49707C5.4324 7.4971 0.783586 12.8658 0.09375 15.6904C0.58642 12.585 3.35152 5.7313e-05 15.8115 0V7.49707ZM93.7217 8.71191C91.9629 8.71191 90.7342 9.75809 90.3525 11.4854H96.3096C96.2597 9.84135 95.1318 8.71217 93.7217 8.71191Z" fill="#ffffff"/></svg></div>
                 <div class="fz-tabs">
                   <div class="fz-tab">Boards</div>
-                  <div class="fz-tab active">Accounts</div>
+                  <div class="fz-tab active" id="tabAccounts">Accounts</div>
                   <div class="fz-tab">Content Center</div>
-                  <div class="fz-tab">Analytics</div>
+                  <div class="fz-tab">Reporting</div>
                 </div>
                 <div class="fz-nav-right">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9M12 8a3 3 0 1 0-3-5c1.5 0 3 2 3 5zm0 0a3 3 0 1 1 3-5c-1.5 0-3 2-3 5z" stroke-linejoin="round"/></svg>
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" stroke-linecap="round"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <span class="fz-ava2"></span>
                 </div>
               </div>
-              <!-- subhead -->
-              <div class="fz-sub">
-                <span class="fz-back">‹</span>
-                <div class="fz-acct">
-                  <span class="nm">Cisco <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v18l-7-4-7 4V3a1 1 0 0 1 1-1z"/></svg></span>
-                  <span class="pp">7 People</span>
+
+              <!-- ============ VIEW 1: account engagement list ============ -->
+              <div class="view on" id="viewList">
+                <div class="scroll-sentinel" style="height:1px"></div>
+                <div class="sticky-top">
+                <div class="al-head">
+                  <h1>Account Engagement</h1>
+                  <div class="sub" id="alCount">20 out of 20 Accounts</div>
                 </div>
-                <button class="fz-create">Create Campaign</button>
-              </div>
-              <!-- summary cards -->
-              <div class="fz-summary">
-                <div class="fz-card fz-c-acct">
-                  <span class="nm2">Cisco <span class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span></span>
-                  <span class="ind">Oil &amp; Energy</span>
-                  <span class="loc">San Ramon, CA<br>84,900 employees</span>
-                </div>
-                <div class="fz-card fz-c-ins">
-                  <span class="big">7</span>
-                  <span class="sub">Insights</span>
-                  <span class="see">SEE ALL</span>
-                </div>
-                <div class="fz-card fz-c-num">
-                  <span class="eye"><svg width="20" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
-                  <span class="big">153</span>
-                  <span class="sub">Item Views</span>
-                </div>
-                <div class="fz-card fz-c-num">
-                  <span class="eye"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                  <span class="big">13 Hrs</span>
-                  <span class="sub">Time spent</span>
-                </div>
-                <div class="fz-card fz-c-num">
-                  <span class="eye"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span>
-                  <span class="big">45</span>
-                  <span class="sub">Actions</span>
-                </div>
-                <div class="fz-card fz-c-utm">
-                  <span class="lab">UTM Source</span>
-                  <div class="fz-utmbar">
-                    <span style="width:30%;background:#2b7de9" data-tip="Direct · 30%"></span>
-                    <span style="width:24%;background:#18a0fb" data-tip="Email · 24%"></span>
-                    <span style="width:20%;background:#5b6ef5" data-tip="Social · 20%"></span>
-                    <span style="width:15%;background:#19c1c8" data-tip="Paid search · 15%"></span>
-                    <span style="width:11%;background:#aab8cc" data-tip="Other · 11%"></span>
-                  </div>
-                  <div class="fz-utmleg">
-                    <span><i style="background:#2b7de9"></i>Direct</span>
-                    <span><i style="background:#18a0fb"></i>Email</span>
-                    <span><i style="background:#5b6ef5"></i>Social</span>
-                    <span><i style="background:#19c1c8"></i>Paid</span>
-                    <span><i style="background:#aab8cc"></i>Other</span>
+                <div class="al-filters">
+                  <div class="fz-check" data-flag="invited"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Invited By Me (<span id="cntInvited">4</span>)</span></div>
+                  <div class="fz-check" data-flag="bookmarked"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Bookmarked (<span id="bkmCount">11</span>)</span> <span class="bkm"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v18l-7-4-7 4V3a1 1 0 0 1 1-1z"/></svg></span></div>
+                  <div class="fz-check on" data-flag="onboards"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>On My Boards (<span id="cntBoards">20</span>)</span></div>
+                  <div class="fz-check" data-flag="recent"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Recently Active (<span id="cntRecent">15</span>)</span></div>
+                  <div class="icons">
+                    <input class="al-search" id="alSearch" placeholder="Search accounts…">
+                    <svg id="alSearchIco" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg>
+                    <svg id="alRefresh" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><polyline points="21 3 21 9 15 9"/></svg>
                   </div>
                 </div>
-              </div>
-              <!-- filters -->
-              <div class="fz-filters">
-                <div class="fz-check on" data-seg="known"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Known</div>
-                <div class="fz-check on" data-seg="inferred"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Inferred known</div>
-                <div class="fz-check on" data-seg="new"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>New <span class="ct">3</span></div>
-                <span class="fz-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></span>
-              </div>
-              <!-- controls -->
-              <div class="fz-controls">
-                <span class="fz-info" id="fzInfo">
-                  <span class="fz-bubbles"><i class="b"></i><i class="r"></i></span>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5" stroke-linecap="round"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></svg>
-                </span>
-                <span class="fz-drop">By Time</span>
-                <span class="fz-drop">Activity <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-                <span class="fz-drop">Engagement level <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></span>
-                <span class="fz-date">Oct 01 – Oct 07, 2020</span>
-                <div class="fz-range">
-                  <button>TODAY</button><button class="active">1W</button><button>2W</button><button>1M</button><button>3M</button>
+                <div class="fz-controls">
+                  <span class="fz-info" id="alInfo">
+                    <span class="fz-bubbles"><i class="b"></i><i class="r"></i></span>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5" stroke-linecap="round"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></svg>
+                  </span>
+                  <span class="fz-drop" id="sortTime">By Time <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="fz-drop" id="sortActivity">By Activity <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="fz-date" id="alDate">Aug 04 – Aug 11, 2026</span>
+                  <div class="fz-range" id="alRange">
+                    <button class="active">1W</button><button>2W</button><button>1M</button>
+                  </div>
+                </div>
+                <div class="fz-thead-wrap">
+                  <div class="fz-thead">
+                    <div class="axis" id="alAxis"><span>04 Aug</span><span>06 Aug</span><span>09 Aug</span><span class="today">TODAY</span></div>
+                    <div class="fz-mh"><span>Views</span><span>Actions</span><span class="mini" id="alMini">–</span></div>
+                  </div>
+                </div>
+                </div>
+                <div class="fz-table">
+                  <div id="alRows"></div>
                 </div>
               </div>
-              <!-- table -->
-              <div class="fz-table">
-                <div class="fz-thead">
-                  <div class="axis"><span>Oct 01</span><span>Oct 03</span><span>Oct 05</span><span class="today">TODAY</span></div>
-                  <div class="fz-mh"><span>Views</span><span>Actions</span><span>Time</span></div>
+
+              <!-- ============ VIEW 2: account detail (people) ============ -->
+              <div class="view" id="viewDetail">
+                <div class="scroll-sentinel" style="height:1px"></div>
+                <div class="sticky-top">
+                <div class="fz-sub">
+                  <span class="fz-back" id="fzBack">‹</span>
+                  <div class="fz-acct">
+                    <span class="nm"><span id="dtName">Cisco</span> <svg id="dtBkm" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" title="Bookmark account"><path d="M6 2h12a1 1 0 0 1 1 1v18l-7-4-7 4V3a1 1 0 0 1 1-1z"/></svg></span>
+                    <span class="pp" id="dtPeople">7 People</span>
+                  </div>
+                  <div class="fz-sub-actions">
+                    <span class="sel-link" id="dtSelLink">View people</span>
+                    <button class="fz-create">Create Campaign</button>
+                  </div>
                 </div>
-                <div id="fzRows"></div>
-              </div>
-              <!-- did you know -->
-              <div class="fz-dyk hide" id="fzDyk">
-                <div class="ic">7 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
-                <div class="bd">
-                  <span class="x" id="fzDykX">×</span>
-                  <div class="ti">DID YOU KNOW!</div>
-                  <div class="tx" id="fzDykTx"></div>
-                  <span class="see2">SEE DETAILS</span>
-                  <div class="dots" id="fzDykDots"></div>
+                <div class="fz-summary">
+                  <div class="fz-card fz-c-acct">
+                    <span class="nm2"><span id="dtName2">Cisco</span> <span class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span></span>
+                    <span class="ind" id="dtInd">Networking &amp; Security</span>
+                    <span class="loc" id="dtLoc">San Jose, CA<br>84,900 employees</span>
+                  </div>
+                  <div class="fz-card fz-c-ins">
+                    <span class="big" id="dtIns">7</span>
+                    <span class="sub">Insights</span>
+                    <span class="see">SEE ALL</span>
+                  </div>
+                  <div class="fz-card fz-c-num">
+                    <span class="eye"><svg width="20" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                    <span class="big" id="dtViews">153</span>
+                    <span class="sub">Item Views</span>
+                  </div>
+                  <div class="fz-card fz-c-num">
+                    <span class="eye"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span class="big" id="dtHrs">13 Hrs</span>
+                    <span class="sub">Time spent</span>
+                  </div>
+                  <div class="fz-card fz-c-num">
+                    <span class="eye"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></span>
+                    <span class="big" id="dtActs">45</span>
+                    <span class="sub">Actions</span>
+                  </div>
+                  <div class="fz-card fz-c-utm">
+                    <span class="lab">UTM Source</span>
+                    <div class="fz-utmbar" id="dtUtm">
+                      <span style="width:30%;background:#2b7de9" data-tip="Direct · 30%"></span>
+                      <span style="width:24%;background:#18a0fb" data-tip="Email · 24%"></span>
+                      <span style="width:20%;background:#5b6ef5" data-tip="Social · 20%"></span>
+                      <span style="width:15%;background:#19c1c8" data-tip="Paid search · 15%"></span>
+                      <span style="width:11%;background:#aab8cc" data-tip="Other · 11%"></span>
+                    </div>
+                    <div class="fz-utmleg">
+                      <span><i style="background:#2b7de9"></i>Direct</span>
+                      <span><i style="background:#18a0fb"></i>Email</span>
+                      <span><i style="background:#5b6ef5"></i>Social</span>
+                      <span><i style="background:#19c1c8"></i>Paid</span>
+                      <span><i style="background:#aab8cc"></i>Other</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="fz-filters">
+                  <div class="fz-check on" data-seg="known"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Known</div>
+                  <div class="fz-check on" data-seg="inferred"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Inferred known</div>
+                  <div class="fz-check on" data-seg="new"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>New <span class="ct" id="dtNewCt">3</span></div>
+                  <span class="fz-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></span>
+                </div>
+                <div class="fz-controls">
+                  <span class="fz-info" id="fzInfo">
+                    <span class="fz-bubbles"><i class="b"></i><i class="r"></i></span>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5" stroke-linecap="round"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></svg>
+                  </span>
+                  <span class="fz-drop" id="dtSortTime">By Time <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="fz-drop" id="dtSortActivity">By Activity <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="fz-date">Aug 04 – Aug 11, 2026</span>
+                  <div class="fz-range">
+                    <button>TODAY</button><button class="active">1W</button><button>2W</button><button>1M</button><button>3M</button>
+                  </div>
+                </div>
+                <div class="fz-thead-wrap">
+                  <div class="fz-thead">
+                    <div class="fz-selall"><span class="cbx" id="dtSelAll"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+                    <div class="axis"><span>Aug 04</span><span>Aug 06</span><span>Aug 09</span><span class="today">TODAY</span></div>
+                    <div class="fz-mh"><span>Views</span><span>Actions</span><span>Time</span><span class="mini" id="dtMini">–</span></div>
+                  </div>
+                </div>
+                </div>
+                <div class="fz-table">
+                  <div id="fzRows"></div>
+                </div>
+                <!-- did you know -->
+                <div class="fz-dyk hide" id="fzDyk">
+                  <div class="ic"><span id="dykIc">7</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                  <div class="bd">
+                    <span class="x" id="fzDykX">×</span>
+                    <div class="ti">DID YOU KNOW!</div>
+                    <div class="tx" id="fzDykTx"></div>
+                    <span class="see2" id="fzDykCta">CREATE CAMPAIGN</span>
+                    <div class="dots" id="fzDykDots"></div>
+                  </div>
                 </div>
               </div>
+
+              <!-- shared tooltips / popovers -->
               <div class="fz-infotip" id="fzInfoTip">
                 <div class="row1">
                   <span><i style="background:#7aa8ff"></i> Prospect's activity</span>
@@ -1079,6 +1267,8 @@
                 <p><span class="newb">New</span> People whose first engagement occurred within the selected timeframe.</p>
               </div>
               <div class="fz-tip" id="fzTip"></div>
+              <div class="al-tt" id="alRedTip"><div class="hd"></div><div class="bd"></div></div>
+              <div class="al-tt" id="alBlueTip"><div class="hd"></div><div class="bd"></div></div>
               <div class="fz-acttip" id="fzActTip">
                 <div class="hd"></div>
                 <div class="bd"><img class="av" alt="" /><div class="tx"></div></div>
@@ -1093,6 +1283,30 @@
                   <div class="evs"></div>
                 </div>
               </div>
+              <!-- select board modal -->
+              <div class="bm-overlay" id="bmOverlay"></div>
+              <div class="bm-modal" id="bmModal" aria-hidden="true">
+                <div class="bm-head">
+                  <div><h3>Select Board</h3><div class="bm-recip" id="bmRecip"></div></div>
+                  <span class="bm-x" id="bmX">✕</span>
+                </div>
+                <div class="bm-bar">
+                  <div class="bm-dd">My Boards <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+                  <div class="bm-search">
+                    <input id="bmSearch" placeholder="Search for board">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg>
+                  </div>
+                </div>
+                <div class="bm-thead">
+                  <span class="bm-th c-name" data-k="n">Name <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="bm-th c-num" data-k="v"># Views <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="bm-th c-num" data-k="it"># Items <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="bm-th c-num" data-k="eng"># Engaged <span class="sort"><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 6 6 1 11 6"/></svg><svg width="8" height="5" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 1 6 6 11 1"/></svg></span></span>
+                  <span class="c-acts" style="width:248px;flex-shrink:0"></span>
+                </div>
+                <div class="bm-rows" id="bmRows"></div>
+              </div>
+              <div class="bm-toast" id="bmToast"></div>
               <div class="fz-overlay" id="fzOverlay"></div>
               <div class="fz-drawer" id="fzDrawer" aria-hidden="true">
                 <div class="fz-dw-head" id="fzDwHead"></div>
@@ -1100,13 +1314,14 @@
               </div>
             </div>
           </div>
+          </div>
         </div>
         <div class="proto-leg">
           <span><i style="width:13px;height:13px;background:#f97089"></i> Rep activity - sales &amp; marketing</span>
           <span><i style="width:13px;height:13px;background:#7aa8ff"></i> Lead engagement</span>
           <span class="szleg"><i style="width:7px;height:7px;background:#aab3c2"></i><i style="width:11px;height:11px;background:#aab3c2"></i><i style="width:15px;height:15px;background:#aab3c2"></i><b>Dot size = engagement strength</b></span>
         </div>
-        <div class="proto-hint"><b>Try it →</b> toggle Known / Inferred / New to filter, switch the range, hover a dot, or click any lead to open their full timeline.</div>
+        <div class="proto-hint"><b>Try it &rarr;</b> toggle the filters, switch the sort or the time range, then open an account to see the people inside it, and a person for their timeline.</div>
       </div>
 
       <div class="story three">
@@ -1978,214 +2193,308 @@
     ['pointerdown','pointerup','pointerover','pointermove','mousedown','touchstart','touchend','wheel','scroll','keydown','click'].forEach(ev=>window.addEventListener(ev,unlock,{passive:true}));
   })();
 
-  // ---- Folloze interactive prototype ----
-  (function(){
-    const app=document.getElementById('fzApp');if(!app)return;
-    const rowsEl=document.getElementById('fzRows');
-    const tip=document.getElementById('fzTip');
-    const acttip=document.getElementById('fzActTip');
-    const sesstip=document.getElementById('fzSessTip');
-    const EYE='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>';
-    const CURSOR='<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l13 6.5-5.5 1.8L10.5 17 5 3z"/></svg>';
+  /* ---- Folloze Account Dashboard 2.0 — live demo (inlined, self-contained IIFE) ---- */
+(function(){
+  const app=document.getElementById('fzApp');if(!app)return;
+  const scroller=app.parentElement;
+  function protoTop(){if(scroller)scroller.scrollTo(0,0);}
+  const tip=document.getElementById('fzTip');
+  const acttip=document.getElementById('fzActTip');
+  const sesstip=document.getElementById('fzSessTip');
+  const EYE='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>';
+  const CURSOR='<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l13 6.5-5.5 1.8L10.5 17 5 3z"/></svg>';
+  const BKM='<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h12a1 1 0 0 1 1 1v18l-7-4-7 4V3a1 1 0 0 1 1-1z"/></svg>';
+  const CHEVR='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
+  const WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const SZ=['s','m','l'];
+  function rng(seed){return function(){seed=(seed*9301+49297)%233280;return seed/233280;};}
+  function fmtTime(sec){
+    if(sec>=3600){const h=Math.floor(sec/3600),m=Math.round((sec%3600)/60);return h+'h '+m+'m';}
+    const m=Math.floor(sec/60),s=Math.round(sec%60);return m+':'+String(s).padStart(2,'0')+'m';
+  }
+  function fmtDate(d){return WD[d.getDay()]+', '+MO[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear();}
+  function fmtDate2(d){return WD[d.getDay()]+', '+d.getDate()+' '+MO[d.getMonth()]+' '+d.getFullYear();}
+  function fmtDay(d){return WD[d.getDay()]+' '+MO[d.getMonth()]+' '+d.getDate();}
+  function positionTip(el,cx,cy,half){
+    const fr=app.getBoundingClientRect();
+    const lx=Math.max(half+4,Math.min(fr.width-half-4,cx));
+    el.style.left=lx+'px';el.style.top=(cy-9)+'px';el.style.opacity='1';
+  }
+  function relCoords(el){
+    const fr=app.getBoundingClientRect(),dr=el.getBoundingClientRect();
+    return {cx:dr.left-fr.left+dr.width/2,cy:dr.top-fr.top};
+  }
 
-    // each range: scaling factor vs 1W, the date label, axis ticks, and span start date
-    const END=new Date(2020,9,7);
-    const RANGES=[
-      {key:'TODAY',factor:0.18,dateText:'Oct 07, 2020',axis:['6 AM','11 AM','2 PM','TODAY'],start:new Date(2020,9,7)},
-      {key:'1W',factor:1,dateText:'Oct 01 – Oct 07, 2020',axis:['Oct 01','Oct 03','Oct 05','TODAY'],start:new Date(2020,9,1)},
-      {key:'2W',factor:1.7,dateText:'Sep 24 – Oct 07, 2020',axis:['Sep 24','Sep 29','Oct 03','TODAY'],start:new Date(2020,8,24)},
-      {key:'1M',factor:3,dateText:'Sep 08 – Oct 07, 2020',axis:['Sep 08','Sep 18','Sep 28','TODAY'],start:new Date(2020,8,8)},
-      {key:'3M',factor:5.5,dateText:'Jul 09 – Oct 07, 2020',axis:['Jul','Aug','Sep','TODAY'],start:new Date(2020,6,9)}
-    ];
-    // red-dot activity cards
-    const ACTS=[
-      {who:'Cassandra Ricci',board:'[WEBSITE - NEW] - Homepage Resources Block',extra:'+1 more emails <i>sent</i>',img:5},
-      {who:'Daniel Mercer',board:'Q4 Product Launch - Buyer Hub',extra:'opened <b>3</b> assets',img:13},
-      {who:'Maya Levin',board:'Security Solutions - Exec Brief',extra:'+2 more emails <i>sent</i>',img:32},
-      {who:'Omar Haddad',board:'Networking 2.0 - Solution Tour',extra:'watched <b>2</b> videos',img:48}
-    ];
-    // blue-dot session cards
-    const SESS=[
-      {total:'2 mins',title:'Write On Your Business Card',events:[
-        {ic:'eye',type:'Viewed Item (9 sec)',item:'Adwords Keyword Research For Beginners',time:'08:50AM'},
-        {ic:'form',type:'Filled Form',item:'Adwords Keyword Research For Beginners',time:'08:49AM'},
-        {ic:'eye',type:'Viewed Item (9 sec)',item:'Using Banner Stands To Increase…',time:'08:48AM'}
-      ]},
-      {total:'4 mins',title:'Networking 2.0 - Solution Tour',events:[
-        {ic:'eye',type:'Viewed Item (1 min)',item:'Total Economic Impact Report',time:'02:14PM'},
-        {ic:'eye',type:'Viewed Item (22 sec)',item:'SD-WAN Buyer’s Guide',time:'02:12PM'},
-        {ic:'form',type:'Filled Form',item:'Request a Demo',time:'02:11PM'}
-      ]},
-      {total:'3 mins',title:'Security Solutions - Exec Brief',events:[
-        {ic:'eye',type:'Viewed Item (18 sec)',item:'Zero Trust in 90 Days',time:'11:30AM'},
-        {ic:'eye',type:'Viewed Item (12 sec)',item:'Threat Landscape 2020',time:'11:28AM'},
-        {ic:'form',type:'Filled Form',item:'Contact Sales',time:'11:27AM'}
-      ]}
-    ];
-    const PEOPLE=[
-      {n:'Jeremiah Bryan',t:'Seller Risk Experience',e:'jeremiah.bryan@cisco.com',seg:'known',v:12,a:3,sec:344,db:12},
-      {n:'Hulda Rodgers',t:'Seller Risk Experience',inferred:true,seg:'inferred',v:33,a:3,sec:480,db:2},
-      {n:'Rosa Haynes',t:'Seller Risk Experience',e:'rosa.haynes@cisco.com',seg:'known',v:88,a:3,sec:122,db:2},
-      {n:'Hunter Bridges',t:'Seller Risk Experience',e:'hunter.bridges@cisco.com',seg:'new',isNew:true,v:96,a:3,sec:720,db:3}
-    ];
-    const WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const SZ=['s','m','l'];
+  /* ================= data ================= */
+  const ACCOUNTS=[
+    // mine = the account is active on a board this rep owns. invited ⊆ mine by definition:
+    // if you invited someone, it was to your own board. bookmarks can sit on any account.
+    {n:'Folloze',eng:23,nw:0,ago:'33 minutes ago',agoMin:33,v:31,a:702,db:14,ind:'Marketing Technology',city:'San Mateo, CA',emp:'180',dom:'folloze.com',mine:true,invited:true,recent:true},
+    {n:'Cisco',eng:7,nw:1,ago:'a day ago',agoMin:1440,v:0,a:6,db:7,ind:'Networking & Security',city:'San Jose, CA',emp:'84,900',dom:'cisco.com',mine:true,invited:true,recent:true},
+    {n:'ServiceNow',eng:12,nw:6,ago:'an hour ago',agoMin:60,v:9,a:88,db:11,ind:'Enterprise Software',city:'Santa Clara, CA',emp:'22,600',dom:'servicenow.com',mine:true,recent:true},
+    {n:'IBM',eng:6,nw:3,ago:'41 minutes ago',agoMin:41,v:0,a:0,db:3,risk:true,ind:'Information Technology',city:'Armonk, NY',emp:'282,200',dom:'ibm.com',mine:true,recent:true},
+    {n:'SAP',eng:6,nw:4,ago:'3 hours ago',agoMin:180,v:0,a:25,db:6,ind:'Enterprise Software',city:'Walldorf, Germany',emp:'107,400',dom:'sap.com',mine:true,invited:true,recent:true},
+    {n:'Autodesk',eng:10,nw:3,ago:'a day ago',agoMin:1500,v:0,a:17,db:8,ind:'Design Software',city:'San Francisco, CA',emp:'13,700',dom:'autodesk.com',mine:true,recent:true},
+    {n:'Snowflake',eng:8,nw:2,ago:'2 days ago',agoMin:2880,v:2,a:34,db:9,ind:'Data Cloud',city:'Bozeman, MT',emp:'6,800',dom:'snowflake.com',mine:true},
+    {n:'Datadog',eng:5,nw:1,ago:'5 hours ago',agoMin:300,v:1,a:21,db:6,ind:'Observability',city:'New York, NY',emp:'5,200',dom:'datadoghq.com',mine:true,recent:true},
+    {n:'Gainsight',eng:4,nw:2,ago:'7 hours ago',agoMin:420,v:4,a:18,db:7,ind:'Customer Success',city:'San Francisco, CA',emp:'1,400',dom:'gainsight.com',mine:true,recent:true},
+    {n:'OpenText',eng:5,nw:5,ago:'2 months ago',agoMin:86400,v:0,a:5,db:4,ind:'Information Management',city:'Waterloo, Canada',emp:'22,900',dom:'opentext.com',mine:true},
+    {n:'Loftware',eng:1,nw:0,ago:'31 minutes ago',agoMin:31,v:0,a:1,db:1,ind:'Enterprise Labeling',city:'Portsmouth, NH',emp:'1,100',dom:'loftware.com',mine:true,recent:true},
+    {n:'New York University',eng:1,nw:0,ago:'27 minutes ago',agoMin:27,v:0,a:9,db:2,ind:'Higher Education',city:'New York, NY',emp:'19,000',dom:'nyu.edu',mine:true,invited:true,recent:true},
+    /* not on this rep's boards - engaging with the company through other people's boards */
+    {n:'Palo Alto Networks',bkm:true,eng:9,nw:2,ago:'2 hours ago',agoMin:120,v:6,a:41,db:8,ind:'Network Security',city:'Santa Clara, CA',emp:'14,500',dom:'paloaltonetworks.com',recent:true},
+    {n:'Splunk',eng:4,nw:1,ago:'4 hours ago',agoMin:240,v:0,a:0,db:5,risk:true,ind:'Data Analytics',city:'San Francisco, CA',emp:'7,500',dom:'splunk.com',recent:true},
+    {n:'Workday',bkm:true,eng:7,nw:2,ago:'6 hours ago',agoMin:360,v:3,a:29,db:7,ind:'Enterprise Software',city:'Pleasanton, CA',emp:'18,800',dom:'workday.com',recent:true},
+    {n:'Atlassian',eng:6,nw:0,ago:'9 hours ago',agoMin:540,v:2,a:23,db:6,ind:'Developer Tools',city:'Sydney, Australia',emp:'12,100',dom:'atlassian.com',recent:true},
+    {n:'Okta',eng:3,nw:1,ago:'11 hours ago',agoMin:660,v:1,a:14,db:4,ind:'Identity & Access',city:'San Francisco, CA',emp:'6,000',dom:'okta.com',recent:true},
+    {n:'Twilio',eng:5,nw:0,ago:'3 days ago',agoMin:4320,v:1,a:12,db:5,ind:'Communications API',city:'San Francisco, CA',emp:'5,500',dom:'twilio.com'},
+    {n:'MongoDB',bkm:true,eng:2,nw:0,ago:'6 days ago',agoMin:8640,v:0,a:4,db:3,ind:'Database Platform',city:'New York, NY',emp:'5,000',dom:'mongodb.com'},
+    {n:'Zoom',eng:2,nw:0,ago:'3 weeks ago',agoMin:30240,v:0,a:2,db:2,ind:'Video Communications',city:'San Jose, CA',emp:'7,400',dom:'zoom.us'}
+  ];
+  const FIRST=['Jeremiah','Hulda','Rosa','Hunter','Maya','Daniel','Noa','Omar','Grace','Felix','Irene','Marcus','Talia','Victor','Dana','Eitan','Priya','Jonas','Leila','Adam','Nina','Oscar','Ruth','Sam'];
+  const LAST=['Bryan','Rodgers','Haynes','Bridges','Levin','Mercer','Katz','Haddad','Lin','Moreau','Vega','Cole','Shapiro','Nguyen','Peled','Roth','Sharma','Berg','Nasser','Fox','Ivanov','Reyes','Klein','Ortiz'];
+  const TITLES=['IT Director','VP Marketing','Security Architect','Procurement Lead','Head of Data','Solutions Engineer','Digital Strategy Lead','CISO','Product Operations','Demand Gen Manager'];
+  const ACTS=[
+    {who:'Cassandra Ricci',board:'[WEBSITE - NEW] - Homepage Resources Block',extra:'+1 more emails <i>sent</i>',img:5,w:1},
+    {who:'Daniel Mercer',board:'Q4 Product Launch - Buyer Hub',extra:'opened <b>3</b> assets',img:13,w:3},
+    {who:'Maya Levin',board:'Security Solutions - Exec Brief',extra:'+2 more emails <i>sent</i>',img:32,w:2},
+    {who:'Omar Haddad',board:'Networking 2.0 - Solution Tour',extra:'watched <b>2</b> videos',img:48,w:2}
+  ];
+  const SESS=[
+    {total:'2 mins',w:1,title:'Write On Your Business Card',events:[
+      {ic:'eye',type:'Viewed Item (9 sec)',item:'Adwords Keyword Research For Beginners',time:'08:50AM'},
+      {ic:'form',type:'Filled Form',item:'Adwords Keyword Research For Beginners',time:'08:49AM'},
+      {ic:'eye',type:'Viewed Item (9 sec)',item:'Using Banner Stands To Increase…',time:'08:48AM'}
+    ]},
+    {total:'4 mins',w:3,title:'Networking 2.0 - Solution Tour',events:[
+      {ic:'eye',type:'Viewed Item (1 min)',item:'Total Economic Impact Report',time:'02:14PM'},
+      {ic:'eye',type:'Viewed Item (22 sec)',item:'SD-WAN Buyer’s Guide',time:'02:12PM'},
+      {ic:'form',type:'Filled Form',item:'Request a Demo',time:'02:11PM'}
+    ]},
+    {total:'3 mins',w:2,title:'Security Solutions - Exec Brief',events:[
+      {ic:'eye',type:'Viewed Item (18 sec)',item:'Zero Trust in 90 Days',time:'11:30AM'},
+      {ic:'eye',type:'Viewed Item (12 sec)',item:'Threat Landscape 2026',time:'11:28AM'},
+      {ic:'form',type:'Filled Form',item:'Contact Sales',time:'11:27AM'}
+    ]}
+  ];
 
-    function rng(seed){return function(){seed=(seed*9301+49297)%233280;return seed/233280;};}
-    function fmtTime(sec){
-      if(sec>=3600){const h=Math.floor(sec/3600),m=Math.round((sec%3600)/60);return h+'h '+m+'m';}
-      const m=Math.floor(sec/60),s=Math.round(sec%60);return m+':'+String(s).padStart(2,'0')+'m';
-    }
-    function fmtDate(d){return WD[d.getDay()]+', '+MO[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear();}
-    function fmtDate2(d){return WD[d.getDay()]+', '+d.getDate()+' '+MO[d.getMonth()]+' '+d.getFullYear();}
-    function dateFromPos(ri,pos){const r=RANGES[ri];return new Date(r.start.getTime()+(END-r.start)*pos/100);}
-    function genDots(i,ri){
-      const r=RANGES[ri],n=Math.max(1,Math.min(16,Math.round(PEOPLE[i].db*r.factor))),rand=rng((i+1)*1000+ri*37+7),out=[];
-      for(let k=0;k<n;k++){out.push({pos:4+rand()*92,type:rand()<0.5?'r':'b',sz:SZ[Math.floor(rand()*3)],act:Math.floor(rand()*ACTS.length)});}
-      out.sort((a,b)=>a.pos-b.pos);return out;
-    }
+  /* ================= view switching ================= */
+  const viewList=document.getElementById('viewList'),viewDetail=document.getElementById('viewDetail');
+  function showList(){viewDetail.classList.remove('on');viewList.classList.remove('on');void viewList.offsetWidth;viewList.classList.add('on');protoTop();hideTips();}
+  function showDetail(){viewList.classList.remove('on');viewDetail.classList.remove('on');void viewDetail.offsetWidth;viewDetail.classList.add('on');protoTop();hideTips();}
+  function hideTips(){tip.style.opacity='0';acttip.style.opacity='0';sesstip.style.opacity='0';document.getElementById('fzInfoTip').style.opacity='0';document.getElementById('alRedTip').style.opacity='0';document.getElementById('alBlueTip').style.opacity='0';}
+  document.getElementById('fzBack').addEventListener('click',showList);
+  document.getElementById('tabAccounts').addEventListener('click',showList);
 
-    function renderRows(ri){
-      const f=RANGES[ri].factor;
-      rowsEl.innerHTML=PEOPLE.map((p,i)=>{
-        const dots=genDots(i,ri).map(d=>`<span class="fz-dot ${d.type} ${d.sz}" style="left:${d.pos.toFixed(1)}%" data-type="${d.type}" data-pos="${d.pos.toFixed(1)}" data-act="${d.act}"></span>`).join('');
-        const meta=p.inferred?`<div class="fz-inferred">Inferred</div>`:`<div class="em">${p.e}</div>`;
-        const badge=p.isNew?` <span class="fz-newbadge">New</span>`:'';
-        return `<div class="fz-row" data-seg="${p.seg}">
-          <div class="fz-person"><div>
-            <div class="nm">${p.n}${badge}</div><div class="ti">${p.t}</div>${meta}
-          </div></div>
-          <div class="fz-track"><div class="base"></div>${dots}</div>
-          <div class="fz-metric">${Math.max(1,Math.round(p.v*f))}</div>
-          <div class="fz-metric">${Math.max(1,Math.round(p.a*f))}</div>
-          <div class="fz-metric">${fmtTime(p.sec*f)}</div>
-        </div>`;
-      }).join('');
-      attachDots(ri);
-      applyFilters();
-    }
-
-    function attachDots(ri){
-      app.querySelectorAll('.fz-dot').forEach(dot=>{
-        dot.addEventListener('mouseenter',()=>{
-          const fr=app.getBoundingClientRect(),dr=dot.getBoundingClientRect();
-          const cx=dr.left-fr.left+dr.width/2,cy=dr.top-fr.top;
-          if(dot.dataset.type==='r'){
-            const act=ACTS[+dot.dataset.act];
-            acttip.querySelector('.hd').textContent=fmtDate(dateFromPos(ri,+dot.dataset.pos));
-            acttip.querySelector('.av').src='https://i.pravatar.cc/72?img='+act.img;
-            acttip.querySelector('.tx').innerHTML='Invited by <b>'+act.who+'</b> to "<b>'+act.board+'</b>" board';
-            acttip.querySelector('.ft').innerHTML=act.extra;
-            const half=146,lx=Math.max(half+4,Math.min(fr.width-half-4,cx));
-            acttip.style.left=lx+'px';acttip.style.top=(cy-9)+'px';acttip.style.opacity='1';
-          }else{
-            const s=SESS[(+dot.dataset.act)%SESS.length];
-            sesstip.querySelector('.hd').textContent=fmtDate2(dateFromPos(ri,+dot.dataset.pos));
-            sesstip.querySelector('.tot').textContent='Total session spent ('+s.total+')';
-            sesstip.querySelector('.ttl').textContent=s.title;
-            sesstip.querySelector('.evs').innerHTML=s.events.map(ev=>'<div class="fz-ev"><span class="ico">'+(ev.ic==='eye'?EYE:CURSOR)+'</span><div class="rowt"><span>'+ev.type+'</span><span class="time">'+ev.time+'</span></div><div class="item">'+ev.item+'</div></div>').join('');
-            const half=167,lx=Math.max(half+4,Math.min(fr.width-half-4,cx));
-            sesstip.style.left=lx+'px';sesstip.style.top=(cy-9)+'px';sesstip.style.opacity='1';
-          }
-        });
-        dot.addEventListener('mouseleave',()=>{tip.style.opacity='0';acttip.style.opacity='0';sesstip.style.opacity='0';});
-      });
-    }
-
-    // tooltip on UTM source segments
-    app.querySelectorAll('.fz-utmbar span').forEach(seg=>{
-      seg.addEventListener('mouseenter',()=>{
-        const fr=app.getBoundingClientRect(),sr=seg.getBoundingClientRect();
-        tip.textContent=seg.dataset.tip;
-        tip.style.left=(sr.left-fr.left+sr.width/2)+'px';
-        tip.style.top=(sr.top-fr.top-6)+'px';
-        tip.style.opacity='1';
-      });
-      seg.addEventListener('mouseleave',()=>tip.style.opacity='0');
-    });
-
-    // audience filters
-    function applyFilters(){
-      const active=[...app.querySelectorAll('.fz-check.on')].map(c=>c.dataset.seg);
-      app.querySelectorAll('.fz-row').forEach(r=>{
-        r.style.display=active.includes(r.dataset.seg)?'':'none';
-      });
-    }
-    app.querySelectorAll('.fz-check').forEach(c=>c.addEventListener('click',()=>{c.classList.toggle('on');applyFilters();}));
-
-    // working time-range filter
-    const rangeBtns=app.querySelectorAll('.fz-range button');
-    const dateEl=app.querySelector('.fz-date');
-    const axisSpans=app.querySelectorAll('.fz-thead .axis span');
-    function setRange(ri){
-      rangeBtns.forEach(x=>x.classList.remove('active'));rangeBtns[ri].classList.add('active');
-      dateEl.textContent=RANGES[ri].dateText;
-      axisSpans.forEach((s,k)=>s.textContent=RANGES[ri].axis[k]);
-      renderRows(ri);
-    }
-    rangeBtns.forEach((b,ri)=>b.addEventListener('click',()=>setRange(ri)));
-    setRange(1);
-
-    // ---- lead sidebar (click a lead row) ----
-    const drawer=document.getElementById('fzDrawer'),overlay=document.getElementById('fzOverlay');
-    const dwHead=document.getElementById('fzDwHead'),dwBody=document.getElementById('fzDwBody');
-    const I_CLOCK='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>';
-    const I_MAIL='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>';
-    const I_PHONE='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
-    const I_CHEV='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
-    const I_SCREEN='<svg width="14" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>';
-    const CITIES=['Milwaukee, WI','San Jose, CA','Austin, TX','New York, NY'];
-    function evHtml(ev){return '<div class="fz-ev"><span class="ico">'+(ev.ic==='eye'?EYE:CURSOR)+'</span><div class="rowt"><span>'+ev.type+'</span><span class="time">'+ev.time+'</span></div><div class="item">'+ev.item+'</div></div>';}
-    function openDrawer(i){
-      const p=PEOPLE[i];
-      const email=p.e?'<a href="mailto:'+p.e+'">'+I_MAIL+p.e+'</a>':'';
-      dwHead.innerHTML='<span class="fz-dw-x" id="fzDwX">✕</span>'
-        +'<div class="fz-dw-name">'+p.n+'</div>'
-        +'<div class="fz-dw-time">'+I_CLOCK+fmtTime(p.sec)+'</div>'
-        +'<div class="fz-dw-title">'+p.t+'</div>'
-        +'<div class="fz-dw-co">Cisco</div>'
-        +'<div class="fz-dw-links">'+email+'<a href="tel:3434343434">'+I_PHONE+'343-4343-434</a></div>';
-      let html='';
-      for(let k=0;k<2;k++){
-        const s=SESS[(i+k)%SESS.length],act=ACTS[(i+k)%ACTS.length],d=new Date(2020,9,19-k);
-        html+='<div class="fz-cardx">'
-          +'<div class="fz-cd-hd"><div class="r1"><span class="ct">'+s.events.length+'</span><span>'+fmtDate2(d)+'</span><span class="dur">'+s.total.replace('mins','mins')+'</span></div><div class="r2">'+s.title+'</div></div>'
-          +'<div class="fz-cd-loc"><span>'+CITIES[(i+k)%CITIES.length]+'</span><span class="scr">'+I_SCREEN+'</span><span class="inv">Invited by: <b>'+act.who+'</b> <img src="https://i.pravatar.cc/40?img='+act.img+'" alt=""></span></div>'
-          +'<div class="fz-cd-evs"><div class="evs">'+s.events.map(evHtml).join('')+'</div></div>'
-          +'<div class="fz-trg'+(k===0?'':' closed')+'">'
-            +'<div class="fz-trg-tgl"><span>'+(k===0?'Hide':'View')+' Trigger</span>'+I_CHEV+'</div>'
-            +'<div class="fz-trg-bd"><span class="ico">'+I_MAIL+'</span><div><div>Trigger by Email sent at '+fmtDate2(d)+', 08:44AM</div><div class="itm">'+act.board+'</div></div></div>'
-          +'</div>'
-        +'</div>';
+  /* ================= VIEW 1: accounts list ================= */
+  const alRows=document.getElementById('alRows');
+  const AL_RANGES=[
+    {key:'1W',factor:1,dateText:'Aug 04 – Aug 11, 2026',axis:['04 Aug','06 Aug','09 Aug','TODAY'],start:new Date(2026,7,4)},
+    {key:'2W',factor:1.7,dateText:'Jul 28 – Aug 11, 2026',axis:['28 Jul','02 Aug','07 Aug','TODAY'],start:new Date(2026,6,28)},
+    {key:'1M',factor:3,dateText:'Jul 12 – Aug 11, 2026',axis:['12 Jul','22 Jul','01 Aug','TODAY'],start:new Date(2026,6,12)}
+  ];
+  const AL_END=new Date(2026,7,11);
+  let alRi=0;
+  function alDateFromPos(pos){const r=AL_RANGES[alRi];return new Date(r.start.getTime()+(AL_END-r.start)*pos/100);}
+  // dot size is derived from the payload it shows, never drawn independently
+  function alGenDots(i){
+    const r=AL_RANGES[alRi],acc=ACCOUNTS[i];
+    const n=Math.max(1,Math.min(18,Math.round(acc.db*r.factor)));
+    const rand=rng((i+1)*777+alRi*31+5),out=[];
+    // size follows the headline number of the tooltip; the rest scales with it
+    const maxP=Math.max(1,Math.min(5,acc.eng));
+    function mk(type,pos,heavy){
+      const seed=Math.floor(rand()*99991);
+      if(type==='r'){
+        const emails=heavy?7+Math.floor(rand()*2):1+Math.floor(rand()*8);
+        return {pos,type,seed,emails,sz:emails<=2?'s':emails<=5?'m':'l'};
       }
-      [['Opened Email','08:50AM'],['Email Sent','08:44AM']].forEach(function(m,k){
-        const act=ACTS[(i+2+k)%ACTS.length],d=new Date(2020,9,18-k);
-        html+='<div class="fz-cardx"><div class="fz-cd-hd"><div class="r1"><span>'+fmtDate2(d)+'</span></div></div>'
-          +'<div class="fz-mailrow"><span class="ico">'+I_MAIL+'</span><div><div>'+m[0]+'</div><div class="itm">'+act.board+'</div></div>'
-          +'<div class="snt"><span class="by">Sent by: <b>'+act.who+'</b> <img src="https://i.pravatar.cc/40?img='+act.img+'" alt=""></span><div class="tm">'+m[1]+'</div></div></div></div>';
-      });
-      dwBody.innerHTML=html;
-      dwBody.querySelectorAll('.fz-trg-tgl').forEach(function(t){
-        t.addEventListener('click',function(){
-          const trg=t.parentElement;trg.classList.toggle('closed');
-          t.querySelector('span').textContent=(trg.classList.contains('closed')?'View':'Hide')+' Trigger';
-        });
-      });
-      document.getElementById('fzDwX').addEventListener('click',closeDrawer);
-      drawer.classList.add('on');overlay.classList.add('on');drawer.setAttribute('aria-hidden','false');
-      dwBody.scrollTop=0;
+      const people=1+Math.floor(rand()*maxP);
+      // a lone researcher goes deep, a crowd skims - so depth runs inversely to headcount
+      const depth=1+Math.floor(rand()*(people<=2?9:4));
+      const acts=people*depth+Math.floor(rand()*2);
+      const views=acts+Math.floor(rand()*acts);
+      // size follows total activity, exactly what the legend promises - so one deep
+      // person reads as loudly as several shallow ones
+      return {pos,type,seed,people,acts,views,sz:acts<=3?'s':acts<=8?'m':'l'};
     }
-    function closeDrawer(){drawer.classList.remove('on');overlay.classList.remove('on');drawer.setAttribute('aria-hidden','true');}
-    overlay.addEventListener('click',closeDrawer);
-    window.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
-    rowsEl.addEventListener('click',function(e){
-      if(e.target.closest('.fz-dot'))return;
-      const row=e.target.closest('.fz-row');if(!row)return;
-      openDrawer([].indexOf.call(rowsEl.querySelectorAll('.fz-row'),row));
+    for(let k=0;k<n;k++){
+      const type=acc.risk?(rand()<0.7?'r':'b'):(rand()<0.22?'r':'b');
+      out.push(mk(type,4+rand()*92));
+    }
+    // a risk account still has a pulse - it is weak response, not a dead row
+    if(!out.some(d=>d.type==='b'))out.push(mk('b',12+rand()*30));
+    if(acc.risk)out.push(mk('r',97,true));
+    out.sort((a,b)=>a.pos-b.pos);return out;
+  }
+  // row numbers are summed from the dots actually plotted, so the columns always reconcile
+  function alRowStats(dots,acc){
+    let views=0,acts=0,people=0,blue=0;
+    dots.forEach(d=>{if(d.type==='b'){blue++;views+=d.views;acts+=d.acts;people+=d.people;}});
+    const engaged=blue?Math.min(acc.eng,people):0;
+    return {engaged,views,acts,nw:engaged?Math.min(acc.nw,engaged):0};
+  }
+  let alSort={key:'time',dir:'desc'};
+  function renderList(){
+    const raw={},stats={};
+    ACCOUNTS.forEach((acc,i)=>{raw[i]=alGenDots(i);stats[i]=alRowStats(raw[i],acc);});
+    const order=[...ACCOUNTS.keys()].sort((x,y)=>{
+      const va=alSort.key==='time'?-ACCOUNTS[x].agoMin:stats[x].acts;
+      const vb=alSort.key==='time'?-ACCOUNTS[y].agoMin:stats[y].acts;
+      return alSort.dir==='desc'?vb-va:va-vb;
     });
-
-    // info legend popover (the i icon)
-    const info=document.getElementById('fzInfo'),infotip=document.getElementById('fzInfoTip');
+    alRows.innerHTML=order.map(i=>{const acc=ACCOUNTS[i],st=stats[i];
+      const dots=raw[i].map(d=>{
+        const meta=d.type==='r'?`data-emails="${d.emails}"`
+          :`data-people="${d.people}" data-acts="${d.acts}" data-views="${d.views}"`;
+        return `<span class="fz-dot ${d.type} ${d.sz}" style="left:${d.pos.toFixed(1)}%" data-type="${d.type}" data-pos="${d.pos.toFixed(1)}" data-seed="${d.seed}" ${meta}></span>`;
+      }).join('');
+      const badge=st.nw?` <span class="fz-newbadge">${st.nw} New</span>`:'';
+      return `<div class="fz-row al-row" data-i="${i}">
+        <div class="fz-person"><div>
+          <div class="nm">${acc.n}</div>
+          <div class="al-eng">${st.engaged} engaged${badge}</div>
+          <div class="al-ago">${acc.ago}</div>
+        </div><span class="al-bkm${acc.bkm?' on':''}" data-i="${i}">${BKM}</span></div>
+        <div class="fz-track"><div class="base"></div>${dots}</div>
+        <div class="fz-metrics">
+          <div class="fz-metric">${st.views}</div>
+          <div class="fz-metric">${st.acts}</div>
+        </div>
+        <span class="al-go">${CHEVR}</span>
+      </div>`;
+    }).join('');
+    attachListDots();
+    applyListFilters();
+  }
+  const BOARDS=['[Candace] 2026 Brand Concept - Simple','[MARKETING] ABM TOFU Campaign','[WEBSITE - NEW] - Homepage Resources Block','Q4 Product Launch - Buyer Hub','Security Solutions - Exec Brief','Networking 2.0 - Solution Tour'];
+  const I_ENV='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>';
+  const I_BOARD='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>';
+  const I_PERSON='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg>';
+  const redTip=document.getElementById('alRedTip'),blueTip=document.getElementById('alBlueTip');
+  function fullName(rand){return FIRST[Math.floor(rand()*FIRST.length)]+' '+LAST[Math.floor(rand()*LAST.length)];}
+  function attachListDots(){
+    alRows.querySelectorAll('.fz-dot').forEach(dot=>{
+      dot.addEventListener('mouseenter',()=>{
+        const c=relCoords(dot);
+        const d=alDateFromPos(+dot.dataset.pos);
+        const i=+dot.closest('.al-row').dataset.i;
+        const rand=rng(+dot.dataset.seed+17);
+        if(dot.dataset.type==='r'){
+          const n=+dot.dataset.emails;
+          const names=[];
+          for(let x=0;x<Math.min(3,n);x++)names.push(fullName(rand));
+          const more=n>names.length?' <i>+'+(n-names.length)+' more</i>':'';
+          const boards=[BOARDS[Math.floor(rand()*BOARDS.length)],BOARDS[Math.floor(rand()*BOARDS.length)]];
+          redTip.querySelector('.hd').textContent=fmtDate(d);
+          redTip.querySelector('.bd').innerHTML=
+            '<div class="rowi"><span class="cic r">'+I_ENV+'</span><div><b>'+n+' email'+(n>1?'s':'')+'</b> <i>sent to:</i><br><b>'+names.join(', ')+'</b>'+more+'</div></div>'
+            +'<div class="rowi"><span class="cic r">'+I_BOARD+'</span><div><b>'+[...new Set(boards)].join(', ')+'</b></div></div>';
+          positionTip(redTip,c.cx,c.cy,143);
+        }else{
+          const p=+dot.dataset.people;
+          const acts=+dot.dataset.acts,views=+dot.dataset.views;
+          blueTip.querySelector('.hd').textContent=fmtDate(d);
+          blueTip.querySelector('.bd').innerHTML=
+            '<div class="rowi"><span class="cic b">'+I_PERSON+'</span><div><b>'+p+' '+(p>1?'people':'person')+'</b> <i>engaged in</i>'
+            +'<div class="kv"><b>Actions</b><span>'+acts+'</span></div>'
+            +'<div class="kv"><b>Item Views</b><span>'+views+'</span></div></div></div>'
+            +'<div class="rowi"><span class="cic b">'+I_BOARD+'</span><div><b>'+BOARDS[Math.floor(rand()*BOARDS.length)]+'</b></div></div>';
+          positionTip(blueTip,c.cx,c.cy,143);
+        }
+      });
+      dot.addEventListener('mouseleave',()=>{redTip.style.opacity='0';blueTip.style.opacity='0';});
+    });
+  }
+  /* list filters */
+  const listChecks=document.querySelectorAll('.al-filters .fz-check');
+  const FLAG={bookmarked:a=>!!a.bkm,invited:a=>!!a.invited,recent:a=>!!a.recent,onboards:a=>!!a.mine};
+  function applyListFilters(){
+    // additive: each checked box widens the set (union, not intersection)
+    const active=[...listChecks].filter(c=>c.classList.contains('on')).map(c=>c.dataset.flag);
+    const q=(document.getElementById('alSearch').value||'').toLowerCase();
+    let shown=0;
+    alRows.querySelectorAll('.al-row').forEach(r=>{
+      const acc=ACCOUNTS[+r.dataset.i];
+      const inSet=!active.length||active.some(f=>FLAG[f](acc));
+      const ok=inSet&&(!q||acc.n.toLowerCase().includes(q));
+      r.style.display=ok?'':'none';
+      if(ok)shown++;
+    });
+    document.getElementById('alCount').textContent=shown+' out of '+ACCOUNTS.length+' Accounts';
+  }
+  listChecks.forEach(c=>c.addEventListener('click',()=>{c.classList.toggle('on');applyListFilters();}));
+  // label counts come from the data, so they never drift from what the rows show
+  document.getElementById('cntInvited').textContent=ACCOUNTS.filter(FLAG.invited).length;
+  document.getElementById('cntRecent').textContent=ACCOUNTS.filter(FLAG.recent).length;
+  document.getElementById('cntBoards').textContent=ACCOUNTS.filter(FLAG.onboards).length;
+  document.getElementById('bkmCount').textContent=ACCOUNTS.filter(FLAG.bookmarked).length;
+  /* search */
+  const alSearch=document.getElementById('alSearch');
+  document.getElementById('alSearchIco').addEventListener('click',()=>{
+    alSearch.classList.toggle('open');
+    if(alSearch.classList.contains('open'))alSearch.focus();else{alSearch.value='';applyListFilters();}
+  });
+  alSearch.addEventListener('input',applyListFilters);
+  /* sort: by time / by activity */
+  const sortEls={time:document.getElementById('sortTime'),activity:document.getElementById('sortActivity')};
+  function updateSortUI(){
+    Object.entries(sortEls).forEach(([k,el])=>{
+      const on=alSort.key===k;
+      el.classList.toggle('on',on);
+      el.classList.toggle('asc',on&&alSort.dir==='asc');
+      el.classList.toggle('desc',on&&alSort.dir==='desc');
+    });
+  }
+  Object.entries(sortEls).forEach(([k,el])=>el.addEventListener('click',()=>{
+    if(alSort.key===k)alSort.dir=alSort.dir==='desc'?'asc':'desc';
+    else alSort={key:k,dir:'desc'};
+    updateSortUI();renderList();
+  }));
+  updateSortUI();
+  /* sticky header shadow while scrolling */
+  function syncShadow(){
+    const sc=(scroller?scroller.scrollTop:0)>8;
+    document.querySelectorAll('.sticky-top').forEach(s=>s.classList.toggle('scrolled',sc));
+  }
+  if(scroller)scroller.addEventListener('scroll',syncShadow,{passive:true});
+  syncShadow();
+  const shadowIO=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      const st=en.target.parentElement.querySelector('.sticky-top');
+      if(st)st.classList.toggle('scrolled',!en.isIntersecting&&en.target.parentElement.classList.contains('on'));
+    });
+  },{root:scroller||null});
+  document.querySelectorAll('.scroll-sentinel').forEach(s=>shadowIO.observe(s));
+  /* collapse metrics columns */
+  const alMini=document.getElementById('alMini');
+  alMini.addEventListener('click',()=>{
+    viewList.classList.toggle('al-collapsed');
+    alMini.textContent=viewList.classList.contains('al-collapsed')?'+':'–';
+  });
+  const dtMini=document.getElementById('dtMini');
+  dtMini.addEventListener('click',()=>{
+    viewDetail.classList.toggle('dt-collapsed');
+    dtMini.textContent=viewDetail.classList.contains('dt-collapsed')?'+':'–';
+  });
+  /* refresh */
+  document.getElementById('alRefresh').addEventListener('click',function(){
+    this.classList.remove('spinning');void this.offsetWidth;this.classList.add('spinning');
+    renderList();
+  });
+  /* list range */
+  const alRangeBtns=document.querySelectorAll('#alRange button');
+  const alAxis=document.querySelectorAll('#alAxis span');
+  alRangeBtns.forEach((b,ri)=>b.addEventListener('click',()=>{
+    alRangeBtns.forEach(x=>x.classList.remove('active'));b.classList.add('active');
+    alRi=ri;
+    document.getElementById('alDate').textContent=AL_RANGES[ri].dateText;
+    alAxis.forEach((s,k)=>s.textContent=AL_RANGES[ri].axis[k]);
+    renderList();
+  }));
+  /* list info popover */
+  const alInfo=document.getElementById('alInfo'),infotip=document.getElementById('fzInfoTip');
+  [alInfo,document.getElementById('fzInfo')].forEach(info=>{
     info.addEventListener('mouseenter',()=>{
       const fr=app.getBoundingClientRect(),ir=info.getBoundingClientRect();
       infotip.style.left=(ir.left-fr.left)+'px';
@@ -2193,33 +2502,538 @@
       infotip.style.opacity='1';
     });
     info.addEventListener('mouseleave',()=>infotip.style.opacity='0');
-
-    // insights popover - opens from the blue Insights card
-    const INSIGHTS=[
-      'More than <b>7 leads</b> from Cisco visited your boards in the last <b>48 hours</b>.',
-      '<b>Jeremiah Bryan</b> viewed your pricing page <b>3 times</b> this week - a strong buying signal.',
-      'Email drives <b>24%</b> of Cisco’s engagement - your top-performing channel.',
-      '<b>2 new contacts</b> from Cisco engaged for the first time this week.',
-      'Average session time is up <b>18%</b> vs. last week across this account.',
-      'Cisco engages most on <b>Wednesday afternoons</b> - the best time to reach out.'
-    ];
-    const dyk=document.getElementById('fzDyk'),dykTx=document.getElementById('fzDykTx'),dykDots=document.getElementById('fzDykDots');
-    let insIdx=0;
-    dykDots.innerHTML=INSIGHTS.map((_,i)=>'<i class="'+(i===0?'on':'')+'" data-i="'+i+'"></i>').join('');
-    dykTx.innerHTML=INSIGHTS[0];
-    function showInsight(i){
-      insIdx=i;
-      dykDots.querySelectorAll('i').forEach((d,k)=>d.classList.toggle('on',k===i));
-      dykTx.style.opacity='0';
-      setTimeout(()=>{dykTx.innerHTML=INSIGHTS[i];dykTx.style.opacity='1';},190);
+  });
+  /* bookmark toggle + row click */
+  alRows.addEventListener('click',e=>{
+    const bkm=e.target.closest('.al-bkm');
+    if(bkm){
+      const acc=ACCOUNTS[+bkm.dataset.i];
+      acc.bkm=!acc.bkm;bkm.classList.toggle('on',acc.bkm);
+      document.getElementById('bkmCount').textContent=ACCOUNTS.filter(a=>a.bkm).length;
+      applyListFilters();
+      e.stopPropagation();return;
     }
-    dykDots.querySelectorAll('i').forEach(d=>d.addEventListener('click',()=>showInsight(+d.dataset.i)));
-    app.querySelector('.fz-c-ins').addEventListener('click',()=>{
-      dyk.classList.toggle('hide');
-      if(!dyk.classList.contains('hide'))showInsight(insIdx);
+    if(e.target.closest('.fz-dot'))return;
+    const row=e.target.closest('.al-row');if(!row)return;
+    openAccount(+row.dataset.i);
+  });
+
+  /* ================= VIEW 2: account detail ================= */
+  const rowsEl=document.getElementById('fzRows');
+  const END=new Date(2026,7,11);
+  const RANGES=[
+    {key:'TODAY',factor:0.18,dateText:'Aug 11, 2026',axis:['6 AM','11 AM','2 PM','TODAY'],start:new Date(2026,7,11)},
+    {key:'1W',factor:1,dateText:'Aug 04 – Aug 11, 2026',axis:['Aug 04','Aug 06','Aug 09','TODAY'],start:new Date(2026,7,4)},
+    {key:'2W',factor:1.7,dateText:'Jul 28 – Aug 11, 2026',axis:['Jul 28','Aug 02','Aug 07','TODAY'],start:new Date(2026,6,28)},
+    {key:'1M',factor:3,dateText:'Jul 12 – Aug 11, 2026',axis:['Jul 12','Jul 22','Aug 01','TODAY'],start:new Date(2026,6,12)},
+    {key:'3M',factor:5.5,dateText:'May 13 – Aug 11, 2026',axis:['May','Jun','Jul','TODAY'],start:new Date(2026,4,13)}
+  ];
+  let curAcc=ACCOUNTS[1];
+  let curPeople=[];
+  function genPeople(accIdx){
+    const acc=ACCOUNTS[accIdx];
+    const rand=rng((accIdx+1)*4242+13);
+    const quiet=!!acc.risk; // nobody responded this window - the people must be silent too
+    const count=Math.max(1,acc.eng); // match the "N People" claim in the header
+    const used=new Set(),out=[];
+    for(let k=0;k<count;k++){
+      let fi,li,key;
+      do{fi=Math.floor(rand()*FIRST.length);li=Math.floor(rand()*LAST.length);key=fi+'-'+li;}while(used.has(key));
+      used.add(key);
+      const first=FIRST[fi],last=LAST[li];
+      const isNew=k>=count-Math.min(acc.nw,count);
+      const inferred=!isNew&&rand()<0.25;
+      out.push({
+        id:k,
+        n:first+' '+last,
+        t:TITLES[Math.floor(rand()*TITLES.length)],
+        e:inferred?null:(first+'.'+last).toLowerCase()+'@'+acc.dom,
+        inferred:inferred,
+        seg:isNew?'new':(inferred?'inferred':'known'),
+        isNew:isNew,
+        quiet:quiet,
+        v:quiet?Math.round(2+rand()*12):Math.round(6+rand()*90),
+        a:quiet?1+Math.round(rand()*2):Math.round(1+rand()*5),
+        sec:quiet?Math.round(40+rand()*150):Math.round(90+rand()*700),
+        db:Math.max(1,Math.round(acc.db*(0.4+rand()*0.9)))
+      });
+    }
+    return out;
+  }
+  function dateFromPos(ri,pos){const r=RANGES[ri];return new Date(r.start.getTime()+(END-r.start)*pos/100);}
+  function genDots(p,ri){
+    const r=RANGES[ri],n=Math.max(1,Math.min(16,Math.round(p.db*r.factor))),rand=rng((p.id+1)*1000+ri*37+7),out=[];
+    for(let k=0;k<n;k++){
+      const type=(p.quiet?rand()<0.78:rand()<0.5)?'r':'b',act=Math.floor(rand()*ACTS.length);
+      const w=type==='r'?ACTS[act].w:SESS[act%SESS.length].w;
+      out.push({pos:4+rand()*92,type,act,sz:SZ[w-1]});
+    }
+    out.sort((a,b)=>a.pos-b.pos);return out;
+  }
+  const pViews=(p,f)=>p.v?Math.max(1,Math.round(p.v*f)):0;
+  const pActs=(p,f)=>p.a?Math.max(1,Math.round(p.a*f)):0;
+  // the summary cards are the sum of the rows underneath them, never a separate number
+  function updateDetailSummary(ri){
+    const f=RANGES[ri].factor;
+    let v=0,a=0,sec=0;
+    curPeople.forEach(p=>{v+=pViews(p,f);a+=pActs(p,f);sec+=p.sec*f;});
+    document.getElementById('dtViews').textContent=v;
+    document.getElementById('dtActs').textContent=a;
+    document.getElementById('dtHrs').textContent=sec?fmtTime(sec):'0:00m';
+  }
+  function renderRows(ri){
+    const f=RANGES[ri].factor;
+    rowsEl.innerHTML=curPeople.map((p,i)=>{
+      const dots=genDots(p,ri).map(d=>`<span class="fz-dot ${d.type} ${d.sz}" style="left:${d.pos.toFixed(1)}%" data-type="${d.type}" data-pos="${d.pos.toFixed(1)}" data-act="${d.act}"></span>`).join('');
+      const meta=p.inferred?`<div class="fz-inferred">Inferred</div>`:`<div class="em">${p.e}</div>`;
+      const badge=p.isNew?` <span class="fz-newbadge">New</span>`:'';
+      const on=selected.has(p.id);
+      return `<div class="fz-row${on?' sel':''}" data-seg="${p.seg}" data-id="${p.id}">
+        <div class="fz-person">
+          <span class="cbx${on?' on':''}" data-id="${p.id}">${CHECK}</span>
+          <div class="who">
+            <div class="nm">${p.n}${badge}</div><div class="ti">${p.t}</div>${meta}
+          </div>
+        </div>
+        <div class="fz-track"><div class="base"></div>${dots}</div>
+        <div class="fz-metrics">
+          <div class="fz-metric">${pViews(p,f)}</div>
+          <div class="fz-metric">${pActs(p,f)}</div>
+          <div class="fz-metric">${p.sec?fmtTime(p.sec*f):'0:00m'}</div>
+        </div>
+        <span class="al-go">${CHEVR}</span>
+      </div>`;
+    }).join('');
+    attachDots(ri);
+    applyFilters();
+    syncSelUI();
+  }
+  function attachDots(ri){
+    rowsEl.querySelectorAll('.fz-dot').forEach(dot=>{
+      dot.addEventListener('mouseenter',()=>{
+        const c=relCoords(dot);
+        if(dot.dataset.type==='r'){
+          const act=ACTS[+dot.dataset.act];
+          acttip.querySelector('.hd').textContent=fmtDate(dateFromPos(ri,+dot.dataset.pos));
+          acttip.querySelector('.av').src='https://i.pravatar.cc/72?img='+act.img;
+          acttip.querySelector('.tx').innerHTML='Invited by <b>'+act.who+'</b> to "<b>'+act.board+'</b>" board';
+          acttip.querySelector('.ft').innerHTML=act.extra;
+          positionTip(acttip,c.cx,c.cy,146);
+        }else{
+          const s=SESS[(+dot.dataset.act)%SESS.length];
+          sesstip.querySelector('.hd').textContent=fmtDate2(dateFromPos(ri,+dot.dataset.pos));
+          sesstip.querySelector('.tot').textContent='Total session spent ('+s.total+')';
+          sesstip.querySelector('.ttl').textContent=s.title;
+          sesstip.querySelector('.evs').innerHTML=s.events.map(evHtml).join('');
+          positionTip(sesstip,c.cx,c.cy,167);
+        }
+      });
+      dot.addEventListener('mouseleave',()=>{tip.style.opacity='0';acttip.style.opacity='0';sesstip.style.opacity='0';});
     });
-    document.getElementById('fzDykX').addEventListener('click',()=>dyk.classList.add('hide'));
-  })();
+  }
+  /* utm tips */
+  document.querySelectorAll('#dtUtm span').forEach(seg=>{
+    seg.addEventListener('mouseenter',()=>{
+      const c=relCoords(seg);
+      tip.textContent=seg.dataset.tip;
+      tip.style.left=c.cx+'px';tip.style.top=(c.cy-6)+'px';tip.style.opacity='1';
+    });
+    seg.addEventListener('mouseleave',()=>tip.style.opacity='0');
+  });
+  /* audience filters */
+  const dtChecks=document.querySelectorAll('.fz-filters .fz-check');
+  function applyFilters(){
+    const active=[...dtChecks].filter(c=>c.classList.contains('on')).map(c=>c.dataset.seg);
+    if(!selected.size)selOnly=false;   // never strand the user on an empty list
+    rowsEl.querySelectorAll('.fz-row').forEach(r=>{
+      const segOk=active.includes(r.dataset.seg);
+      const selOk=!selOnly||selected.has(+r.dataset.id);
+      r.style.display=segOk&&selOk?'':'none';
+    });
+    syncSelUI();
+  }
+  dtChecks.forEach(c=>c.addEventListener('click',()=>{c.classList.toggle('on');applyFilters();}));
+  /* range */
+  const rangeBtns=viewDetail.querySelectorAll('.fz-range button');
+  const dateEl=viewDetail.querySelector('.fz-date');
+  const axisSpans=viewDetail.querySelectorAll('.fz-thead .axis span');
+  let curRi=1;
+  function setRange(ri){
+    curRi=ri;
+    rangeBtns.forEach(x=>x.classList.remove('active'));rangeBtns[ri].classList.add('active');
+    dateEl.textContent=RANGES[ri].dateText;
+    axisSpans.forEach((s,k)=>s.textContent=RANGES[ri].axis[k]);
+    renderRows(ri);
+    updateDetailSummary(ri);
+  }
+  rangeBtns.forEach((b,ri)=>b.addEventListener('click',()=>setRange(ri)));
+  /* ---- lead multi-select: who the campaign is actually for ---- */
+  const CHECK='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
+  const selected=new Set();
+  let selOnly=false;
+  const selAllBox=document.getElementById('dtSelAll');
+  const selLink=document.getElementById('dtSelLink');
+  function visibleRows(){return [...rowsEl.querySelectorAll('.fz-row')].filter(r=>r.style.display!=='none');}
+  function selectedNames(){return curPeople.filter(p=>selected.has(p.id)).map(p=>p.n);}
+  function syncSelUI(){
+    const n=selected.size;
+    // the action stays generic; the link is where you check who it goes to
+    selLink.classList.toggle('on',n>0);
+    selLink.textContent=selOnly?'Back to all people'
+      :'View '+n+' selected '+(n===1?'person':'people');
+    const vis=visibleRows(),visSel=vis.filter(r=>selected.has(+r.dataset.id)).length;
+    selAllBox.classList.toggle('on',vis.length>0&&visSel===vis.length);
+    selAllBox.classList.toggle('part',visSel>0&&visSel<vis.length);
+    rowsEl.querySelectorAll('.fz-row').forEach(r=>{
+      const on=selected.has(+r.dataset.id);
+      r.classList.toggle('sel',on);
+      r.querySelector('.cbx').classList.toggle('on',on);
+    });
+  }
+  rowsEl.addEventListener('click',function(e){
+    const box=e.target.closest('.cbx');if(!box)return;
+    e.stopPropagation();
+    const id=+box.dataset.id;
+    selected.has(id)?selected.delete(id):selected.add(id);
+    applyFilters();
+  },true);
+  selAllBox.addEventListener('click',()=>{
+    const ids=visibleRows().map(r=>+r.dataset.id);
+    const all=ids.every(id=>selected.has(id));
+    ids.forEach(id=>all?selected.delete(id):selected.add(id));
+    applyFilters();
+  });
+  selLink.addEventListener('click',()=>{selOnly=!selOnly;applyFilters();});
+
+  /* detail sort: by time / by activity */
+  let dtSort={key:'time',dir:'desc'};
+  const dtSortEls={time:document.getElementById('dtSortTime'),activity:document.getElementById('dtSortActivity')};
+  function sortPeople(){
+    curPeople.sort((a,b)=>{
+      const va=dtSort.key==='time'?a.sec:a.a,vb=dtSort.key==='time'?b.sec:b.a;
+      return dtSort.dir==='desc'?vb-va:va-vb;
+    });
+  }
+  function updateDtSortUI(){
+    Object.entries(dtSortEls).forEach(([k,el])=>{
+      const on=dtSort.key===k;
+      el.classList.toggle('on',on);
+      el.classList.toggle('asc',on&&dtSort.dir==='asc');
+      el.classList.toggle('desc',on&&dtSort.dir==='desc');
+    });
+  }
+  Object.entries(dtSortEls).forEach(([k,el])=>el.addEventListener('click',()=>{
+    if(dtSort.key===k)dtSort.dir=dtSort.dir==='desc'?'asc':'desc';
+    else dtSort={key:k,dir:'desc'};
+    sortPeople();updateDtSortUI();renderRows(curRi);
+  }));
+
+  /* open an account */
+  function openAccount(i){
+    curAcc=ACCOUNTS[i];
+    curPeople=genPeople(i);
+    document.getElementById('dtName').textContent=curAcc.n;
+    document.getElementById('dtName2').textContent=curAcc.n;
+    document.getElementById('dtBkm').style.color=curAcc.bkm?'#2b7de9':'#d9e2ec';
+    document.getElementById('dtPeople').textContent=curAcc.eng+(curAcc.eng===1?' Person':' People');
+    document.getElementById('dtInd').textContent=curAcc.ind;
+    document.getElementById('dtLoc').innerHTML=curAcc.city+'<br>'+curAcc.emp+' employees';
+    const newCount=curPeople.filter(p=>p.isNew).length;
+    document.getElementById('dtNewCt').textContent=newCount;
+    dtChecks.forEach(c=>c.classList.add('on'));
+    selected.clear();selOnly=false;
+    dtSort={key:'time',dir:'desc'};
+    sortPeople();updateDtSortUI();
+    buildInsights();
+    const dykEl=document.getElementById('fzDyk');
+    dykEl.classList.add('hide');
+    clearTimeout(dykTimer);
+    dykTimer=setTimeout(()=>dykEl.classList.remove('hide'),650); // reveal only - never clobber a click
+    setRange(1);
+    showDetail();
+  }
+  document.getElementById('dtBkm').addEventListener('click',function(){
+    curAcc.bkm=!curAcc.bkm;
+    this.style.color=curAcc.bkm?'#2b7de9':'#d9e2ec';
+    document.getElementById('bkmCount').textContent=ACCOUNTS.filter(a=>a.bkm).length;
+    renderList();
+  });
+
+  /* ================= lead drawer ================= */
+  const drawer=document.getElementById('fzDrawer'),overlay=document.getElementById('fzOverlay');
+  const dwHead=document.getElementById('fzDwHead'),dwBody=document.getElementById('fzDwBody');
+  const I_CLOCK='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>';
+  const I_MAIL='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>';
+  const I_PHONE='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
+  const I_CHEV='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  const I_SCREEN='<svg width="14" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>';
+  const CITIES=['Milwaukee, WI','San Jose, CA','Austin, TX','New York, NY'];
+  function evHtml(ev){return '<div class="fz-ev"><span class="ico">'+(ev.ic==='eye'?EYE:CURSOR)+'</span><div class="rowt"><span>'+ev.type+'</span><span class="time">'+ev.time+'</span></div><div class="item">'+ev.item+'</div></div>';}
+  function openDrawer(i){
+    const p=curPeople[i];
+    const email=p.e?'<a href="mailto:'+p.e+'">'+I_MAIL+p.e+'</a>':'';
+    dwHead.innerHTML='<span class="fz-dw-x" id="fzDwX">✕</span>'
+      +'<div class="fz-dw-name">'+p.n+'</div>'
+      +'<div class="fz-dw-time">'+I_CLOCK+fmtTime(p.sec)+'</div>'
+      +'<div class="fz-dw-title">'+p.t+'</div>'
+      +'<div class="fz-dw-co">'+curAcc.n+'</div>'
+      +'<div class="fz-dw-links">'+email+'<a href="tel:3434343434">'+I_PHONE+'343-4343-434</a></div>';
+    let html='';
+    for(let k=0;k<2;k++){
+      const s=SESS[(i+k)%SESS.length],act=ACTS[(i+k)%ACTS.length],d=new Date(2026,7,10-k);
+      html+='<div class="fz-cardx">'
+        +'<div class="fz-cd-hd"><div class="r1"><span class="ct">'+s.events.length+'</span><span>'+fmtDate2(d)+'</span><span class="dur">'+s.total+'</span></div><div class="r2">'+s.title+'</div></div>'
+        +'<div class="fz-cd-loc"><span>'+CITIES[(i+k)%CITIES.length]+'</span><span class="scr">'+I_SCREEN+'</span><span class="inv">Invited by: <b>'+act.who+'</b> <img src="https://i.pravatar.cc/40?img='+act.img+'" alt=""></span></div>'
+        +'<div class="fz-cd-evs"><div class="evs">'+s.events.map(evHtml).join('')+'</div></div>'
+        +'<div class="fz-trg'+(k===0?'':' closed')+'">'
+          +'<div class="fz-trg-tgl"><span>'+(k===0?'Hide':'View')+' Trigger</span>'+I_CHEV+'</div>'
+          +'<div class="fz-trg-bd"><span class="ico">'+I_MAIL+'</span><div><div>Trigger by Email sent at '+fmtDate2(d)+', 08:44AM</div><div class="itm">'+act.board+'</div></div></div>'
+        +'</div>'
+      +'</div>';
+    }
+    [['Opened Email','08:50AM'],['Email Sent','08:44AM']].forEach(function(m,k){
+      const act=ACTS[(i+2+k)%ACTS.length],d=new Date(2026,7,8-k);
+      html+='<div class="fz-cardx"><div class="fz-cd-hd"><div class="r1"><span>'+fmtDate2(d)+'</span></div></div>'
+        +'<div class="fz-mailrow"><span class="ico">'+I_MAIL+'</span><div><div>'+m[0]+'</div><div class="itm">'+act.board+'</div></div>'
+        +'<div class="snt"><span class="by">Sent by: <b>'+act.who+'</b> <img src="https://i.pravatar.cc/40?img='+act.img+'" alt=""></span><div class="tm">'+m[1]+'</div></div></div></div>';
+    });
+    dwBody.innerHTML=html;
+    dwBody.querySelectorAll('.fz-trg-tgl').forEach(function(t){
+      t.addEventListener('click',function(){
+        const trg=t.parentElement;trg.classList.toggle('closed');
+        t.querySelector('span').textContent=(trg.classList.contains('closed')?'View':'Hide')+' Trigger';
+      });
+    });
+    document.getElementById('fzDwX').addEventListener('click',closeDrawer);
+    drawer.classList.add('on');overlay.classList.add('on');drawer.setAttribute('aria-hidden','false');
+    dwBody.scrollTop=0;
+  }
+  function closeDrawer(){drawer.classList.remove('on');overlay.classList.remove('on');drawer.setAttribute('aria-hidden','true');}
+  overlay.addEventListener('click',closeDrawer);
+  window.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+  rowsEl.addEventListener('click',function(e){
+    if(e.target.closest('.fz-dot'))return;
+    const row=e.target.closest('.fz-row');if(!row)return;
+    const vis=[].slice.call(rowsEl.querySelectorAll('.fz-row'));
+    openDrawer(vis.indexOf(row));
+  });
+
+  /* ================= select board modal ================= */
+  const BOARDS_LIST=[
+    {n:'Landify promotions',sub:'Item last added 10 months ago',v:13,it:5,eng:7,img:'img/b1.jpg'},
+    {n:'Salesforce CRM × Autodesk — One View of Every Account',sub:'No items on board',v:5,it:0,eng:2,img:'img/b10.jpg'},
+    {n:'Gong Forecast — ABM Landing Page',sub:'No items on board',v:3,it:0,eng:2,img:'img/b2.jpg'},
+    {n:'Sales AI Lead Generation',sub:'No items on board',v:0,it:0,eng:0,img:'img/b3.jpg'},
+    {n:'Microsite Persuasion Campaign',sub:'Item last added 7 months ago',v:19,it:1,eng:10,img:'img/b4.jpg'},
+    {n:'Gong AI Productivity Campaign',sub:'No items on board',v:0,it:0,eng:0,img:'img/b5.jpg'},
+    {n:'Sales AI Adoption Campaign',sub:'No items on board',v:0,it:0,eng:0,img:'img/b6.jpg'},
+    {n:'Folloze ABM Lead Generation',sub:'No items on board',v:0,it:0,eng:0,img:'img/b7.jpg'},
+    {n:'Folloze ABM Brand Awareness',sub:'Item last added 6 months ago',v:0,it:4,eng:0,img:'img/b8.jpg'},
+    {n:'Q4 Product Launch — Buyer Hub',sub:'Item last added 2 months ago',v:24,it:6,eng:9,img:'img/b9.jpg'},
+    {n:'Security Solutions — Exec Brief',sub:'Item last added a month ago',v:11,it:3,eng:5,img:'img/b10.jpg'}
+  ];
+  const bmOverlay=document.getElementById('bmOverlay'),bmModal=document.getElementById('bmModal');
+  const bmRowsEl=document.getElementById('bmRows'),bmSearch=document.getElementById('bmSearch');
+  const bmToast=document.getElementById('bmToast');
+  const I_EYE2='<svg width="15" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>';
+  const I_DOC='<svg width="12" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+  const I_PERSON2='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" stroke-linecap="round"/></svg>';
+  let bmSort={key:null,dir:'desc'};
+  function renderBoards(){
+    const q=(bmSearch.value||'').toLowerCase();
+    let list=BOARDS_LIST.filter(b=>b.n.toLowerCase().includes(q));
+    if(bmSort.key){
+      list=[...list].sort((a,b)=>{
+        if(bmSort.key==='n'){const c=a.n.localeCompare(b.n);return bmSort.dir==='desc'?-c:c;}
+        const c=a[bmSort.key]-b[bmSort.key];return bmSort.dir==='desc'?-c:c;
+      });
+    }
+    bmRowsEl.innerHTML=list.length?list.map((b,i)=>`
+      <div class="bm-row" data-n="${b.n.replace(/"/g,'&quot;')}">
+        <div class="bm-name">
+          <span class="bm-thumb"><img src="${b.img}" alt="" loading="lazy"></span>
+          <div style="min-width:0"><div class="bm-nm">${b.n}</div><div class="bm-sub">${b.sub}</div></div>
+        </div>
+        <div class="bm-cell">${I_EYE2}${b.v}</div>
+        <div class="bm-cell">${I_DOC}${b.it}</div>
+        <div class="bm-cell">${I_PERSON2}${b.eng}</div>
+        <div class="bm-acts">
+          <button class="bm-btn ghost" data-act="view">View Board</button>
+          <button class="bm-btn primary" data-act="campaign">Create Campaign</button>
+        </div>
+      </div>`).join('')
+      :'<div class="bm-empty">No boards match your search</div>';
+  }
+  function openBoardModal(){
+    const names=selectedNames();
+    const rest=names.slice(3);
+    document.getElementById('bmRecip').innerHTML=names.length
+      ? 'Sending to <b>'+names.length+' selected '+(names.length===1?'person':'people')+'</b> at '+curAcc.n+' · '
+        +names.slice(0,3).join(', ')
+        +(rest.length?' <span class="more" title="'+rest.join('\n')+'">+'+rest.length+' more</span>':'')
+      : 'Sending to <b>everyone engaged</b> at '+curAcc.n+' ('+curAcc.eng+' people)';
+    bmSearch.value='';bmSort={key:null,dir:'desc'};updateBmSortUI();renderBoards();
+    bmOverlay.classList.add('on');bmModal.classList.add('on');bmModal.setAttribute('aria-hidden','false');
+    setTimeout(()=>bmSearch.focus(),280);
+  }
+  function closeBoardModal(){
+    bmOverlay.classList.remove('on');bmModal.classList.remove('on');bmModal.setAttribute('aria-hidden','true');
+  }
+  const bmThs=document.querySelectorAll('.bm-th');
+  function updateBmSortUI(){
+    bmThs.forEach(th=>{
+      const on=bmSort.key===th.dataset.k;
+      th.classList.toggle('on',on);
+      th.classList.toggle('asc',on&&bmSort.dir==='asc');
+      th.classList.toggle('desc',on&&bmSort.dir==='desc');
+    });
+  }
+  bmThs.forEach(th=>th.addEventListener('click',()=>{
+    const k=th.dataset.k;
+    if(bmSort.key===k)bmSort.dir=bmSort.dir==='desc'?'asc':'desc';
+    else bmSort={key:k,dir:k==='n'?'asc':'desc'};
+    updateBmSortUI();renderBoards();
+  }));
+  bmSearch.addEventListener('input',renderBoards);
+  document.getElementById('bmX').addEventListener('click',closeBoardModal);
+  bmOverlay.addEventListener('click',closeBoardModal);
+  window.addEventListener('keydown',e=>{if(e.key==='Escape')closeBoardModal();});
+  viewDetail.querySelector('.fz-create').addEventListener('click',openBoardModal);
+  let bmToastTimer=null;
+  function showBmToast(html){
+    bmToast.innerHTML=html;
+    bmToast.classList.add('on');
+    clearTimeout(bmToastTimer);
+    bmToastTimer=setTimeout(()=>bmToast.classList.remove('on'),3200);
+  }
+  bmRowsEl.addEventListener('click',e=>{
+    const btn=e.target.closest('.bm-btn');if(!btn)return;
+    const row=btn.closest('.bm-row');
+    closeBoardModal();
+    if(btn.dataset.act==='view'){
+      showBmToast('Opening “<b>'+row.dataset.n+'</b>”…');
+    }else{
+      const names=selectedNames();
+      const who=names.length?'<b>'+names.length+' '+(names.length===1?'person':'people')+'</b> at '+curAcc.n
+                            :'<b>'+curAcc.n+'</b>';
+      showBmToast('Campaign for '+who+' created from “<b>'+row.dataset.n+'</b>”');
+    }
+  });
+
+  /* ================= insights (did you know) ================= */
+  let INSIGHTS=[];
+  // every insight carries the condition that makes it true, so the count on the
+  // Insights card is the number of insights that actually exist for this account
+  function buildInsights(){
+    const a=curAcc,lead=curPeople[0]?curPeople[0].n:'A lead';
+    // read the account's own timeline — the same dots drawn on the list row
+    const dots=alGenDots(ACCOUNTS.indexOf(a));
+    const red=dots.filter(d=>d.type==='r'),blue=dots.filter(d=>d.type==='b');
+    const emails=red.reduce((s,d)=>s+d.emails,0);
+    const acts=blue.reduce((s,d)=>s+d.acts,0);
+    const views=blue.reduce((s,d)=>s+d.views,0);
+    const peak=blue.slice().sort((x,y)=>(y.acts+y.views)-(x.acts+x.views))[0];
+    const peakDay=peak?fmtDay(alDateFromPos(peak.pos)):'';
+    const lastRed=red.length?Math.max(...red.map(d=>d.pos)):-1;
+    const lastBlue=blue.length?Math.max(...blue.map(d=>d.pos)):-1;
+    const silentTail=red.filter(d=>d.pos>lastBlue).length;      // touches after the last reply
+    // a touch counts as answered if engagement follows it within ~2 days of the window
+    const answered=red.filter(r=>blue.some(b=>b.pos>r.pos&&b.pos-r.pos<28)).length;
+    const replyRate=red.length?Math.round(answered/red.length*100):0;
+    const busiest=blue.length?blue.slice().sort((x,y)=>y.people-x.people)[0]:null;
+    /* ---- person-level first: name the human worth acting on ---- */
+    const SENIOR=/^CISO$|^VP |^Head of|Director/;
+    const prof=curPeople.map(p=>{
+      const d=genDots(p,curRi);
+      const b=d.filter(x=>x.type==='b'),r=d.filter(x=>x.type==='r');
+      const lastB=b.length?Math.max(...b.map(x=>x.pos)):-1;
+      return {p,b,r,lastB,
+        untouched:r.filter(x=>x.pos>lastB).length,
+        repliedLast:lastB>(r.length?Math.max(...r.map(x=>x.pos)):-1),
+        demo:b.find(x=>x.act%3===1),        // "Request a Demo" session
+        sales:b.find(x=>x.act%3===2)};      // "Contact Sales" session
+    });
+    const used=new Set(),pick=arr=>arr.find(f=>f&&!used.has(f.p.id));
+    const take=f=>{if(f)used.add(f.p.id);return f;};
+    const byTime=[...prof].sort((x,y)=>y.p.sec-x.p.sec);
+    const byDays=[...prof].sort((x,y)=>y.b.length-x.b.length);
+    const byActs=[...prof].sort((x,y)=>y.p.a-x.p.a);
+    const deep=take(pick(byTime));
+    const intent=take(pick(prof.filter(f=>f.demo))||pick(prof.filter(f=>f.sales)));
+    const seniorNew=take(pick(prof.filter(f=>f.p.isNew&&SENIOR.test(f.p.t))));
+    const loyal=take(pick(byDays.filter(f=>f.b.length>=3)));
+    const warm=take(pick(prof.filter(f=>f.repliedLast&&f.b.length>0)));
+    const ghost=take(pick(prof.filter(f=>f.untouched>=2)));
+    const rookie=take(pick(prof.filter(f=>f.p.isNew&&f.p.v>=25)));
+    const topActor=take(pick(byActs.filter(f=>f.p.a>=4)));
+    const P=[
+      [deep,        f=>'<b>'+f.p.n+'</b> spent <b>'+fmtTime(f.p.sec)+'</b> on your boards this week - the deepest engagement in this account.'],
+      [intent,      f=>'<b>'+f.p.n+'</b> filled the <b>'+(f.demo?'Request a Demo':'Contact Sales')+'</b> form - the highest-intent action here this week.'],
+      [seniorNew,   f=>'<b>'+f.p.n+'</b> (<b>'+f.p.t+'</b>) engaged for the first time - a decision-maker just entered the account.'],
+      [loyal,       f=>'<b>'+f.p.n+'</b> came back on <b>'+f.b.length+' separate days</b> - sustained interest, not a one-off.'],
+      [warm,        f=>'<b>'+f.p.n+'</b> engaged <b>right after</b> your last touch - reply while it is still warm.'],
+      [ghost,       f=>'You have touched <b>'+f.p.n+'</b> <b>'+f.untouched+' times</b> since their last response - try a different angle.'],
+      [rookie,      f=>'<b>'+f.p.n+'</b> is brand new and already at <b>'+f.p.v+' item views</b>.'],
+      [topActor,    f=>'<b>'+f.p.n+'</b> took <b>'+f.p.a+' actions</b> - the most of anyone at '+a.n+'.']
+    ];
+    const personIns=P.filter(x=>x[0]).map(x=>({html:x[1](x[0]),pid:x[0].p.id,who:x[0].p.n}));
+
+    const pool=[
+      [emails>0,        'You sent <b>'+emails+' emails</b> to '+a.n+' this week across <b>'+red.length+' touch'+(red.length>1?'es':'')+'</b>.'],
+      [blue.length>0,   'They came back with <b>'+acts+' actions</b> and <b>'+views+' item views</b> over <b>'+blue.length+' separate day'+(blue.length>1?'s':'')+'</b>.'],
+      [silentTail>=2,   'Your <b>last '+silentTail+' touches</b> landed with <b>no engagement</b> in return - time to change the angle.'],
+      [lastBlue>lastRed&&blue.length>0, a.n+' engaged <b>after</b> your last send - the follow-up window is open <b>right now</b>.'],
+      [!!peak,          '<b>'+peakDay+'</b> was the strongest day: <b>'+(peak?peak.acts:0)+' actions</b> and <b>'+(peak?peak.views:0)+' views</b> in one day.'],
+      [busiest&&busiest.people>=3, 'On <b>'+(busiest?fmtDay(alDateFromPos(busiest.pos)):'')+'</b>, <b>'+(busiest?busiest.people:0)+' people</b> from '+a.n+' engaged on the same day - that reads like a buying committee.'],
+      [red.length>0&&blue.length>0, '<b>'+answered+' of your '+red.length+' touches</b> were followed by engagement within <b>48 hours</b> - a <b>'+replyRate+'%</b> response rate.'],
+      [red.length===0&&blue.length>0, 'Every bit of this week’s engagement was <b>inbound</b> - nobody on your team has reached out yet.'],
+      [blue.length===0&&emails>0, a.n+' has <b>not engaged at all</b> this week despite <b>'+emails+' emails</b> sent.'],
+      [a.nw>0&&blue.length>0, '<b>'+a.nw+' new contact'+(a.nw>1?'s':'')+'</b> from '+a.n+' engaged for the first time this week.'],
+      [a.eng>=5&&blue.length>0, '<b>'+a.eng+' people</b> from '+a.n+' are active across multiple boards.'],
+      [blue.length>=4,  'Engagement is spread across <b>'+blue.length+' days</b>, not one spike - this is sustained interest.'],
+      [blue.length===0, 'Nobody at '+a.n+' has engaged yet - <b>'+lead+'</b> is your best-known contact to try a different way in.'],
+      [a.agoMin>10000,  'No activity from '+a.n+' in over a month - consider a re-engagement play.']
+    ];
+    // people worth acting on lead; account-level context follows
+    INSIGHTS=personIns.concat(pool.filter(x=>x[0]).map(x=>({html:x[1],pid:null}))).slice(0,12);
+    document.getElementById('dtIns').textContent=INSIGHTS.length;
+    document.getElementById('dykIc').textContent=INSIGHTS.length;
+    dykDots.innerHTML=INSIGHTS.map((_,i)=>'<i class="'+(i===0?'on':'')+'" data-i="'+i+'"></i>').join('');
+    dykDots.querySelectorAll('i').forEach(d=>d.addEventListener('click',()=>showInsight(+d.dataset.i)));
+    dykTx.innerHTML=INSIGHTS[0].html;
+    insIdx=0;
+    syncDykCta();
+  }
+  function syncDykCta(){
+    const ins=INSIGHTS[insIdx];if(!ins)return;
+    dykCta.textContent='CREATE CAMPAIGN';
+  }
+  const dyk=document.getElementById('fzDyk'),dykTx=document.getElementById('fzDykTx'),dykDots=document.getElementById('fzDykDots');
+  const dykCta=document.getElementById('fzDykCta');
+  let insIdx=0,dykTimer=null;
+  function showInsight(i){
+    insIdx=i;
+    dykDots.querySelectorAll('i').forEach((d,k)=>d.classList.toggle('on',k===i));
+    dykTx.style.opacity='0';
+    setTimeout(()=>{dykTx.innerHTML=INSIGHTS[i].html;dykTx.style.opacity='1';syncDykCta();},190);
+  }
+  // the insight names the person - the action sends to exactly that person
+  dykCta.addEventListener('click',()=>{
+    const ins=INSIGHTS[insIdx];if(!ins)return;
+    selected.clear();
+    if(ins.pid!=null)selected.add(ins.pid);
+    applyFilters();
+    openBoardModal();
+  });
+  viewDetail.querySelector('.fz-c-ins').addEventListener('click',()=>{
+    dyk.classList.toggle('hide');
+    if(!dyk.classList.contains('hide'))showInsight(insIdx);
+  });
+  document.getElementById('fzDykX').addEventListener('click',()=>dyk.classList.add('hide'));
+
+  /* init */
+  renderList();
+})();
 </script>
 <script>
   /* Folloze Design System showcase — panel switch + interactive components */
@@ -2254,7 +3068,7 @@
 
     /* full-bleed hover stage: brand background colour + large mockup */
     var THEMES={
-      'account-dashboard':{bg:'#e7effb',img:'folloze_account_dashboard.png'},
+      'account-dashboard':{bg:'#e7effb',img:'folloze_account_dashboard.png?v=2'},
       'impact-dashboard':{bg:'#e9f3f7',img:'impact_dashboard_main.png?v=2'},
       'design-system':{bg:'#eeedff',img:'design_system_hero.png'},
       'campaign-agent':{bg:'#efeafe',img:'campaign_agent_poster.png'},
