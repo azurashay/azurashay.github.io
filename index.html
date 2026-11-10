@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Shay Azura is a product designer working across AI and B2B SaaS. Four case studies and a tool he built, with a live recreation you can click through.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="mask-icon" href="favicon.svg" color="#151210" />
 <title>Shay Azura - Product Designer</title>
@@ -80,11 +81,12 @@ nav.on .navkeys{opacity:1;transform:none;pointer-events:auto;visibility:visible}
   box-shadow:var(--sh1);
   transition:transform .25s var(--ease),box-shadow .25s}
 .askbtn:hover{transform:translateY(-2px);box-shadow:0 12px 22px -10px rgba(50,42,26,.55)}
-.mini{width:24px;height:24px;border-radius:50%;flex:0 0 auto;position:relative;
+.askbtn .mini,.chat .hd .mini{width:24px;height:24px;border-radius:50%;flex:0 0 auto;position:relative;
   background:linear-gradient(150deg,#fff,#EFE7D7);
   box-shadow:inset -2px -2px 5px rgba(90,96,112,.22),0 0 0 1px rgba(13,16,23,.07)}
-.mini i{position:absolute;top:7px;width:3px;height:9px;border-radius:2px;background:#12101A}
-.mini i.l{left:7px} .mini i.r{left:14px}
+.askbtn .mini i,.chat .hd .mini i{position:absolute;top:7px;width:3px;height:9px;border-radius:2px;background:#12101A}
+.askbtn .mini i.l,.chat .hd .mini i.l{left:7px}
+.askbtn .mini i.r,.chat .hd .mini i.r{left:14px}
 
 /* ===================== HERO ===================== */
 #top{position:relative;min-height:100vh;width:100%;max-width:var(--maxw);margin:0 auto;
@@ -721,7 +723,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   #fzApp .fz-thead .axis .today{color:#e0356b;font-weight:600}
   #fzApp .fz-mh{display:flex;flex-shrink:0;align-items:flex-end;align-self:stretch}
   #fzApp .fz-mh span{width:72px;text-align:center;text-transform:uppercase;letter-spacing:.04em}
-  #fzApp .fz-mh .mini{width:18px;height:18px;border:1px solid #d6deea;border-radius:4px;display:grid;place-items:center;color:#9aa4b4;font-size:11px;margin-left:6px;cursor:pointer;transition:background .15s}
+  #fzApp .fz-mh .mini{width:18px;height:18px;border:1px solid #d6deea;border-radius:4px;background:#fff;box-shadow:none;display:grid;place-items:center;color:#9aa4b4;font-size:11px;line-height:1;margin-left:6px;cursor:pointer;transition:background .15s}
   #fzApp .fz-mh .mini:hover{background:#eef3f9}
   #fzApp .fz-row{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid #f2f5f9;transition:background .15s;cursor:pointer;position:relative}
   #fzApp .fz-row:hover{background:#f6faff}
@@ -1007,9 +1009,9 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     </div>
     <div class="navright">
       <div class="navkeys">
-        <a class="nk nk-w" href="#work" data-sec="work" title="Work">W</a>
-        <a class="nk nk-a" href="#about" data-sec="about" title="About">A</a>
-        <a class="nk nk-s" href="#contact" data-sec="contact" title="Say hi">↗</a>
+        <a class="nk nk-w" href="#work" data-sec="work" title="Work" aria-label="Work">W</a>
+        <a class="nk nk-a" href="#about" data-sec="about" title="About" aria-label="About">A</a>
+        <a class="nk nk-s" href="#contact" data-sec="contact" title="Say hi" aria-label="Say hi">↗</a>
       </div>
       <button class="askbtn" type="button" data-ask>
         <span class="mini"><i class="l"></i><i class="r"></i></span>Ask Shay
@@ -1138,14 +1140,14 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         </div>
         <h3>Account Dashboard 2.0</h3>
         <div class="fshot"><img src="assets/card-account-dashboard.webp" width="2240" height="1400" alt="Account Dashboard 2.0" draggable="false"></div>
-        <p>A shared timeline that connects sales outreach with prospect engagement, so a rep can see where an account is warming up. Red for what the rep did, blue for how the lead responded, sized by the strength of the touch.</p>
+        <p>A shared timeline that connects sales outreach with lead engagement, so a rep can see where an account is warming up. Red dots for what the rep did, blue for how the lead responded, each sized by the strength of the touch.</p>
         <div class="fev">
           <span class="badge measured"><span class="d"></span>Measured</span>
           <b>~15%</b><span class="cap">increase in sales-team logins</span>
           <a class="open" tabindex="-1" aria-hidden="true" href="#c1" aria-label="Open Account Dashboard 2.0">↗</a>
         </div>
       </article>
-      <article class="fcard" id="c3" role="button" aria-label="Open The Campaign Agent" data-go="campaign-agent" tabindex="0" style="--tint:#E0E5FC;--rot:1.7deg">
+      <article class="fcard" id="c3" role="button" aria-label="Open the Campaign Agent" data-go="campaign-agent" tabindex="0" style="--tint:#E0E5FC;--rot:1.7deg">
         <div class="fh">
           <div class="fl">Folloze · Conversational AI</div>
         </div>
@@ -1155,10 +1157,10 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         <div class="fev">
           <span class="badge measured"><span class="d"></span>Measured</span>
           <b>~28%</b><span class="cap">increase in campaign-page creation</span>
-          <a class="open" tabindex="-1" aria-hidden="true" href="#c3" aria-label="Open The Campaign Agent">↗</a>
+          <a class="open" tabindex="-1" aria-hidden="true" href="#c3" aria-label="Open the Campaign Agent">↗</a>
         </div>
       </article>
-      <article class="fcard" id="c2" role="button" aria-label="Open The XtremIO Dashboard" data-go="xtremio" tabindex="0" style="--tint:#FBEBC7;--rot:1.2deg">
+      <article class="fcard" id="c2" role="button" aria-label="Open the XtremIO Dashboard" data-go="xtremio" tabindex="0" style="--tint:#FBEBC7;--rot:1.2deg">
         <div class="fh">
           <div class="fl">Dell EMC · Enterprise UX</div>
         </div>
@@ -1167,21 +1169,21 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         <p>One storage dashboard showing every metric to everyone with equal weight. Session recordings and work with the PM surfaced three audiences, each going to one metric first.</p>
         <div class="fev">
           <span class="badge"><span class="d"></span>Observed</span>
-          <span class="cap">three audiences found in session recordings, no instrumentation</span>
-          <a class="open" tabindex="-1" aria-hidden="true" href="#c2" aria-label="Open The XtremIO Dashboard">↗</a>
+          <span class="cap">three audiences, from session recordings and work with the PM; no instrumentation</span>
+          <a class="open" tabindex="-1" aria-hidden="true" href="#c2" aria-label="Open the XtremIO Dashboard">↗</a>
         </div>
       </article>
-      <article class="fcard" id="c4" role="button" aria-label="Open The Impact Dashboard" data-go="impact-dashboard" tabindex="0" style="--tint:#FBDFD9;--rot:-1.8deg">
+      <article class="fcard" id="c4" role="button" aria-label="Open the Impact Dashboard" data-go="impact-dashboard" tabindex="0" style="--tint:#FBDFD9;--rot:-1.8deg">
         <div class="fh">
           <div class="fl">Folloze · Campaign analytics</div>
         </div>
         <h3>The Impact Dashboard</h3>
         <div class="fshot"><img src="assets/card-impact-dashboard.webp" width="1440" height="900" alt="The Impact Dashboard" draggable="false"></div>
-        <p>A campaign-level view that shows who engaged, what they viewed and which channels brought them in. Every headline number drills into the accounts behind it.</p>
+        <p>A board-level view that shows who engaged, what they viewed and which channels brought them in. Every headline number drills into the accounts behind it.</p>
         <div class="fev">
           <span class="badge"><span class="d"></span>Not measured</span>
           <span class="cap">shipped, no post-release data</span>
-          <a class="open" tabindex="-1" aria-hidden="true" href="#c4" aria-label="Open The Impact Dashboard">↗</a>
+          <a class="open" tabindex="-1" aria-hidden="true" href="#c4" aria-label="Open the Impact Dashboard">↗</a>
         </div>
       </article>
       <div class="toolcard" data-go="theme-builder" tabindex="0" role="button" aria-label="Open Theme Builder for Customer Success">
@@ -1204,14 +1206,14 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
       <header class="cs-head">
         <div class="cs-meta">Folloze · Sales analytics · 2026</div>
         <h2>Account Dashboard 2.0</h2>
-        <p class="cs-lead">An ABM account view built for sales, one timeline of what the rep did, how the lead responded, and where the account is warming up. What you see below is a live recreation.</p>
+        <p class="cs-lead">An ABM account view built for sales - one timeline of what the rep did, how the lead responded, and where the account is warming up. What you see below is a live recreation running on sample data.</p>
       </header>
       <div class="cs-body">
         <div class="proto-wrap">
           <div class="proto-frame">
             <div class="proto-chrome"><i></i><i></i><i></i>
               <span class="u">app.folloze.com / accounts</span>
-              <span class="blive">Live prototype</span>
+              <span class="blive">Live recreation</span>
             </div>
             <div class="proto-stage"><div class="proto-scroll">
             <div class="fz" id="fzApp">
@@ -1444,7 +1446,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         </div>
 
         <div class="cs-story">
-          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>Sales weren't coming back</h3><p>The platform captured engagement per account, but reps rarely came back to read it. We needed a view a rep could grasp in seconds.</p></div>
+          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>Reps weren't coming back</h3><p>The platform captured engagement per account, but reps rarely came back to read it. We needed a view a rep could grasp in seconds.</p></div>
           <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>Engagement is a two-way story</h3><p>What matters isn't a pile of views - it's how the lead responds to the rep's outreach.</p></div>
           <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>One glanceable timeline</h3><p>Per person, over time. <b style="color:#C32F4A">Red</b> dots for what the rep did, <b style="color:#2F62C6">blue</b> for how the lead responded, each sized by the strength of the touch.</p></div>
         </div>
@@ -1464,7 +1466,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
       <div class="cs-body">
           <figure class="cs-shot">
             <div class="cs-bar"><i></i><i></i><i></i><span>folloze · campaign-agent / build</span></div>
-            <video src="assets/campaign_agent_chat.mp4" poster="assets/campaign_agent_poster.png" autoplay loop muted playsinline></video>
+            <video aria-label="Looping demo of the Campaign Agent chat" src="assets/campaign_agent_chat.mp4" poster="assets/campaign_agent_poster.png" autoplay loop muted playsinline></video>
             <figcaption><b>The full flow.</b> Describe a product and answer a few guided questions - Product, Audience, Message and Goal fill in as you go.</figcaption>
           </figure>
 
@@ -1481,7 +1483,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         </div>
 
         <div class="cs-story">
-          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>The blank-canvas tax</h3><p>Starting an ABM campaign meant four decisions at once - product, audience, message, goal. Easy to abandon.</p></div>
+          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>The blank-canvas tax</h3><p>Starting a B2B campaign meant four decisions at once - product, audience, message, goal. Easy to abandon.</p></div>
           <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>Talking beats form-filling</h3><p>People describe what they sell in plain words more easily than they fill out forms. So let the conversation do the structuring.</p></div>
           <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>An agent that asks, then assembles</h3><p>A chat that asks one question at a time, with a live panel mirroring the progress, ending in a ready-to-launch board.</p></div>
         </div>
@@ -1495,7 +1497,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
           <h3>Under the hood: prompt engineering</h3>
           <p>The simple chat hides two layers of prompt engineering.</p>
           <div class="cs-two">
-            <div class="cs-ucard"><div class="cs-n">01 · Section prompts</div><h4>Every block knows itself</h4><p>Each section carries its own content and purpose, so the agent knows what it's there to do.</p></div>
+            <div class="cs-ucard"><div class="cs-n">01 · Section prompts</div><h4>Every section knows itself</h4><p>Each section carries its own content and purpose, so the agent knows what each one is for.</p></div>
             <div class="cs-ucard"><div class="cs-n">02 · Page-builder agent</div><h4>Assembles the page</h4><p>A second prompt takes everything the user gave and decides which sections to pull and how to compose them into a page.</p></div>
           </div>
         </div>
@@ -1572,7 +1574,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
       <div class="cs-body">
         <div class="cs-story">
           <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>A designer in every loop</h3><p>Every branded mobile theme went through a designer, for work that was configuration rather than design. It was a queue, and the queue was me.</p></div>
-          <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>The decisions were already bounded</h3><p>Fonts, colours, radii - the choices were a finite set with rules attached. Something that constrained can be handed over safely if the tool holds the rules.</p></div>
+          <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>The decisions were already bounded</h3><p>Fonts, colors, radii - the choices were a finite set with rules attached. Something that constrained can be handed over safely if the tool holds the rules.</p></div>
           <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>Give them the tool, keep the rules</h3><p>A live builder that only produces themes that are already on-brand, so Customer Success ships them directly.</p></div>
         </div>
         <div class="cs-verdict">
@@ -1595,17 +1597,17 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   <div class="wrap">
     <div class="wbhead">
       <h2>I like getting my hands<br>into the product<span class="dot">.</span></h2>
-      <p>I'm Shay, a product designer working across AI and B2B SaaS. Away from the screen I'm a serious amateur chess player and a drummer.</p>
+      <p>I'm Shay, a product designer working across AI and B2B SaaS.</p>
     </div>
 
     <div class="playgrid">
       <div class="vidcard">
-        <video src="assets/ad_energetic_video.mp4" autoplay muted loop playsinline aria-label="Shay at work"></video>
+        <video src="assets/ad_energetic_video.mp4" autoplay muted loop playsinline aria-label="A smiling man with a drumstick, arms crossed, seated between a giant wooden chess knight and a drum kit, in front of a huge white character with two oval eyes"></video>
       </div>
       <div class="playcol">
         <div class="play">
           <h3>Chess &amp; drums</h3>
-          <p>Serious amateur chess, and a drummer long enough that counting in odd time signatures feels normal. Both are the same habit: patterns under pressure.</p>
+          <p>Serious amateur chess, and I've drummed long enough that counting in odd time signatures feels normal. Both are the same habit: patterns under pressure.</p>
         </div>
         <div class="play">
           <h3>The Search</h3>
@@ -1811,12 +1813,12 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     {q:"What's your approach to design?",
      a:"I start with the product, the users, and the business context - not the interface. The screen is the last thing I design, not the first. Good UX is making the right thing obvious and keeping everything else quiet."},
     {q:"How do you use AI in your work?",
-     a:"As a structured design tool - for research synthesis, ideation, personalization, and faster iteration. It compresses the busywork so I can spend judgment where it actually matters. Human product thinking stays at the centre; AI is the multiplier, not the decision-maker."},
+     a:"As a structured design tool - for research synthesis, ideation, personalization, and faster iteration. It compresses the busywork so I can spend judgment where it actually matters. Human product thinking stays at the center; AI is the multiplier, not the decision-maker."},
     {q:"Tell me about the XtremIO redesign.",
      a:"It was an enterprise storage dashboard that showed every metric to everyone with equal weight. Session recordings and work with the PM surfaced three distinct audiences, each going to one metric first. I split it into three focused tabs, each owning a group's priority, with a summary strip up top so no one loses the wider picture.",
      id:'c2',name:'XtremIO Dashboard'},
     {q:"How do you balance user needs and business goals?",
-     a:"They're usually the same goal wearing different clothes. I translate business outcomes into user behaviours I can design for, then measure whether the behaviour actually moved. If a design serves the user but not the business - or the reverse - it isn't finished yet."},
+     a:"They're usually the same goal wearing different clothes. I translate business outcomes into user behaviors I can design for, then check whether the behavior actually moved wherever there is data. If a design serves the user but not the business - or the reverse - it isn't finished yet."},
     {q:"How can I reach Shay?",
      a:"Easiest is email - shay.azura@gmail.com - or 052-849-0453. I'm also on LinkedIn at in/shay-azura. Always up for a conversation about product, design, or where AI fits."},
     {q:"What's your background?",
@@ -1829,18 +1831,18 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
      a:"With Claude Code. The content from these case studies lives in a database, each question gets turned into a semantic fingerprint to find the most relevant piece, and Claude writes a short answer from that information alone. It's the same workflow I use day to day - AI accelerates, I steer."},
     {q:"Tell me something about you outside of work.",
      a:"I'm a serious amateur chess player and a drummer. I also run an AI music side project called The Search - writing and releasing electronic tracks with Suno under one artist identity, with the whole journey documented in a blog."},
-    {q:"Tell me about the Account Dashboard project.",
-     a:"An ABM account view for sales reps - one glanceable timeline showing what the rep did, how the lead responded, and where the account is warming up. Red dots for rep activity, blue for lead engagement, sized by strength of the touch. Sales logins rose roughly 15% after it shipped.",
+    {q:"Tell me about the Account Dashboard 2.0 project.",
+     a:"An ABM account view for sales reps - one glanceable timeline showing what the rep did, how the lead responded, and where the account is warming up. Red dots for rep activity, blue for lead engagement, each sized by the strength of the touch. Sales logins rose roughly 15% after it shipped.",
      id:'c1',name:'Account Dashboard 2.0'},
     {q:"Tell me about the Impact Dashboard.",
      a:"Board-level campaign analytics: five headline KPIs up top, and every headline number drills down into the accounts and engagement behind it. It shipped, but there is no post-release data.",
      id:'c4',name:'Impact Dashboard'},
     {q:"Tell me about the Campaign Agent.",
-     a:"A conversational AI that turns a few plain sentences about a product into a ready-to-launch ABM campaign - one guided question at a time instead of a blank canvas. It lifted campaign-page creation by roughly 28% and cut prep time from hours to minutes.",
+     a:"A conversational AI that turns a few plain sentences about a product into a ready-to-launch B2B campaign - one guided question at a time instead of a blank canvas. It lifted campaign-page creation by roughly 28% and cut prep time from hours to minutes.",
      id:'c3',name:'Campaign Agent'}
   ];
   var FALLBACK="That's a great one to ask Shay directly - drop him a line at shay.azura@gmail.com. In the meantime, try one of the suggested questions below 👇";
-  var STARTERS=[{i:0,l:"Approach"},{i:1,l:"Using AI"},{i:5,l:"Experience"},{i:6,l:"Codes?"}];
+  var STARTERS=[{i:0,l:"Approach"},{i:1,l:"Using AI"},{i:5,l:"Experience"},{i:6,l:"Coding?"}];
 
   var chat=document.getElementById('chat'),
       body=document.getElementById('chatBody'),chips=document.getElementById('chips'),
@@ -2176,7 +2178,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     ]},
     {total:'4 mins',w:3,title:'Networking 2.0 - Solution Tour',events:[
       {ic:'eye',type:'Viewed Item (1 min)',item:'Total Economic Impact Report',time:'02:14PM'},
-      {ic:'eye',type:'Viewed Item (22 sec)',item:'SD-WAN Buyer’s Guide',time:'02:12PM'},
+      {ic:'eye',type:'Viewed Item (22 sec)',item:'SD-WAN Buyer\'s Guide',time:'02:12PM'},
       {ic:'form',type:'Filled Form',item:'Request a Demo',time:'02:11PM'}
     ]},
     {total:'3 mins',w:2,title:'Security Solutions - Exec Brief',events:[
@@ -2821,12 +2823,12 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     const row=btn.closest('.bm-row');
     closeBoardModal();
     if(btn.dataset.act==='view'){
-      showBmToast('Opening “<b>'+row.dataset.n+'</b>”…');
+      showBmToast('Opening "<b>'+row.dataset.n+'</b>"…');
     }else{
       const names=selectedNames();
       const who=names.length?'<b>'+names.length+' '+(names.length===1?'person':'people')+'</b> at '+curAcc.n
                             :'<b>'+curAcc.n+'</b>';
-      showBmToast('Campaign for '+who+' created from “<b>'+row.dataset.n+'</b>”');
+      showBmToast('Campaign for '+who+' created from "<b>'+row.dataset.n+'</b>"');
     }
   });
 
@@ -2896,7 +2898,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
       [!!peak,          '<b>'+peakDay+'</b> was the strongest day: <b>'+(peak?peak.acts:0)+' actions</b> and <b>'+(peak?peak.views:0)+' views</b> in one day.'],
       [busiest&&busiest.people>=3, 'On <b>'+(busiest?fmtDay(alDateFromPos(busiest.pos)):'')+'</b>, <b>'+(busiest?busiest.people:0)+' people</b> from '+a.n+' engaged on the same day - that reads like a buying committee.'],
       [red.length>0&&blue.length>0, '<b>'+answered+' of your '+red.length+' touches</b> were followed by engagement within <b>48 hours</b> - a <b>'+replyRate+'%</b> response rate.'],
-      [red.length===0&&blue.length>0, 'Every bit of this week’s engagement was <b>inbound</b> - nobody on your team has reached out yet.'],
+      [red.length===0&&blue.length>0, 'Every bit of this week\'s engagement was <b>inbound</b> - nobody on your team has reached out yet.'],
       [blue.length===0&&emails>0, a.n+' has <b>not engaged at all</b> this week despite <b>'+emails+' emails</b> sent.'],
       [a.nw>0&&blue.length>0, '<b>'+a.nw+' new contact'+(a.nw>1?'s':'')+'</b> from '+a.n+' engaged for the first time this week.'],
       [a.eng>=5&&blue.length>0, '<b>'+a.eng+' people</b> from '+a.n+' are active across multiple boards.'],
