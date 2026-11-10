@@ -1701,13 +1701,20 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   var stage=board.parentElement;
   function fit(){
     if(innerWidth<=860){board.style.removeProperty('--s');return}
-    var h=stage.clientHeight||530;
+    /* While a case page is open the hero is display:none, so the stage measures
+       zero - and treating that 0 as 530 set --s to 1.000, which is how the board
+       came back 16% oversized. Nothing to measure means keep the last good scale;
+       closeProject re-fits on the way out. Outside that case the 530 fallback
+       stands, so a first paint that has not laid out yet behaves as before. */
+    var h=stage.clientHeight;
+    if(!h && document.body.classList.contains('viewing')) return;
     board.style.setProperty('--s',
-      Math.max(.55,Math.min(1,(innerWidth-120)/1440,h/530)).toFixed(3));
+      Math.max(.55,Math.min(1,(innerWidth-120)/1440,(h||530)/530)).toFixed(3));
   }
   fit(); addEventListener('resize',fit);
   addEventListener('load',fit);
   if(window.ResizeObserver) new ResizeObserver(fit).observe(stage);
+  window.__heroRefit=fit;   /* the hero was unmeasurable while the case was open */
   if(reduce) return;
   var grid=board.querySelector('.grid');
   var fine=matchMedia('(pointer: fine)').matches;
@@ -1715,6 +1722,12 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     if(innerWidth<=860) return;
     var r=board.getBoundingClientRect();
     if(r.bottom<0||r.top>innerHeight) return;
+    /* A display:none board reports an all-zero rect, which the test above lets
+       through (0 is neither < 0 nor > innerHeight) - and then the divisions below
+       are over zero. --mx/--my became "Infinity", calc() clamped the anchors to
+       2^24px, and every floating object sat 16,777,216px off-screen until the
+       next pointer move glided it back over the .anchor transition. */
+    if(r.width<1||r.height<1) return;
     board.style.setProperty('--mx',((e.clientX-r.left)/r.width*2-1).toFixed(3));
     board.style.setProperty('--my',((e.clientY-r.top)/r.height*2-1).toFixed(3));
     // the spotlight is positioned in the plane's own space, as a percentage, so
@@ -1763,6 +1776,14 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   if(!reduce){
     addEventListener('mousemove',function(e){
       var rc=avatar.getBoundingClientRect();
+      /* The handler is on window, so it kept writing while a case page had the
+         hero at display:none. A hidden avatar measures 0x0, so mx/my became the
+         raw pointer coordinates instead of an offset from its centre: the body
+         was left pushed 37px sideways, both eyes at their +70deg clamp and the
+         blob morphed to the wrong corner. Returning then animated all of that
+         back - the "arrives late and from the side". No box, no update: the
+         avatar comes back exactly as it was left. */
+      if(rc.width<1||rc.height<1) return;
       mx=e.clientX-(rc.left+rc.width/2);
       my=e.clientY-(rc.top+rc.height/2);
       render();
@@ -1780,6 +1801,35 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     },Math.random()*3000+7000);
   })();
   render();
+})();
+
+/* ---------- the hero's drift clocks survive a case page ----------------------
+   The five objects drift on deliberately different durations so the group never
+   pulses in unison. A case page puts them at display:none, which cancels their
+   animations outright: on the way back all five restarted at 0% together and
+   sat dead still at their origin before moving off as one.
+   The fix is a negative animation-delay, written on the way in, so the animation
+   the browser builds when the hero is shown again starts at the phase this one
+   stopped at. (Touching the Animation object's currentTime instead looks like it
+   works and does not: the restored animation keeps an unresolved startTime, so
+   it reports "running" and never advances again.) -------------------------- */
+(function(){
+  var SEL='.float-a,.float-b,.float-c,.float-m,.float-av,.av-g,.downto .ar';
+  window.__heroPhase=function(){
+    [].forEach.call(document.querySelectorAll(SEL),function(el){
+      if(!el.getAnimations) return;
+      var a=el.getAnimations();
+      if(a.length!==1) return;         /* one clock per element, or leave it alone */
+      /* Read the phase off the effect, not off the animation. getComputedTiming().progress
+         folds the negative delay back in; Animation.currentTime does not - so re-banking
+         from currentTime discards the delay written on the previous return, and from the
+         second case visit on every object comes back at one identical phase and stays
+         locked there. progress*duration is already modulo the cycle. */
+      var ct=a[0].effect&&a[0].effect.getComputedTiming();
+      if(!ct||ct.progress==null||!ct.duration||!isFinite(ct.duration)) return;
+      el.style.animationDelay=(-(ct.progress*ct.duration)).toFixed(0)+'ms';
+    });
+  };
 })();
 
 /* ---------- the one way down from the fold ---------- */
@@ -2044,6 +2094,8 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     if(!vizAt(idx)) idx=stepViz(idx,1);
     wks.forEach(function(w){ w.classList.remove('active') });
     wks[idx].classList.add('active');
+    /* bank the hero's drift phases before display:none cancels the animations */
+    if(window.__heroPhase) window.__heroPhase();
     document.body.classList.add('viewing');
     // the Account Dashboard demo only wakes the first time its page is opened
     if(slugs[idx]==='account-dashboard') bootFz();
@@ -2057,6 +2109,10 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   function closeProject(push){
     document.body.classList.remove('viewing');
     wks.forEach(function(w){ w.classList.remove('active') });
+    /* The hero has been unmeasurable for as long as the case was open, so put it
+       back on its feet in this same frame, before anything paints: re-fit in case
+       the window was resized while the case had it hidden. */
+    if(window.__heroRefit) window.__heroRefit();
     document.title=HOME_TITLE;
     if(push!==false) history.pushState({},'','#work');
     setTimeout(function(){ window.scrollTo(0, work.getBoundingClientRect().top+window.scrollY-30) },20);
