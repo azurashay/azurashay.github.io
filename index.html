@@ -221,7 +221,17 @@ h1 em{font-style:normal;color:var(--blue)}
     inset 0 0 0 1px rgba(255,255,255,.1)}
 .anchor:active .keyshadow{transform:translateY(-4px) scale(.84);opacity:.95;filter:blur(8px);
   transition-duration:.09s}
-.key:focus-visible{outline:3px solid var(--blue);outline-offset:8px;border-radius:var(--r)}
+/* outline-offset:8px lands a third of the ring on the key's own blue face and its
+   navy extrusion (the .lay stack overhangs the border box by 31px below and 13px
+   right), where it measured under 3:1. A box-shadow halo cannot fix that - the
+   extrusion is content and paints over it. So the ring is redrawn as a pseudo
+   element at the face plane, in front of the extrusion, with white on both of its
+   edges. The outline stays underneath as the fallback if ::after ever fails. */
+.key:focus-visible{outline:3px solid var(--blue);outline-offset:8px;border-radius:var(--r);box-shadow:0 0 0 11px rgba(255,255,255,.95)}
+.key:focus-visible::after{content:'';position:absolute;left:-11px;top:-11px;right:-11px;bottom:-11px;
+  border:3px solid var(--blue);border-radius:calc(var(--r) + 11px);
+  box-shadow:0 0 0 3px rgba(255,255,255,.96),inset 0 0 0 3px rgba(255,255,255,.96);
+  pointer-events:none;z-index:40}
 
 .k-w{left:236px;top:46px;--p:16}
 .k-a{left:1006px;top:58px;--p:19}
@@ -313,7 +323,7 @@ section{padding:104px 0 20px;position:relative}
 .fl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#565C6B;
   flex:1}
 .fcard h3{margin-top:8px;font-size:clamp(23px,2.1vw,35px);font-weight:800;letter-spacing:-.026em;line-height:1.02}
-.fshot{margin-top:14px;border-radius:8px;overflow:hidden;background:#fff;aspect-ratio:16/10}
+.fshot{margin-top:14px;border-radius:8px;overflow:hidden;background:#fff;aspect-ratio:16/10;flex:0 0 auto}
 .fshot img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
 .fcard p{margin-top:14px;font-size:clamp(14.5px,1.08vw,17px);line-height:1.5;color:#2B3140;flex:1}
 .fev{margin-top:14px;padding-top:13px;border-top:1px solid rgba(26,27,32,.14);
@@ -442,7 +452,10 @@ footer .mono{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
 .cform{display:flex;gap:9px;padding:13px 16px 16px;border-top:1px solid var(--line)}
 .cform input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:11px 15px;
   font:inherit;font-size:14px;background:var(--paper);outline:none;transition:border-color .2s}
-.cform input:focus{border-color:rgba(42,81,232,.45)}
+/* the 45% blue hairline measured 2.08:1 against the paper - under the 3:1 a focus
+   indicator needs. Full-strength blue plus a 1px shadow doubles the perimeter
+   without reflowing the field: 6.11:1. */
+.cform input:focus{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
 .cform button{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;background:var(--ink);
   color:#fff;cursor:pointer;display:grid;place-items:center}
 .note{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
@@ -537,7 +550,9 @@ body.viewing .askbtn{pointer-events:auto}  /* the nav is pass-through here; the 
 .cs-bar i{width:10px;height:10px;border-radius:50%;background:#ffffff2b}
 .cs-bar span{margin-left:8px;font-family:var(--mono);font-size:10.5px;color:#ffffff8c}
 .cs-shot img,.cs-shot video{width:100%;display:block}
-.cs-shot iframe{width:100%;height:300px;border:1px solid rgba(13,16,23,.1);border-radius:12px;background:#fff}
+/* decorative loader animations with nothing focusable inside; pointer-events:none
+   so a click on them still reaches the page and dismisses the chat */
+.cs-shot iframe{width:100%;height:300px;border:1px solid rgba(13,16,23,.1);border-radius:12px;background:#fff;pointer-events:none}
 .cs-shot figcaption{padding:16px 20px;font-size:clamp(14.5px,1.05vw,16.5px);line-height:1.55;
   color:#2B3140;background:#fff}
 .cs-shot.plain figcaption{padding:14px 2px 0;background:none}
@@ -597,13 +612,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
 @media(max-width:980px){
   .cs-two,.cs-story{grid-template-columns:1fr}
   .proj-back .pb-link{margin-left:20px}
-  .proto-stage{height:480px}
-}
-
-@media(max-width:980px){
-  .cs-two,.cs-story{grid-template-columns:1fr}
   .cs-panel{left:0;right:0;top:0;bottom:0;width:auto;margin:0;border-radius:0}
-  .proto-stage{height:480px}
 }
 @media(prefers-reduced-motion:reduce){
   .cs-panel.anim{transition:opacity .2s linear}
@@ -623,6 +632,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
 /* transform makes this the containing block, so the demo's fixed drawer, modal and
    toast stay inside the frame instead of escaping over the case view */
 .proto-stage{transform:translateZ(0);height:clamp(700px,78vh,940px);overflow:hidden;position:relative}
+@media(max-width:980px){.proto-stage{height:480px}}
 .proto-scroll{height:100%;overflow:auto;background:#eef1f6}
 .proto-leg{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin-top:16px;
   font-size:13.5px;color:var(--ink2)}
@@ -633,10 +643,13 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
 .proto-hint{font-size:13.5px;color:var(--ink2);margin-top:12px}
 .proto-hint b{color:var(--ink);font-weight:600}
 
-/* ---- the Account Dashboard prototype, lifted whole from index.html ---- */
+/* ---- the Account Dashboard prototype, lifted whole from index.html ----
      All selectors scoped to #fzApp so nothing leaks into the portfolio. */
   #fzApp{width:100%;min-width:980px;position:relative;font-family:"Inter",sans-serif;color:#2d3a4e;background:#fff;font-size:13px;line-height:1.4;text-align:left}
   #fzApp *{box-sizing:border-box}
+  /* the demo ships its own white-on-white rings (the active time-range segment was
+     1.00:1); the page rule cannot reach them, so give the frame one of its own */
+  #fzApp button:focus-visible,#fzApp input:focus-visible,#fzApp [tabindex]:not([tabindex="-1"]):focus-visible{outline:3px solid #2A51E8;outline-offset:2px}
   #fzApp .fz-nav{background:#16213e;display:flex;align-items:center;padding:0 22px;height:54px;position:sticky;top:0;z-index:50}
   #fzApp .fz-logo{font-weight:800;color:#fff;margin-right:34px;display:flex;align-items:center;gap:7px;font-size:16px;letter-spacing:-.01em}
   #fzApp .fz-tabs{display:flex;gap:28px;height:100%}
@@ -669,8 +682,13 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   #fzApp .al-filters .icons{margin-left:auto;display:flex;gap:16px;align-items:center;color:#9aa4b4}
   #fzApp .al-filters .icons svg{cursor:pointer;transition:color .15s}
   #fzApp .al-filters .icons svg:hover{color:#2b7de9}
-  #fzApp .al-search{width:0;padding:0;border:none;outline:none;font:inherit;font-size:13px;color:#2b3a52;background:transparent;transition:width .25s ease;border-bottom:1.5px solid transparent}
+  #fzApp .al-search{width:0;padding:0;border:none;font:inherit;font-size:13px;color:#2b3a52;background:transparent;transition:width .25s ease;border-bottom:1.5px solid transparent}
+  /* zero-width and closed, it was still a tab stop that showed nothing anywhere;
+     visibility flips discretely so the .25s width transition still runs */
+  #fzApp .al-search:not(.open){visibility:hidden}
   #fzApp .al-search.open{width:170px;border-bottom-color:#2b7de9;padding:2px 4px}
+  #fzApp .al-searchico{display:flex;align-items:center;padding:0;border:none;background:none;color:inherit;cursor:pointer;border-radius:4px;transition:color .15s}
+  #fzApp .al-searchico:hover{color:#2b7de9}
   @keyframes fzxSpin{to{transform:rotate(360deg)}}
   #fzApp .spinning{animation:fzxSpin .6s ease}
   #fzApp .fz-controls{display:flex;align-items:center;gap:18px;padding:12px 24px;background:#fff;border-bottom:1px solid #eef1f5;font-size:13px;color:#5a6b85}
@@ -864,8 +882,11 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   /* select board modal */
   #fzApp .bm-overlay{position:fixed;inset:0;background:#16213e4d;backdrop-filter:blur(3px);z-index:88;opacity:0;pointer-events:none;transition:opacity .25s}
   #fzApp .bm-overlay.on{opacity:1;pointer-events:auto}
-  #fzApp .bm-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;width:1120px;max-width:94%;max-height:90%;background:#fff;border-radius:16px;box-shadow:0 40px 90px -18px #16213e99;z-index:89;display:flex;flex-direction:column;overflow:hidden;transition:opacity .28s,transform .28s cubic-bezier(.2,.7,.2,1);font-family:"Inter",sans-serif}
-  #fzApp .bm-modal.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+  /* closed it is opacity:0 and aria-hidden, but its search field was still a tab
+     stop - an invisible stop in the middle of the case page. visibility is in the
+     transition list so the fade-out still plays before it leaves the tab order. */
+  #fzApp .bm-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);opacity:0;visibility:hidden;pointer-events:none;width:1120px;max-width:94%;max-height:90%;background:#fff;border-radius:16px;box-shadow:0 40px 90px -18px #16213e99;z-index:89;display:flex;flex-direction:column;overflow:hidden;transition:opacity .28s,transform .28s cubic-bezier(.2,.7,.2,1),visibility .28s;font-family:"Inter",sans-serif}
+  #fzApp .bm-modal.on{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
   #fzApp .bm-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 14px}
   #fzApp .bm-head{align-items:flex-start}
   #fzApp .bm-head h3{margin:0;font-size:17px;font-weight:700;color:#16213e;letter-spacing:-.01em}
@@ -880,6 +901,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   #fzApp .bm-dd svg{color:#9aa4b4}
   #fzApp .bm-search{margin-left:auto;position:relative}
   #fzApp .bm-search input{width:230px;border:1px solid #d6deea;border-radius:8px;padding:8px 34px 8px 12px;font:inherit;font-size:13px;color:#2b3a52;outline:none;transition:.15s;background:#fff}
+  #fzApp .bm-search input:focus-visible{outline:3px solid #2A51E8;outline-offset:2px}
   #fzApp .bm-search input::placeholder{color:#aab3c2}
   #fzApp .bm-search input:focus{border-color:#2b7de9;box-shadow:0 0 0 3px #2b7de926}
   #fzApp .bm-search svg{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:#9aa4b4;pointer-events:none}
@@ -921,8 +943,8 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   /* lead sidebar drawer */
   #fzApp .fz-overlay{position:fixed;inset:0;background:#16213e3d;opacity:0;pointer-events:none;transition:opacity .25s;z-index:80}
   #fzApp .fz-overlay.on{opacity:1;pointer-events:auto}
-  #fzApp .fz-drawer{position:fixed;top:0;right:0;bottom:0;width:450px;max-width:92%;background:#eef1f6;z-index:85;transform:translateX(104%);transition:transform .35s cubic-bezier(.2,.7,.2,1);box-shadow:-24px 0 60px -18px #16213e66;display:flex;flex-direction:column;font-family:"Inter",sans-serif;text-align:left}
-  #fzApp .fz-drawer.on{transform:none}
+  #fzApp .fz-drawer{position:fixed;top:0;right:0;bottom:0;width:450px;max-width:92%;background:#eef1f6;z-index:85;transform:translateX(104%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),visibility .35s;box-shadow:-24px 0 60px -18px #16213e66;display:flex;flex-direction:column;font-family:"Inter",sans-serif;text-align:left}
+  #fzApp .fz-drawer.on{transform:none;visibility:visible}
   #fzApp .fz-dw-head{background:#fff;padding:18px 22px 16px;position:relative;flex-shrink:0;border-bottom:1px solid #e3e9f1}
   #fzApp .fz-dw-x{position:absolute;top:12px;right:14px;color:#8a94a6;cursor:pointer;font-size:16px;line-height:1;padding:5px}
   #fzApp .fz-dw-x:hover{color:#16213e}
@@ -1011,7 +1033,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
 
       <div class="anchor k-w">
         <div class="float-a">
-          <a class="key" href="#work" data-ext="58" aria-label="Work - four cases"
+          <a class="key" href="#work" data-ext="58" aria-label="Work - four case studies and one tool"
              style="--w:180px;--r:26px;--pp:2200px;--rx:43deg;--ry:-18deg;--rz:-9deg;
  --c:#2A51E8;--c1:#6C8BFF;--c2:#1C3BC0;--side:#1B37A8;--on:#fff">
             <div class="face"><div class="ltr">W</div><div class="lbl">Work</div></div>
@@ -1129,7 +1151,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         </div>
         <h3>The Campaign Agent</h3>
         <div class="fshot"><img src="assets/card-campaign-agent.webp" width="1480" height="925" alt="The Campaign Agent" draggable="false"></div>
-        <p>A guided conversation that turns a product brief into a ready-to-launch B2B campaign. The hard part was knowing when to stop asking and start showing.</p>
+        <p>A guided conversation that turns a few plain sentences about a product into a ready-to-launch B2B campaign, one question at a time.</p>
         <div class="fev">
           <span class="badge measured"><span class="d"></span>Measured</span>
           <b>~28%</b><span class="cap">increase in campaign-page creation</span>
@@ -1142,7 +1164,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         </div>
         <h3>The XtremIO Dashboard</h3>
         <div class="fshot"><img src="assets/card-xtremio.webp" width="1360" height="850" alt="The XtremIO Dashboard" draggable="false"></div>
-        <p>One storage dashboard showing every metric to everyone with equal weight. Session recordings and work with the PM surfaced three audiences, each with one metric that mattered most.</p>
+        <p>One storage dashboard showing every metric to everyone with equal weight. Session recordings and work with the PM surfaced three audiences, each going to one metric first.</p>
         <div class="fev">
           <span class="badge"><span class="d"></span>Observed</span>
           <span class="cap">three audiences found in session recordings, no instrumentation</span>
@@ -1225,8 +1247,8 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
                   <div class="fz-check on" data-flag="onboards"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>On My Boards (<span id="cntBoards">20</span>)</span></div>
                   <div class="fz-check" data-flag="recent"><span class="box"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span>Recently Active (<span id="cntRecent">15</span>)</span></div>
                   <div class="icons">
-                    <input class="al-search" id="alSearch" placeholder="Search accounts…">
-                    <svg id="alSearchIco" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg>
+                    <input class="al-search" id="alSearch" placeholder="Search accounts…" aria-label="Search accounts">
+                    <button type="button" class="al-searchico" id="alSearchIco" aria-label="Search accounts" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg></button>
                     <svg id="alRefresh" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><polyline points="21 3 21 9 15 9"/></svg>
                   </div>
                 </div>
@@ -1449,17 +1471,17 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         <p class="cs-aside">Designing the wait. Generation takes real seconds, so the waiting experience is a designed surface, not a spinner.</p>
         <div class="cs-two">
           <figure class="cs-shot plain">
-            <iframe src="assets/combined-loader-optimized.html" loading="lazy" title="Building your page loader"></iframe>
+            <iframe tabindex="-1" src="assets/combined-loader-optimized.html" loading="lazy" title="Building your page loader"></iframe>
             <figcaption><b>Building your page.</b> A four-stage sequence - thinking, diagnostics, generating structure, designing.</figcaption>
           </figure>
           <figure class="cs-shot plain">
-            <iframe src="assets/thinking-loading.html" loading="lazy" title="Thinking loader"></iframe>
+            <iframe tabindex="-1" src="assets/thinking-loading.html" loading="lazy" title="Thinking loader"></iframe>
             <figcaption><b>Thinking.</b> A lightweight inline indicator for the shorter waits between steps.</figcaption>
           </figure>
         </div>
 
         <div class="cs-story">
-          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>The blank-canvas tax</h3><p>Starting an ABM campaign meant a dozen decisions at once - product, audience, message, goal. Easy to abandon.</p></div>
+          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>The blank-canvas tax</h3><p>Starting an ABM campaign meant four decisions at once - product, audience, message, goal. Easy to abandon.</p></div>
           <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>Talking beats form-filling</h3><p>People describe what they sell in plain words more easily than they fill out forms. So let the conversation do the structuring.</p></div>
           <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>An agent that asks, then assembles</h3><p>A chat that asks one question at a time, with a live panel mirroring the progress, ending in a ready-to-launch board.</p></div>
         </div>
@@ -1500,7 +1522,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
         </div>
         <div class="cs-story">
           <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>One screen, everyone, everything</h3><p>The original dashboard threw health, performance, capacity, top volumes and weekly patterns at every user with equal priority.</p></div>
-          <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>It wasn't one audience - it was three</h3><p>Session recordings and work with the PM surfaced three distinct groups. Each one cared about a single metric first, and treated the rest as context.</p></div>
+          <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>It wasn't one audience - it was three</h3><p>Session recordings and work with the PM surfaced three distinct groups. Each one went to a single metric first and came to the rest later.</p></div>
           <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>Three tabs, three priorities</h3><p>I split the dashboard into three tabs, each owning one group's key metric - with a summary strip up top so no one lost the wider picture.</p></div>
         </div>
         <div class="cs-verdict">
@@ -1526,18 +1548,18 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
           <figure class="cs-shot">
             <div class="cs-bar"><i></i><i></i><i></i><span>folloze · impact / engaged-accounts</span></div>
             <img src="assets/impact_dashboard_drilldown.png" alt="" loading="lazy">
-            <figcaption><b>Every number opens.</b> Click a KPI and it drills into the accounts behind it - engagement scores, topics of interest, per-account trends.</figcaption>
+            <figcaption><b>Every headline number opens.</b> Click a KPI and it drills into the accounts behind it - engagement scores, topics of interest, engagement over time.</figcaption>
           </figure>
         </div>
         <div class="cs-story">
-          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>Impact was invisible</h3><p>Campaigns generated plenty of engagement. Proving it meant stitching numbers together from boards, accounts and channels by hand, after the fact - which almost nobody did.</p></div>
+          <div class="cs-step"><div class="cs-n">01 / Problem</div><h3>Impact was invisible</h3><p>Campaigns generated plenty of engagement. Proving it meant stitching numbers together from boards, accounts and channels by hand, after the fact.</p></div>
           <div class="cs-step"><div class="cs-n">02 / Insight</div><h3>The story lives at the campaign level</h3><p>People, accounts, content and sources only mean something together - one level above pageviews, one level below the quarterly report.</p></div>
-          <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>Headlines first, drill-downs behind them</h3><p>Five KPIs against the previous period carry the headline. Everything else lives one click deeper, so the screen stays calm.</p></div>
+          <div class="cs-step"><div class="cs-n">03 / Decision</div><h3>Headlines first, drill-downs behind</h3><p>Five KPIs against the previous period carry the headline. Everything else lives one click deeper, so the screen stays calm.</p></div>
         </div>
         <div class="cs-verdict">
           <span class="badge"><span class="d"></span>Not measured</span>
           
-          <div><h3>The whole campaign, at a glance</h3><p>One screen to see what a campaign did, and <b>every number opens into the proof behind it</b>. It shipped; there is no post-release data behind it.</p></div>
+          <div><h3>The whole campaign, at a glance</h3><p>One screen to see what a campaign did, and <b>every headline number opens into the proof behind it</b>. It shipped; there is no post-release data behind it.</p></div>
         </div>
       </div>
     </article>
@@ -1626,14 +1648,14 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
 
 
 <!-- ============ ASK PANEL ============ -->
-<div class="chat" id="chat" role="dialog" aria-modal="true" aria-label="Ask Shay" inert>
+<div class="chat" id="chat" role="dialog" aria-label="Ask Shay" inert>
   <div class="hd">
     <span class="mini"><i class="l"></i><i class="r"></i></span>
     <div><div class="nm">Ask Shay</div><div class="st">Answers from his own case notes</div></div>
     <button class="x" id="chatX" type="button" aria-label="Close">×</button>
   </div>
   <div class="body" id="chatBody">
-    <div class="msg bot">Hi 👋 I'm Shay's assistant - ask me anything about the work, how he thinks, or how to reach him.</div>
+    <div class="msg bot">Hi 👋 I'm Shay's assistant, answering in his voice from his case notes. Ask about the work, how he thinks, or how to reach him.</div>
   </div>
   <div class="chips" id="chips"></div>
   <form class="cform" id="chatForm" autocomplete="off">
@@ -1791,14 +1813,14 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     {q:"How do you use AI in your work?",
      a:"As a structured design tool - for research synthesis, ideation, personalization, and faster iteration. It compresses the busywork so I can spend judgment where it actually matters. Human product thinking stays at the centre; AI is the multiplier, not the decision-maker."},
     {q:"Tell me about the XtremIO redesign.",
-     a:"It's an enterprise storage dashboard that showed every metric to everyone with equal weight - heavy cognitive load. Session recordings and work with the PM surfaced three distinct audiences, each with one metric that mattered most. I split it into three focused tabs, each owning a group's priority, while keeping a glanceable summary up top to kill the FOMO.",
+     a:"It was an enterprise storage dashboard that showed every metric to everyone with equal weight. Session recordings and work with the PM surfaced three distinct audiences, each going to one metric first. I split it into three focused tabs, each owning a group's priority, with a summary strip up top so no one loses the wider picture.",
      id:'c2',name:'XtremIO Dashboard'},
     {q:"How do you balance user needs and business goals?",
      a:"They're usually the same goal wearing different clothes. I translate business outcomes into user behaviours I can design for, then measure whether the behaviour actually moved. If a design serves the user but not the business - or the reverse - it isn't finished yet."},
     {q:"How can I reach Shay?",
-     a:"Easiest is email - shay.azura@gmail.com - or 052-849-0453. He's also on LinkedIn at in/shay-azura. Always up for a conversation about product, design, or where AI fits."},
+     a:"Easiest is email - shay.azura@gmail.com - or 052-849-0453. I'm also on LinkedIn at in/shay-azura. Always up for a conversation about product, design, or where AI fits."},
     {q:"What's your background?",
-     a:"I'm a Senior Product Designer working mostly in AI and B2B SaaS. Most of the case studies here are from my time at Folloze; I've also worked on enterprise dashboards at Dell EMC / XtremIO, and earlier at Dome9 Security, OwnBackup, and Zooz."},
+     a:"I'm a product designer working mostly in AI and B2B SaaS. Most of the case studies here are from my work at Folloze; I've also worked on enterprise dashboards at Dell EMC / XtremIO, and earlier at Dome9 Security, OwnBackup, and Zooz."},
     {q:"Do you know how to code?",
      a:"I'm comfortable with HTML and CSS, and I'm not afraid of code generally - mostly because I work with Claude Code. It lets me build real features, not just mockups: I open a branch, build with Claude, open a PR for review linked to a ClickUp ticket. I don't write everything myself, but I understand the code, steer it, and can adjust it when needed."},
     {q:"How do you work with engineers?",
@@ -1811,28 +1833,45 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
      a:"An ABM account view for sales reps - one glanceable timeline showing what the rep did, how the lead responded, and where the account is warming up. Red dots for rep activity, blue for lead engagement, sized by strength of the touch. Sales logins rose roughly 15% after it shipped.",
      id:'c1',name:'Account Dashboard 2.0'},
     {q:"Tell me about the Impact Dashboard.",
-     a:"Board-level campaign analytics: five headline KPIs up top, and every number drills down into the accounts and engagement behind it - so marketers can prove campaign impact without exporting anything.",
+     a:"Board-level campaign analytics: five headline KPIs up top, and every headline number drills down into the accounts and engagement behind it. It shipped, but there is no post-release data.",
      id:'c4',name:'Impact Dashboard'},
     {q:"Tell me about the Campaign Agent.",
      a:"A conversational AI that turns a few plain sentences about a product into a ready-to-launch ABM campaign - one guided question at a time instead of a blank canvas. It lifted campaign-page creation by roughly 28% and cut prep time from hours to minutes.",
      id:'c3',name:'Campaign Agent'}
   ];
-  var FALLBACK="That's a great one to ask Shay directly - drop him a line at shay.azura@gmail.com. In the meantime, try one of the suggested questions 👆";
+  var FALLBACK="That's a great one to ask Shay directly - drop him a line at shay.azura@gmail.com. In the meantime, try one of the suggested questions below 👇";
   var STARTERS=[{i:0,l:"Approach"},{i:1,l:"Using AI"},{i:5,l:"Experience"},{i:6,l:"Codes?"}];
 
   var chat=document.getElementById('chat'),
       body=document.getElementById('chatBody'),chips=document.getElementById('chips'),
       form=document.getElementById('chatForm'),input=document.getElementById('chatInput'),
-      busy=false,opened=false;
+      busy=false,opened=false,lastTrigger=null;
 
   function open(){
+    lastTrigger=document.activeElement;
     chat.removeAttribute('inert');
     chat.classList.add('open');opened=true;
     setTimeout(function(){input.focus()},320);
   }
+  /* the panel goes inert on close, so anything focused inside it would be orphaned
+     to <body>; hand focus back to whatever opened the panel */
+  function restoreFocus(){
+    if(lastTrigger&&lastTrigger.isConnected&&lastTrigger!==document.body)lastTrigger.focus();
+    else{var ab=document.querySelector('[data-ask]');if(ab)ab.focus();}
+  }
   function close(){
+    var inside=chat.contains(document.activeElement);
     chat.classList.remove('open');
     chat.setAttribute('inert','');opened=false;
+    if(inside){
+      restoreFocus();
+      /* a click on empty page closes the panel in pointerdown, then the browser's
+         own mousedown handling clears focus to <body> on top of us. Re-restore,
+         but only if nothing else claimed focus - clicking a card or a link must win. */
+      setTimeout(function(){
+        if(!document.activeElement||document.activeElement===document.body)restoreFocus();
+      },0);
+    }
   }
   window.__openAsk=open;
   [].slice.call(document.querySelectorAll('[data-ask]')).forEach(function(b){b.onclick=function(){opened?close():open()}});
@@ -1977,7 +2016,21 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   var HOME_TITLE=document.title;
   var foot=work.querySelector('.proj-foot');
   var prevBtn=foot.querySelector('.pf-btn.prev'), nextBtn=foot.querySelector('.pf-btn.next');
-  var fzReady=false;
+  var fzReady=false, fzWanted=false;
+  /* The prototype's window.__initFz is defined by a LATER <script> block, so a deep
+     link to #p/account-dashboard - a reload, a shared URL, a back-button landing -
+     asks for it before it exists. The old guard just skipped and never came back,
+     shipping a case page with a prototype that never booted and no sign of why.
+     The case view still opens synchronously, so there is no flash of the landing;
+     only the boot waits, and only until the document has finished parsing. */
+  function bootFz(){
+    fzWanted=true;
+    if(fzReady||!window.__initFz) return;
+    fzReady=true; window.__initFz();
+  }
+  if(document.readyState==='loading'){
+    addEventListener('DOMContentLoaded',function(){ if(fzWanted) bootFz(); },{once:true});
+  }
 
   function nameAt(i){ return wks[i].dataset.name; }
   /* hidden cases stay out of the router: no blank pages, no prev/next pointing at them */
@@ -1991,7 +2044,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
     wks[idx].classList.add('active');
     document.body.classList.add('viewing');
     // the Account Dashboard demo only wakes the first time its page is opened
-    if(slugs[idx]==='account-dashboard' && !fzReady && window.__initFz){ fzReady=true; window.__initFz(); }
+    if(slugs[idx]==='account-dashboard') bootFz();
     var p=stepViz(idx,-1), n=stepViz(idx,1);
     prevBtn.querySelector('.ttl').textContent=nameAt(p); prevBtn.dataset.go=slugs[p];
     nextBtn.querySelector('.ttl').textContent=nameAt(n); nextBtn.dataset.go=slugs[n];
@@ -2023,9 +2076,15 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   foot.querySelector('.pf-home').onclick=function(){ closeProject(true) };
   var back=document.getElementById('pbBack');
   if(back) back.onclick=function(){ closeProject(true) };
+  /* Capture phase on purpose: the chat, drawer and board-modal handlers all sit on
+     window in the bubble phase and clear their own state, so by the time a bubble
+     listener here ran they would already look closed and one Escape would collapse
+     the lot. Reading in capture lets the case yield to whatever is open above it. */
   addEventListener('keydown',function(e){
-    if(e.key==='Escape' && document.body.classList.contains('viewing')) closeProject(true);
-  });
+    if(e.key!=='Escape' || !document.body.classList.contains('viewing')) return;
+    if(document.querySelector('#chat.open,#fzDrawer.on,#fzApp .bm-modal.on')) return;
+    closeProject(true);
+  },true);
   document.querySelectorAll('nav a[href="#work"],nav a[href="#top"],.wm').forEach(function(a){
     a.addEventListener('click',function(){ if(document.body.classList.contains('viewing')) closeProject(true) });
   });
@@ -2280,9 +2339,11 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   document.getElementById('bkmCount').textContent=ACCOUNTS.filter(FLAG.bookmarked).length;
   /* search */
   const alSearch=document.getElementById('alSearch');
-  document.getElementById('alSearchIco').addEventListener('click',()=>{
-    alSearch.classList.toggle('open');
-    if(alSearch.classList.contains('open'))alSearch.focus();else{alSearch.value='';applyListFilters();}
+  const alSearchIco=document.getElementById('alSearchIco');
+  alSearchIco.addEventListener('click',()=>{
+    const on=alSearch.classList.toggle('open');
+    alSearchIco.setAttribute('aria-expanded',on?'true':'false');
+    if(on)alSearch.focus();else{alSearch.value='';applyListFilters();alSearchIco.focus();}
   });
   alSearch.addEventListener('input',applyListFilters);
   /* sort: by time / by activity */
