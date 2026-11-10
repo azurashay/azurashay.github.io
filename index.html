@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Shay Azura - Senior Product Designer</title>
-<meta name="description" content="Senior Product Designer specializing in B2B SaaS and AI products. Case studies: AI campaign agent, LinkedIn ad generation, ABM analytics dashboards.">
+<meta name="description" content="Senior Product Designer specializing in B2B SaaS and AI products. Case studies: an AI campaign agent, ABM analytics dashboards, and enterprise storage.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="mask-icon" href="favicon.svg" color="#151210" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -816,8 +816,8 @@
   <span class="toast-x" id="toastX">✕</span>
   <span class="toast-emoji">🎉</span>
   <div>
-    <div class="toast-tt">Three down, two to go</div>
-    <div class="toast-sub">You've made it through three - two more, and both are worth the click.</div>
+    <div class="toast-tt">Three down, one to go</div>
+    <div class="toast-sub">You've made it through three - one more, and it's worth the click.</div>
   </div>
   <span class="toast-bar" id="toastBar"></span>
 </div>
@@ -1291,7 +1291,8 @@
       </div>
     </div>
 
-    <div class="case wk reveal">
+    <!-- Design System case hidden 2026-11-10 - to bring it back: delete style="display:none" below, restore the chat entry near line 1707, and set XtremIO back to "05 / Dell EMC" -->
+    <div class="case wk reveal" style="display:none">
       <button class="wk-head" type="button" aria-expanded="false">
         <span class="wk-arrow" aria-hidden="true">⟶</span>
         <span class="wk-lines">
@@ -1505,7 +1506,7 @@
       <div class="wk-preview" style="background-image:url('1360_xio_dashboard_performance_block.png')"></div>
       <div class="wk-body">
       <div class="case-meta">
-        <span class="tag">05 / Dell EMC</span>
+        <span class="tag">04 / Dell EMC</span>
         <span class="tag">Enterprise SaaS</span>
         <span class="tag">Information architecture</span>
       </div>
@@ -1538,7 +1539,7 @@
         <div class="step">
           <div class="n">02 / Insight</div>
           <h4>It wasn't one audience - it was three</h4>
-          <p>Shadowing users showed three distinct groups. Each one cared about a single metric first, and treated the rest as context.</p>
+          <p>Session recordings and work with the PM surfaced three distinct groups. Each one cared about a single metric first, and treated the rest as context.</p>
         </div>
         <div class="step">
           <div class="n">03 / Decision</div>
@@ -1677,7 +1678,7 @@
     {q:"How do you use AI in your work?",
      a:"As a structured design tool - for research synthesis, ideation, personalization, and faster iteration. It compresses the busywork so I can spend judgment where it actually matters. Human product thinking stays at the centre; AI is the multiplier, not the decision-maker."},
     {q:"Tell me about the XtremIO redesign.",
-     a:"It's an enterprise storage dashboard that showed every metric to everyone with equal weight - heavy cognitive load. Through user shadowing I found three distinct audiences, each with one metric that mattered most. I split it into three focused tabs, each owning a group's priority, while keeping a glanceable summary up top to kill the FOMO. Users reported a better experience and settled into their relevant tab.",
+     a:"It's an enterprise storage dashboard that showed every metric to everyone with equal weight - heavy cognitive load. Session recordings and work with the PM surfaced three distinct audiences, each with one metric that mattered most. I split it into three focused tabs, each owning a group's priority, while keeping a glanceable summary up top to kill the FOMO. Users reported a better experience and settled into their relevant tab.",
      slug:'xtremio'},
     {q:"How do you balance user needs and business goals?",
      a:"They're usually the same goal wearing different clothes. I translate business outcomes into user behaviours I can design for, then measure whether the behaviour actually moved. If a design serves the user but not the business - or the reverse - it isn't finished yet."},
@@ -1702,9 +1703,9 @@
     {q:"Tell me about the Campaign Agent.",
      a:"A conversational AI that turns a few plain sentences about a product into a ready-to-launch ABM campaign - one guided question at a time instead of a blank canvas. It lifted campaign-page creation by roughly 28% and cut prep time from hours to minutes.",
      slug:'campaign-agent'},
-    {q:"Tell me about the Design System.",
-     a:"A ground-up design system for Folloze - color, type, spacing and radius tokens feeding a library of production components. Designed in Figma, then shipped as live coded components with AI.",
-     slug:'design-system'}
+//     {q:"Tell me about the Design System.",
+//      a:"A ground-up design system for Folloze - color, type, spacing and radius tokens feeding a library of production components. Designed in Figma, then shipped as live coded components with AI.",
+//      slug:'design-system'}
   ];
   const fallback="That's a great one to ask Shay directly - drop him a line at shay.azura@gmail.com. In the meantime, try one of the suggested questions 👆";
   // Starters live in a narrow column, so the labels are short. The full question
@@ -2321,15 +2322,20 @@
       }); },3000);
     }
 
+    /* hidden cases must stay out of the router: no blank pages, no prev/next pointing at them */
+    function vizAt(i){ return !!wks[i] && wks[i].style.display!=="none"; }
+    function stepViz(i,d){ var k=i,g=0; do{ k=(k+d+wks.length)%wks.length; g++; }while(!vizAt(k)&&g<wks.length); return k; }
+
     function openProject(id,push){
       var idx=slugs.indexOf(id); if(idx<0) idx=0;
+      if(!vizAt(idx)) idx=stepViz(idx,1);
       wks.forEach(function(w){ w.classList.remove('active'); });
       var cur=wks[idx];
       cur.classList.add('active','in');
       cur.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); });
       initRvx(cur);
       document.body.classList.add('viewing');
-      var p=(idx-1+wks.length)%wks.length, n=(idx+1)%wks.length;
+      var p=stepViz(idx,-1), n=stepViz(idx,1);
       prevBtn.querySelector('.ttl').textContent=nameAt(p); prevBtn.dataset.go=slugs[p];
       nextBtn.querySelector('.ttl').textContent=nameAt(n); nextBtn.dataset.go=slugs[n];
       window.scrollTo(0,0);
