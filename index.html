@@ -437,6 +437,7 @@ footer .mono{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
   border-radius:999px;padding:7px 13px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
   transition:background .2s}
 .caselink:hover{background:rgba(42,81,232,.07)}
+.nb{white-space:nowrap}
 .cursor{display:inline-block;width:7px;height:15px;background:var(--ink);vertical-align:-2px;
   animation:blink .9s steps(1) infinite;margin-left:1px}
 @keyframes blink{50%{opacity:0}}
@@ -1382,10 +1383,10 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
               <!-- shared tooltips / popovers -->
               <div class="fz-infotip" id="fzInfoTip">
                 <div class="row1">
-                  <span><i style="background:#7aa8ff"></i> Prospect's activity</span>
-                  <span><i style="background:#f97089"></i> Your activity</span>
+                  <span><i style="background:#7aa8ff"></i> Lead engagement</span>
+                  <span><i style="background:#f97089"></i> Rep activity</span>
                 </div>
-                <p>The size of the bubble indicates the level of activity on any given day.</p>
+                <p>Dot size indicates the level of activity on any given day.</p>
                 <p><span class="newb">New</span> People whose first engagement occurred within the selected timeframe.</p>
               </div>
               <div class="fz-tip" id="fzTip"></div>
@@ -1597,7 +1598,7 @@ body.viewing .proj-foot{display:flex;align-items:center;justify-content:space-be
   <div class="wrap">
     <div class="wbhead">
       <h2>I like getting my hands<br>into the product<span class="dot">.</span></h2>
-      <p>I'm Shay, a product designer working across AI and B2B SaaS.</p>
+      <p>I'm Shay, a product designer working across AI and <span class="nb">B2B SaaS.</span></p>
     </div>
 
     <div class="playgrid">
